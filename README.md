@@ -15,7 +15,7 @@ miniVector
 
 * [PlayStore](https://play.google.com/store/apps/details?id=com.lavadip.miniVector)
 * FDroid build, coming soon. Issue [#3](https://github.com/LiMium/mini-vector-android/issues/3)
-* Matrix chat room: `#miniVectorAndroid:matrix.org`
+* Matrix chat room: [#miniVectorAndroid:matrix.org](https://matrix.to/#/#miniVectorAndroid:matrix.org)
 
 -----
 
