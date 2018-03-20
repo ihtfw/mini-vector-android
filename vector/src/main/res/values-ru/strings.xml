@@ -213,9 +213,7 @@ Email также позволит вам при необходимости во�
 
     <!-- read receipts list Screen -->
     <string name="read_receipts_list">Чтение списка вступивших</string>
-    <!-- Mels -->
-    <string name="membership_changes">%d membership changes</string>
-    
+
     <!-- accounts list Screen -->
 
     <!-- image size selection -->
@@ -303,8 +301,6 @@ Email также позволит вам при необходимости во�
     <!-- Chat creation -->
     <string name="room_creation_title">Новый чат</string>
     <string name="room_creation_add_member">Добавить участника</string>
-    <string name="room_header_active_members">%1$d/%2$d активных пользователей</string>
-    <string name="room_title_members">%1$d пользователей</string>
     <string name="room_title_one_member">1 пользователь</string>
     <string name="room_e2e_alert_title">Внимание!</string>
     <string name="room_e2e_alert_message">Сквозное шифрование на текущий момент тестируется и может работать нестабильно.
@@ -381,7 +377,6 @@ Email также позволит вам при необходимости во�
     <string name="room_message_file_not_found">Файл не найден</string>
     <string name="room_do_not_have_permission_to_post">У вас нет прав писать сообщения в этом чате</string>
     <string name="room_new_message_notification">1 новое сообщение</string>
-    <string name="room_new_messages_notification">%1$d новых сообщений</string>
     
     <!-- unrecognized SSL certificate -->
     <string name="ssl_trust">Доверять</string>
@@ -417,7 +412,6 @@ Email также позволит вам при необходимости во�
     <string name="room_displayname_invite_from">Приглашение от %s</string>
     <string name="room_displayname_room_invite">Приглашение в комнату</string>
     <string name="room_displayname_two_members">%1$s и %2$s</string>
-    <string name="room_displayname_more_than_two_members">%1$s и %2$d другие</string>
     <string name="room_displayname_no_title">Пустая комната</string>
     
     <!-- Search -->
@@ -445,9 +439,7 @@ Email также позволит вам при необходимости во�
     <!-- Directory -->
     <string name="directory_search_results_title">Просмотр каталога</string>
     <string name="directory_search_room">%1$d комната</string>
-    <string name="directory_search_rooms">%1$d комнаты</string>
     <string name="directory_search_room_for">%1$d комната найдена для %2$s</string>
-    <string name="directory_search_rooms_for">%1$s комнат найдено для %2$s</string>
     <string name="directory_searching_title">Поиск в каталоге..</string>
 
     <!-- home room settings -->
@@ -728,10 +720,6 @@ Email также позволит вам при необходимости во�
     <string name="directory_server_all_rooms_on_server">Все комнаты на сервере %s</string>
     <string name="directory_server_native_rooms">Все местные комнаты %s</string>
 
-    <!-- Notifications -->
-    <string name="notification_unread_notified_messages">%d непрочитанных сообщений</string>
-    <string name="notification_unread_notified_messages_in_room">%1$d непрочитанных сообщений в %2$d комнатах</string>
-
     <!-- historical -->
     <string name="historical_placeholder">Поиск в истории</string>
 <string name="settings_user_interface">Пользовательский интерфейс</string>
@@ -783,7 +771,6 @@ Email также позволит вам при необходимости во�
     <string name="widget_creation_failure">Создание виджета не удалось</string>
     <string name="settings_labs_create_conference_with_jitsi">Осуществлять конференц звонки через Jitsi</string>
     <string name="widget_delete_message_confirmation">Вы уверены, что хотите удалить виджет?</string>
-    <string name="active_widgets">активных виджетов: %1$d</string>
 
     // Widget Integration Manager
     <string name="widget_integration_unable_to_create">Не удалось создать виджет.</string>
@@ -903,12 +890,93 @@ Email также позволит вам при необходимости во�
     <string name="group_rooms">%d комнат</string>
     <string name="group_no_long_description">Администратор сообщества не предоставил подробного описания этого сообщества.</string>
 
-    <string name="one_new_message">1 новое сообщение</string>
-    <string name="new_messages">%d новых сообщений</string>
-
     <string name="has_been_kicked">Вас выгнал %2$s из %1$s</string>
     <string name="has_been_banned">Вас забанил %2$s в %1$s</string>
     <string name="reason_colon">Причина: %1$s</string>
     <string name="rejoin">Присоединиться снова</string>
     <string name="forget_room">Забыть комнату</string>
-</resources>
+<string name="send_bug_report_rage_shake">Встряхните устройство, чтобы сообщить об ошибке</string>
+
+    <string name="actions">Действия</string>
+    <string name="list_members">Список участников</string>
+    <string name="open_chat_header">Открыть заголовок</string>
+    <string name="room_sync_in_progress">Синхронизация...</string>
+    <string name="room_displayname_many_members">%1$s и %2$s</string>
+    <plurals name="directory_search_rooms">
+	<item quantity="one">1 комната</item>
+	<item quantity="few">%d комнаты</item>
+	<item quantity="many">%d комнат</item>
+	<item quantity="other"/>
+</plurals>
+    <plurals name="notification_unread_notified_messages_in_room_rooms">
+	<item quantity="one">1 комната</item>
+	<item quantity="few">%d комнаты</item>
+	<item quantity="many">%d комнат</item>
+	<item quantity="other"/>
+</plurals>
+    <string name="notification_unread_notified_messages_in_room">%1$s в %2$s</string>
+
+    <plurals name="active_widgets">
+	<item quantity="one">1 активный виджет</item>
+	<item quantity="few">%d активных виджета</item>
+	<item quantity="many">%d активных виджетов</item>
+	<item quantity="other"/>
+</plurals>
+
+    // Widget Integration Manager
+    <string name="avatar">Аватар</string>
+
+<plurals name="room_header_active_members_count">
+	<item quantity="one">1 активный участник</item>
+	<item quantity="few">%d активных участника</item>
+	<item quantity="many">%d активных участников</item>
+	<item quantity="other"/>
+</plurals>
+    <plurals name="room_title_members">
+	<item quantity="one">1 участник</item>
+	<item quantity="few">%d участника</item>
+	<item quantity="many">%d участников</item>
+	<item quantity="other"/>
+</plurals>
+    <plurals name="room_new_messages_notification">
+	<item quantity="one">1 новое сообщение</item>
+	<item quantity="few">%d новых сообщения</item>
+	<item quantity="many">%d новых сообщений</item>
+	<item quantity="other"/>
+</plurals>
+
+    <plurals name="directory_search_rooms_for">
+	<item quantity="one">%1$s комната найдена для %2$s</item>
+	<item quantity="few">%1$s комнаты найдено для %2$s</item>
+	<item quantity="many">%1$s комнат найдено для %2$s</item>
+	<item quantity="other"/>
+</plurals>
+    <plurals name="membership_changes">
+	<item quantity="one">1 изменение членства</item>
+	<item quantity="few">%d изменения членства</item>
+	<item quantity="many">%d изменений членства</item>
+	<item quantity="other"/>
+</plurals>
+
+    <plurals name="others">
+	<item quantity="one">1 другой</item>
+	<item quantity="few">%d другие</item>
+	<item quantity="many">%d других</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="settings_enable_content_sending">Сохранять подробные уведомления</string>
+    <string name="settings_enable_content_sending_summary">Включите эту опцию при отключенной фоновой синхронизации для отображения подробных уведомлений. Для этого требуется отправлять нешифрованный контент через серверы служб Google</string>
+    <plurals name="notification_unread_notified_messages">
+	<item quantity="one">1 непрочитанное уведомление</item>
+	<item quantity="few">%d непрочитанных уведомления</item>
+	<item quantity="many">%d непрочитанных уведомлений</item>
+	<item quantity="other"/>
+</plurals>
+    <plurals name="notification_unread_notified_messages_in_room_msgs">
+	<item quantity="one">1 непрочитанное уведомление</item>
+	<item quantity="few">%d непрочитанных уведомления</item>
+	<item quantity="many">%d непрочитанных уведомлений</item>
+	<item quantity="other"></item>
+</plurals>
+    </resources>

@@ -117,6 +117,7 @@ import im.vector.preference.VectorGroupPreference;
 import im.vector.preference.VectorSwitchPreference;
 import im.vector.util.PhoneNumberUtils;
 import im.vector.util.PreferencesManager;
+import im.vector.util.RageShake;
 import im.vector.util.ThemeUtils;
 import im.vector.util.VectorUtils;
 
@@ -176,6 +177,7 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
             refreshDisplay();
         }
     };
+
     private View mLoadingView;
     // cryptography
     private DeviceInfo mMyDeviceInfo;
@@ -206,7 +208,6 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
     private EditTextPreference mSyncRequestTimeoutPreference;
     private EditTextPreference mSyncRequestDelayPreference;
     private PreferenceCategory mLabsCategory;
-
     private PreferenceCategory mGroupsFlairCategory;
 
     // static constructor
@@ -611,49 +612,92 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
             }
         }
 
+        // background sync management
+        mBackgroundSyncCategory = (PreferenceCategory) findPreference(PreferencesManager.SETTINGS_BACKGROUND_SYNC_PREFERENCE_KEY);
+        mSyncRequestTimeoutPreference = (EditTextPreference) findPreference(PreferencesManager.SETTINGS_SET_SYNC_TIMEOUT_PREFERENCE_KEY);
+        mSyncRequestDelayPreference = (EditTextPreference) findPreference(PreferencesManager.SETTINGS_SET_SYNC_DELAY_PREFERENCE_KEY);
         final CheckBoxPreference useBackgroundSyncPref = (CheckBoxPreference) findPreference(PreferencesManager.SETTINGS_ENABLE_BACKGROUND_SYNC_PREFERENCE_KEY);
+        final CheckBoxPreference allowContentSendingPref = (CheckBoxPreference) findPreference(PreferencesManager.SETTINGS_ENABLE_CONTENT_SENDING_PREFERENCE_KEY);
 
-        if (null != useBackgroundSyncPref) {
+        if (null != useBackgroundSyncPref || null != allowContentSendingPref) {
             final GcmRegistrationManager gcmMgr = Matrix.getInstance(appContext).getSharedGCMRegistrationManager();
 
-            useBackgroundSyncPref.setChecked(gcmMgr.isBackgroundSyncAllowed());
+            final GcmRegistrationManager.ThirdPartyRegistrationListener listener = new GcmRegistrationManager.ThirdPartyRegistrationListener() {
 
-            useBackgroundSyncPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
-                public boolean onPreferenceChange(Preference preference, Object aNewValue) {
-                    final boolean newValue = (boolean) aNewValue;
-
-                    if (newValue != gcmMgr.isBackgroundSyncAllowed()) {
-                        gcmMgr.setBackgroundSyncAllowed(newValue);
-                    }
-
-                    displayLoadingView();
-
-                    Matrix.getInstance(VectorSettingsPreferencesFragment.this.getActivity()).getSharedGCMRegistrationManager().forceSessionsRegistration(new GcmRegistrationManager.ThirdPartyRegistrationListener() {
-                        @Override
-                        public void onThirdPartyRegistered() {
-                            hideLoadingView();
-                        }
-
-                        @Override
-                        public void onThirdPartyRegistrationFailed() {
-                            hideLoadingView();
-                        }
-
-                        @Override
-                        public void onThirdPartyUnregistered() {
-                            hideLoadingView();
-                        }
-
-                        @Override
-                        public void onThirdPartyUnregistrationFailed() {
-                            hideLoadingView();
-                        }
-                    });
-
-                    return true;
+                public void onThirdPartyRegistered() {
+                    hideLoadingView();
                 }
-            });
+
+                @Override
+                public void onThirdPartyRegistrationFailed() {
+                    hideLoadingView();
+                }
+
+                @Override
+                public void onThirdPartyUnregistered() {
+                    hideLoadingView();
+                }
+
+                @Override
+                public void onThirdPartyUnregistrationFailed() {
+                    hideLoadingView();
+                }
+            };
+
+            if (null != useBackgroundSyncPref) {
+                useBackgroundSyncPref.setChecked(gcmMgr.isBackgroundSyncAllowed());
+
+                useBackgroundSyncPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object aNewValue) {
+                        final boolean newValue = (boolean) aNewValue;
+
+                        if (newValue != gcmMgr.isBackgroundSyncAllowed()) {
+                            gcmMgr.setBackgroundSyncAllowed(newValue);
+                        }
+
+                        displayLoadingView();
+
+                        Matrix.getInstance(VectorSettingsPreferencesFragment.this.getActivity()).getSharedGCMRegistrationManager().forceSessionsRegistration(listener);
+
+                        // Display the content sending option only when the background sync is disabled whereas the GCM is supported.
+                        if (newValue || !gcmMgr.hasRegistrationToken()) {
+                            mBackgroundSyncCategory.removePreference(allowContentSendingPref);
+                        } else {
+                            mBackgroundSyncCategory.addPreference(allowContentSendingPref);
+                        }
+
+                        return true;
+                    }
+                });
+            }
+
+            if (null != allowContentSendingPref) {
+                allowContentSendingPref.setChecked(gcmMgr.isContentSendingAllowed());
+
+                allowContentSendingPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object aNewValue) {
+                        final boolean newValue = (boolean) aNewValue;
+
+                        if (newValue != gcmMgr.isContentSendingAllowed()) {
+                            gcmMgr.setContentSendingAllowed(newValue);
+                        }
+
+                        displayLoadingView();
+
+                        Matrix.getInstance(VectorSettingsPreferencesFragment.this.getActivity()).getSharedGCMRegistrationManager().forceSessionsRegistration(listener);
+
+                        return true;
+                    }
+                });
+
+                // Hide this pref if the background sync is allowed, or if the GCM is not supported
+                if (gcmMgr.isBackgroundSyncAllowed() || !gcmMgr.hasRegistrationToken()) {
+                    mBackgroundSyncCategory.removePreference(allowContentSendingPref);
+                }
+            }
         }
 
         mUserSettingsCategory = (PreferenceCategory) findPreference(PreferencesManager.SETTINGS_USER_SETTINGS_PREFERENCE_KEY);
@@ -692,11 +736,6 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
 
         // user interface preferences
         setUserInterfacePreferences();
-
-        // background sync management
-        mBackgroundSyncCategory = (PreferenceCategory) findPreference(PreferencesManager.SETTINGS_BACKGROUND_SYNC_PREFERENCE_KEY);
-        mSyncRequestTimeoutPreference = (EditTextPreference) findPreference(PreferencesManager.SETTINGS_SET_SYNC_TIMEOUT_PREFERENCE_KEY);
-        mSyncRequestDelayPreference = (EditTextPreference) findPreference(PreferencesManager.SETTINGS_SET_SYNC_DELAY_PREFERENCE_KEY);
 
         final CheckBoxPreference useCryptoPref = (CheckBoxPreference) findPreference(PreferencesManager.SETTINGS_ROOM_SETTINGS_LABS_END_TO_END_PREFERENCE_KEY);
         final Preference cryptoIsEnabledPref = findPreference(PreferencesManager.SETTINGS_ROOM_SETTINGS_LABS_END_TO_END_IS_ACTIVE_PREFERENCE_KEY);
@@ -792,6 +831,7 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
             }
         });
 
+        // SaveMode Managment
         final CheckBoxPreference dataSaveModePref = (CheckBoxPreference) findPreference(PreferencesManager.SETTINGS_DATA_SAVE_MODE_PREFERENCE_KEY);
         dataSaveModePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
@@ -800,6 +840,22 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
                 for (MXSession session : sessions) {
                     session.setUseDataSaveMode((boolean) newValue);
                 }
+
+                return true;
+            }
+        });
+        
+        // Rageshake Managment
+        final CheckBoxPreference useRageShakeModePref = (CheckBoxPreference) findPreference(PreferencesManager.SETTINGS_USE_RAGE_SHAKE_KEY);
+        final boolean mIsUsedRageShake = PreferencesManager.useRageshake(appContext);
+
+        useRageShakeModePref.setChecked(mIsUsedRageShake);
+
+        useRageShakeModePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                PreferencesManager.setUseRageshake(appContext, (boolean) newValue);
 
                 return true;
             }

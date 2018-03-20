@@ -57,6 +57,7 @@ public class PreferencesManager {
     public static final String SETTINGS_CLEAR_CACHE_PREFERENCE_KEY = "SETTINGS_CLEAR_CACHE_PREFERENCE_KEY";
     public static final String SETTINGS_CLEAR_MEDIA_CACHE_PREFERENCE_KEY = "SETTINGS_CLEAR_MEDIA_CACHE_PREFERENCE_KEY";
     public static final String SETTINGS_ENABLE_BACKGROUND_SYNC_PREFERENCE_KEY = "SETTINGS_ENABLE_BACKGROUND_SYNC_PREFERENCE_KEY";
+    public static final String SETTINGS_ENABLE_CONTENT_SENDING_PREFERENCE_KEY = "SETTINGS_ENABLE_CONTENT_SENDING_PREFERENCE_KEY";
     public static final String SETTINGS_OTHERS_PREFERENCE_KEY = "SETTINGS_OTHERS_PREFERENCE_KEY";
     public static final String SETTINGS_USER_SETTINGS_PREFERENCE_KEY = "SETTINGS_USER_SETTINGS_PREFERENCE_KEY";
     public static final String SETTINGS_CONTACT_PREFERENCE_KEYS = "SETTINGS_CONTACT_PREFERENCE_KEYS";
@@ -128,7 +129,7 @@ public class PreferencesManager {
 
     private static final String SETTINGS_VIBRATE_ON_MENTION_KEY = "SETTINGS_VIBRATE_ON_MENTION_KEY";
 
-    private static final String SETTINGS_USE_RAGE_SHAKE_KEY = "SETTINGS_USE_RAGE_SHAKE_KEY";
+    public static final String SETTINGS_USE_RAGE_SHAKE_KEY = "SETTINGS_USE_RAGE_SHAKE_KEY";
 
     private static final String SETTINGS_DISPLAY_ALL_EVENTS_KEY = "SETTINGS_DISPLAY_ALL_EVENTS_KEY";
 
@@ -166,7 +167,9 @@ public class PreferencesManager {
             SETTINGS_BACKGROUND_SYNC_PREFERENCE_KEY,
             SETTINGS_ENABLE_BACKGROUND_SYNC_PREFERENCE_KEY,
             SETTINGS_SET_SYNC_TIMEOUT_PREFERENCE_KEY,
-            SETTINGS_SET_SYNC_DELAY_PREFERENCE_KEY
+            SETTINGS_SET_SYNC_DELAY_PREFERENCE_KEY,
+
+            SETTINGS_USE_RAGE_SHAKE_KEY
     );
 
     /**
@@ -382,7 +385,7 @@ public class PreferencesManager {
      * @return true if the matrix apps are supported.
      */
     public static boolean useMatrixApps(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(SETTINGS_USE_MATRIX_APPS_PREFERENCE_KEY, false);
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(SETTINGS_USE_MATRIX_APPS_PREFERENCE_KEY, true);
     }
 
     /**
@@ -521,6 +524,12 @@ public class PreferencesManager {
         if (!preferences.contains(SETTINGS_USE_JITSI_CONF_PREFERENCE_KEY)) {
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean(SETTINGS_USE_JITSI_CONF_PREFERENCE_KEY, true);
+            editor.commit();
+        }
+
+        if (!preferences.contains(SETTINGS_USE_MATRIX_APPS_PREFERENCE_KEY)) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean(SETTINGS_USE_MATRIX_APPS_PREFERENCE_KEY, true);
             editor.commit();
         }
 

@@ -197,8 +197,6 @@ Saiotik atera zaizu gailu guztietan eta ez dituzu jakinarazpenak jasoko. Jakinar
 
     <string name="read_receipts_list">Irakurragirien zerrenda</string>
 
-    <string name="membership_changes">%d kidetza aldaketa</string>
-
     <string name="compression_options">"Bidali honela "</string>
     <string name="compression_opt_list_original">Jatorrizkoa</string>
     <string name="compression_opt_list_large">Handia</string>
@@ -283,8 +281,6 @@ Beste kontu batekin hasi dezakezu saioa, edo e-mail hau kontu honetara gehitu.</
 
     <string name="room_creation_title">Txat berria</string>
     <string name="room_creation_add_member">Gehitu kidea</string>
-    <string name="room_header_active_members">%1$d/%2$d kide aktibo</string>
-    <string name="room_title_members">%1$d kide</string>
     <string name="room_title_one_member">kide 1</string>
     <string name="room_e2e_alert_title">Abisua!</string>
     <string name="room_e2e_alert_message">Muturretik muturrera zifratzea beta egoeran dago eta agian ez dabil behar bezala.
@@ -363,7 +359,6 @@ Ziur zaude?</string>
     <string name="room_message_file_not_found">Ez da fitxategia aurkitu</string>
     <string name="room_do_not_have_permission_to_post">Ez duzu gela honetara mezuak bidaltzeko baimenik</string>
     <string name="room_new_message_notification">mezu berri 1</string>
-    <string name="room_new_messages_notification">%1$d mezu berri</string>
 
     <string name="ssl_trust">Fidatu</string>
     <string name="ssl_do_not_trust">Ez fidatu</string>
@@ -394,7 +389,6 @@ Ziur zaude?</string>
     <string name="room_displayname_invite_from">%s gelarako gonbidapena</string>
     <string name="room_displayname_room_invite">Gela gonbidapena</string>
     <string name="room_displayname_two_members">%1$s eta %2$s</string>
-    <string name="room_displayname_more_than_two_members">%1$s eta beste %2$d</string>
     <string name="room_displayname_no_title">Gela hutsa</string>
 
     <string name="search_hint">Bilatu</string>
@@ -419,9 +413,7 @@ Ziur zaude?</string>
 
     <string name="directory_search_results_title">Arakatu direktorioa</string>
     <string name="directory_search_room">gela %1$d</string>
-    <string name="directory_search_rooms">%1$d gela</string>
     <string name="directory_search_room_for">gela %1$d aurkitu da %2$s bilaketarako</string>
-    <string name="directory_search_rooms_for">%1$s gela aurkitu dira %2$s bilaketarako</string>
     <string name="directory_searching_title">Direktorioa bilatzen..</string>
 
     <string name="room_settings_favourite">Gogokoa</string>
@@ -649,15 +641,15 @@ Jarraitzeko, idatzi zure pasahitza.</string>
 
     <string name="encryption_information_not_verified">EZ egiaztatuta</string>
     <string name="encryption_information_verified">Egiaztatuta</string>
-    <string name="encryption_information_blocked">Zerrenda beltzean</string>
+    <string name="encryption_information_blocked">Blokeatuta</string>
 
     <string name="encryption_information_unknown_device">gailu ezezaguna</string>
     <string name="encryption_information_none">bat ere ez</string>
 
     <string name="encryption_information_verify">Egiaztatu</string>
     <string name="encryption_information_unverify">Kendu egiaztaketa</string>
-    <string name="encryption_information_block">Sartu zerrenda beltzean</string>
-    <string name="encryption_information_unblock">Atera zerrenda beltzean</string>
+    <string name="encryption_information_block">Blokeatu</string>
+    <string name="encryption_information_unblock">Desblokeatu</string>
 
     <string name="encryption_information_verify_device">Egiaztatu gailua</string>
     <string name="encryption_information_verify_device_warning">" Gailu hau fidagarria dela egiaztatzeko, kontaktatu bere jabea beste medio bat erabiliz (adib. aurrez aurre edo telefonoz deituz) eta galdetu beraien erabiltzaile-ezarpenetan bere gailurako ikusten duen gakoa hemen beheko bera den:"</string>
@@ -682,9 +674,6 @@ Gailu ezezagunak:</string>
     <string name="directory_server_placeholder">Hasiera zerbitzariaren URLa</string>
     <string name="directory_server_all_rooms_on_server">%s zerbitzariko gela guztiak</string>
     <string name="directory_server_native_rooms">%s zerbitzariko gela natibo guztiak</string>
-
-    <string name="notification_unread_notified_messages">Irakurri gabeko %d mezu-jakinarazpen</string>
-    <string name="notification_unread_notified_messages_in_room">%1$d irakurri gabeko eta jakinaraziko mezu %2$d gelatan</string>
 
     <string name="historical_placeholder">Bilatu historiala</string>
 
@@ -734,7 +723,6 @@ Zifratutako mezuak ez dira zifratzea oraindik ezarrita ez duten beste gailuetan 
     <string name="event_formatter_widget_removed">%1$s kendu du %2$s erabiltzaileak</string>
     <string name="settings_labs_create_conference_with_jitsi">Sortu konferentzia deiak jitsi bidez</string>
     <string name="widget_delete_message_confirmation">Ziur trepeta ezabatu nahi duzula?</string>
-    <string name="active_widgets">%1$d trepeta aktibo</string>
 
     // Widget Integration Manager
     <string name="widget_integration_unable_to_create">Ezin izan da trepeta sortu.</string>
@@ -850,9 +838,6 @@ Zifratutako mezuak ez dira zifratzea oraindik ezarrita ez duten beste gailuetan 
     <string name="group_rooms">%d gela</string>
     <string name="group_no_long_description">Komunitatearen administratzaileak ez du deskripzio luzerik eman komunitate honentzat.</string>
 
-    <string name="one_new_message">mezu berri 1</string>
-    <string name="new_messages">%d mezu berri</string>
-
     <string name="has_been_kicked">%1$s gelatik kanporatu zaitu %2$s erabiltzaileak</string>
     <string name="has_been_banned">%1$s gelatik debekatu zaitu %2$s erabiltzaileak</string>
     <string name="reason_colon">Arrazoia: %1$s</string>
@@ -861,4 +846,68 @@ Zifratutako mezuak ez dira zifratzea oraindik ezarrita ez duten beste gailuetan 
 <string name="settings_flair">Ikurra</string>
 
     <string name="room_settings_no_flair">" Gela honek ez ditu komunitateetako ikurrak erakusten"</string>
+    <string name="send_bug_report_rage_shake">Astindu amorruz akatsaren berri emateko</string>
+
+    <string name="actions">Ekintzak</string>
+    <plurals name="membership_changes">
+	<item quantity="one">Kidetza aldaketa bat</item>
+	<item quantity="other">%d kidetza aldaketa</item>
+</plurals>
+
+    <string name="list_members">Zerrendatu kideak</string>
+    <string name="open_chat_header">Ireki goiburua</string>
+    <string name="room_sync_in_progress">Sinkronizatzen...</string>
+    <plurals name="room_header_active_members_count">
+	<item quantity="one">Kide aktibo 1</item>
+	<item quantity="other">%d kide aktibo</item>
+</plurals>
+    <plurals name="room_title_members">
+	<item quantity="one">Kide 1</item>
+	<item quantity="other">%d kide</item>
+</plurals>
+    <plurals name="room_new_messages_notification">
+	<item quantity="one">Mezu berri 1</item>
+	<item quantity="other">%d mezu berri</item>
+</plurals>
+
+    <string name="room_displayname_many_members">%1$s eta %2$s</string>
+    <plurals name="others">
+	<item quantity="one">Beste bat</item>
+	<item quantity="other">Beste %d</item>
+</plurals>
+
+    <plurals name="directory_search_rooms">
+	<item quantity="one">Gela bat</item>
+	<item quantity="other">%d gela</item>
+</plurals>
+    <plurals name="directory_search_rooms_for">
+	<item quantity="one">Gela %1$s aurkitu da %2$s bilatuz</item>
+	<item quantity="other">%1$s gela aurkitu dira %2$s bilatuz</item>
+</plurals>
+    <plurals name="notification_unread_notified_messages">
+	<item quantity="one">Irakurri gabeko jakinaraziko mezu bat</item>
+	<item quantity="other">%d irakurri gabeko jakinaraziko mezu</item>
+</plurals>
+    <plurals name="notification_unread_notified_messages_in_room_msgs">
+	<item quantity="one">Irakurri gabeko jakinaraziko mezu bat</item>
+	<item quantity="other">%d irakurri gabeko jakinaraziko mezu</item>
+</plurals>
+    <plurals name="notification_unread_notified_messages_in_room_rooms">
+	<item quantity="one">Gela 1</item>
+	<item quantity="other">%d gela</item>
+</plurals>
+    <string name="notification_unread_notified_messages_in_room">%1$s : %2$s</string>
+
+    <plurals name="active_widgets">
+	<item quantity="one">Trepeta aktibo bat</item>
+	<item quantity="other">%d trepeta aktibo</item>
+</plurals>
+
+    // Widget Integration Manager
+    <string name="receipt_avatar">Hartzailearen abatarra</string>
+    <string name="notice_avatar">Jakinarazpen abatarra</string>
+    <string name="avatar">Abatarra</string>
+
+<string name="settings_enable_content_sending">Mantendu jakinarazpen xehatuak</string>
+    <string name="settings_enable_content_sending_summary">"Gaitu aukera hau bigarren planoko sinkronizazioa desgaituta dagoenean jakinarazpen xehatuak bistaratzeko. Honek zifratu gabeko mezuaren edukia Google zerbitzarien bidez igortzea  eskatzen du"</string>
     </resources>
