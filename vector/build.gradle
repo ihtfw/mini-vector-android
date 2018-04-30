@@ -87,7 +87,7 @@ android {
         }
 
         appfdroid {
-            applicationId "im.vector.alpha"
+            applicationId "com.lavadip.miniVector"
             // use the version name
             versionCode rootProject.ext.versionCodeProp
             versionName rootProject.ext.versionNameProp
