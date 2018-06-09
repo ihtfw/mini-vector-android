@@ -451,11 +451,13 @@ public class CommonActivityUtils {
                 EventStreamService.removeNotification();
                 stopEventStream(context);
 
+                /*
                 try {
                     ShortcutBadger.setBadge(context, 0);
                 } catch (Exception e) {
                     Log.d(LOG_TAG, "## logout(): Exception Msg=" + e.getMessage());
                 }
+                */
 
                 // Publish to the server that we're now offline
                 MyPresenceManager.getInstance(context, mxSession).advertiseOffline();
