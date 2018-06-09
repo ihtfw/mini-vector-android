@@ -834,6 +834,7 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
         });
 
         // Analytics tracking managment
+        /*
         final CheckBoxPreference useAnalyticsModePref = (CheckBoxPreference) findPreference(PreferencesManager.SETTINGS_USE_ANALYTICS_KEY);
 
         // On if the analytics tracking is activated
@@ -846,6 +847,7 @@ public class VectorSettingsPreferencesFragment extends PreferenceFragment implem
                 return true;
             }
         });
+        */
         
         // Rageshake Managment
         /*
