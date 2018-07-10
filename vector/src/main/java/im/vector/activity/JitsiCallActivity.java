@@ -30,8 +30,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
-import org.jitsi.meet.sdk.JitsiMeetView;
-import org.jitsi.meet.sdk.JitsiMeetViewListener;
+// import org.jitsi.meet.sdk.JitsiMeetView;
+// import org.jitsi.meet.sdk.JitsiMeetViewListener;
 import org.matrix.androidsdk.MXSession;
 import org.matrix.androidsdk.data.Room;
 import org.matrix.androidsdk.rest.callback.ApiCallback;
@@ -69,7 +69,7 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
     private final static int CAN_DRAW_OVERLAY_REQUEST_CODE = 1234;
 
     // the jitsi view
-    private JitsiMeetView mJitsiView = null;
+    // private JitsiMeetView mJitsiView = null;
 
     // the linked widget
     private Widget mWidget = null;
@@ -154,7 +154,7 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
             return;
         }
 
-        mJitsiView = new JitsiMeetView(this);
+        // mJitsiView = new JitsiMeetView(this);
 
         refreshStatusBar();
 
@@ -230,7 +230,7 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
             Bundle urlObject = new Bundle();
             urlObject.putBundle("config", config);
             urlObject.putString("url", mCallUrl);
-            mJitsiView.loadURLObject(urlObject);
+            // mJitsiView.loadURLObject(urlObject);
         } catch (Exception e) {
             Log.e(LOG_TAG, "## loadURL() failed : " + e.getMessage());
             finish();
@@ -241,8 +241,9 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
                 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
         layout.setVisibility(View.VISIBLE);
-        layout.addView(mJitsiView, 0, params);
+        // layout.addView(mJitsiView, 0, params);
 
+        /*
         mJitsiView.setListener(new JitsiMeetViewListener() {
             @Override
             public void onConferenceFailed(Map<String, Object> map) {
@@ -290,6 +291,7 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
                 Log.d(LOG_TAG, "## onLoadConfigError() : " + data);
             }
         });
+        */
     }
 
     @Override
@@ -309,6 +311,7 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+        /*
         if (null != mJitsiView) {
             ViewGroup parent = (ViewGroup) (mJitsiView.getParent());
 
@@ -319,19 +322,20 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
             mJitsiView.dispose();
             mJitsiView = null;
         }
+        */
 
-        JitsiMeetView.onHostDestroy(this);
+        // JitsiMeetView.onHostDestroy(this);
     }
 
     @Override
     public void onNewIntent(Intent intent) {
-        JitsiMeetView.onNewIntent(intent);
+        // JitsiMeetView.onNewIntent(intent);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        JitsiMeetView.onHostPause(this);
+        // JitsiMeetView.onHostPause(this);
         WidgetsManager.removeListener(mWidgetListener);
     }
 
@@ -344,15 +348,17 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        JitsiMeetView.onHostResume(this);
+        // JitsiMeetView.onHostResume(this);
         WidgetsManager.addListener(mWidgetListener);
         refreshStatusBar();
     }
 
+    /*
     @Override
     public void onBackPressed() {
         if (!JitsiMeetView.onBackPressed()) {
             super.onBackPressed();
         }
     }
+    */
 }
