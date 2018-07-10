@@ -586,6 +586,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
         // Analytics
 
         // Analytics tracking management
+        /*
         (findPreference(PreferencesManager.SETTINGS_USE_ANALYTICS_KEY) as CheckBoxPreference).let {
             // On if the analytics tracking is activated
             it.isChecked = PreferencesManager.useAnalytics(appContext)
@@ -605,6 +606,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                 true
             }
         }
+        */
 
         // Others
 
