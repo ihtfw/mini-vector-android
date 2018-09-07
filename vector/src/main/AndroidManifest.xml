@@ -95,7 +95,7 @@
         android:label="@string/riot_app_name"
         android:largeHeap="true"
         android:logo="@drawable/logo"
-        android:resizeableActivity="false"
+        android:resizeableActivity="true"
         android:theme="@style/AppTheme"
         tools:replace="allowBackup,label">
 
