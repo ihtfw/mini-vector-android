@@ -145,8 +145,8 @@ public class VectorApp extends MultiDexApplication {
      */
     private CallsManager mCallsManager;
 
-    // private Analytics mAppAnalytics;
-    // private DecryptionFailureTracker mDecryptionFailureTracker;
+    private Analytics mAppAnalytics;
+    private DecryptionFailureTracker mDecryptionFailureTracker;
 
     /**
      * @return the current instance
@@ -199,8 +199,8 @@ public class VectorApp extends MultiDexApplication {
 
         instance = this;
         mCallsManager = new CallsManager(this);
-        // mAppAnalytics = new AppAnalytics(this, new PiwikAnalytics(this));
-        // mDecryptionFailureTracker = new DecryptionFailureTracker(mAppAnalytics);
+        mAppAnalytics = new AppAnalytics(this, new PiwikAnalytics(this));
+        mDecryptionFailureTracker = new DecryptionFailureTracker(mAppAnalytics);
 
         mActivityTransitionTimer = null;
         mActivityTransitionTimerTask = null;
@@ -575,20 +575,16 @@ public class VectorApp extends MultiDexApplication {
     /**
      * @return the analytics app instance
      */
-    /*
     public Analytics getAnalytics() {
         return mAppAnalytics;
     }
-    */
 
     /**
      * @return the DecryptionFailureTracker instance
      */
-    /*
     public DecryptionFailureTracker getDecryptionFailureTracker() {
         return mDecryptionFailureTracker;
     }
-    */
 
     /**
      * @return the current active activity

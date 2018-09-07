@@ -1,6 +1,8 @@
 package im.vector.analytics
 
 import android.content.Context
+
+/*
 import org.piwik.sdk.*
 import org.piwik.sdk.extra.CustomVariables
 import org.piwik.sdk.extra.TrackHelper
@@ -42,3 +44,19 @@ class PiwikAnalytics(context: Context) : Analytics {
         tracker.dispatch()
     }
 }
+*/
+
+class PiwikAnalytics(context: Context) : Analytics {
+    // this is a dummy implementation. It is easier to do this than remove the class entirely
+    // as it is easier to resolve merge conflicts.
+
+    override fun trackScreen(screen: String, title: String?) {
+    }
+    override fun trackEvent(event: TrackingEvent) {
+    }
+    override fun visitVariable(index: Int, name: String, value: String) {
+    }
+    override fun forceDispatch() {
+    }
+}
+
