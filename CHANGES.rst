@@ -8,7 +8,7 @@ Features:
  - Status.im theme
 
 Improvements:
- -
+ - Use LocalBroadcastManager when applicable (#2595)
 
 Other changes:
  -
