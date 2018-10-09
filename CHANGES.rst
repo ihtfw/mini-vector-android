@@ -4,6 +4,15 @@ Changes in Riot 0.8.17 (2018-10-10)
 MatrixSdk:
  - Upgrade to version 0.9.11.
 
+Features:
+ - Status.im theme
+
+Improvements:
+ -
+
+Other changes:
+ -
+
 Bugfix:
  - Fix issue on loading cache, and so avoid initial sync on each application startup.
  - When exporting E2E keys, it isn't clear that you are creating a new password (#2626)
