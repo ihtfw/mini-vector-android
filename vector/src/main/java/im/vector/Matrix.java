@@ -72,6 +72,9 @@ import im.vector.widgets.WidgetsManager;
  * Singleton to control access to the Matrix SDK and providing point of control for MXSessions.
  */
 public class Matrix {
+    // Set to true to enable local file encryption
+    private static final boolean CONFIG_ENABLE_LOCAL_FILE_ENCRYPTION = false;
+
     // the log tag
     private static final String LOG_TAG = Matrix.class.getSimpleName();
 
@@ -624,13 +627,13 @@ public class Matrix {
      * @return The session.
      */
     private MXSession createSession(final Context context, HomeServerConnectionConfig hsConfig) {
-        IMXStore store;
+        MXFileStore store;
 
         final MetricsListener metricsListener = new MetricsListenerProxy(VectorApp.getInstance().getAnalytics());
         final Credentials credentials = hsConfig.getCredentials();
 
         /*if (true) {*/
-        store = new MXFileStore(hsConfig, context);
+        store = new MXFileStore(hsConfig, CONFIG_ENABLE_LOCAL_FILE_ENCRYPTION, context);
         store.setMetricsListener(metricsListener);
 
         /*} else {
@@ -638,9 +641,13 @@ public class Matrix {
         }*/
 
         final MXDataHandler dataHandler = new MXDataHandler(store, credentials);
+        store.setDataHandler(dataHandler);
+        dataHandler.setLazyLoadingEnabled(PreferencesManager.useLazyLoading(context));
+
         final MXSession session = new MXSession.Builder(hsConfig, dataHandler, context)
                 .withPushServerUrl(context.getString(R.string.push_server_url))
                 .withMetricsListener(metricsListener)
+                .withFileEncryption(CONFIG_ENABLE_LOCAL_FILE_ENCRYPTION)
                 .build();
 
         dataHandler.setMetricsListener(metricsListener);
