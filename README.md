@@ -14,7 +14,7 @@ miniVector
 ### Links
 
 * [PlayStore](https://play.google.com/store/apps/details?id=com.lavadip.miniVector)
-* [FDroid build](https://f-droid.org/packages/com.lavadip.miniVector/)
+* [F-Droid](https://f-droid.org/packages/com.lavadip.miniVector/)
 * Matrix chat room: [#miniVectorAndroid:matrix.org](https://matrix.to/#/#miniVectorAndroid:matrix.org)
 
 -----
