@@ -37,7 +37,7 @@ Improvements:
  - Tapping on profile picture in sidebar opens settings page (#2597)
 
 Other changes:
- -
+ - Room display name is now computed by the Matrix SDK
 
 Bugfix:
  - Fix issue on loading cache, and so avoid initial sync on each application startup.
