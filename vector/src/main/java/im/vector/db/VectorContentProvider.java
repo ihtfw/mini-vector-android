@@ -30,13 +30,14 @@ import android.webkit.MimeTypeMap;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import im.vector.BuildConfig;
 import im.vector.VectorApp;
 import im.vector.BuildConfig;
 
 public class VectorContentProvider extends ContentProvider {
     private static final String LOG_TAG = VectorContentProvider.class.getSimpleName();
 
-    private static final String AUTHORITIES = BuildConfig.APPLICATION_ID + ".provider";
+    private static final String AUTHORITIES = BuildConfig.APPLICATION_ID + ".VectorApp.provider";
 
     private static final String BUG_SEPARATOR = "bugreport";
 
