@@ -678,7 +678,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
             it.summary = VectorUtils.getApplicationVersion(appContext)
 
             it.setOnPreferenceLongClickListener { _ ->
-                VectorUtils.copyToClipboard(appContext, VectorUtils.getApplicationVersion(appContext))
+                copyToClipboard(appContext, VectorUtils.getApplicationVersion(appContext))
                 true
             }
         }
@@ -1680,7 +1680,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                 }
 
                 preference.setOnPreferenceLongClickListener {
-                    VectorUtils.copyToClipboard(activity, email3PID.address)
+                    copyToClipboard(activity, email3PID.address)
                     true
                 }
 
@@ -1874,7 +1874,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                 }
 
                 preference.setOnPreferenceLongClickListener {
-                    VectorUtils.copyToClipboard(activity, phoneNumber3PID.address)
+                    copyToClipboard(activity, phoneNumber3PID.address)
                     true
                 }
 
@@ -2091,7 +2091,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
             }
 
             cryptoInfoDeviceNamePreference.setOnPreferenceLongClickListener {
-                VectorUtils.copyToClipboard(activity, aMyDeviceInfo.display_name)
+                copyToClipboard(activity, aMyDeviceInfo.display_name)
                 true
             }
         }
@@ -2101,7 +2101,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
             cryptoInfoDeviceIdPreference.summary = deviceId
 
             cryptoInfoDeviceIdPreference.setOnPreferenceLongClickListener {
-                VectorUtils.copyToClipboard(activity, deviceId)
+                copyToClipboard(activity, deviceId)
                 true
             }
 
@@ -2124,7 +2124,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                         cryptoInfoTextPreference.summary = deviceInfo.getFingerprintHumanReadable()
 
                         cryptoInfoTextPreference.setOnPreferenceLongClickListener {
-                            VectorUtils.copyToClipboard(activity, deviceInfo.fingerprint())
+                            copyToClipboard(activity, deviceInfo.fingerprint())
                             true
                         }
                     }
@@ -2505,12 +2505,24 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                 }
 
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    exportButton.isEnabled = !TextUtils.isEmpty(passPhrase1EditText.text)
-                            && TextUtils.equals(passPhrase1EditText.text, passPhrase2EditText.text)
+
                 }
 
                 override fun afterTextChanged(s: Editable) {
-
+                    when {
+                        TextUtils.isEmpty(passPhrase1EditText.text) -> {
+                            exportButton.isEnabled = false
+                            passPhrase2EditText.error = null
+                        }
+                        TextUtils.equals(passPhrase1EditText.text, passPhrase2EditText.text) -> {
+                            exportButton.isEnabled = true
+                            passPhrase2EditText.error = null
+                        }
+                        else -> {
+                            exportButton.isEnabled = false
+                            passPhrase2EditText.error = getString(R.string.encryption_export_passphrase_dont_match)
+                        }
+                    }
                 }
             }
 
