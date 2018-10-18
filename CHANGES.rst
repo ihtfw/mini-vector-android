@@ -5,30 +5,6 @@ MatrixSdk:
  - Upgrade to version 0.9.12.
 
 Features:
- -
-
-Improvements:
- -
-
-Other changes:
- -
-
-Bugfix:
- -
-
-Translations:
- -
-
-Build:
- -
-
-Changes in Riot 0.8.17 (2018-10-10)
-===================================================
-
-MatrixSdk:
- - Upgrade to version 0.9.11.
-
-Features:
  - Status.im theme
 
 Improvements:
@@ -41,7 +17,6 @@ Other changes:
  - Room display name is now computed by the Matrix SDK
 
 Bugfix:
- - Fix issue on loading cache, and so avoid initial sync on each application startup.
  - When exporting E2E keys, it isn't clear that you are creating a new password (#2626)
  - Can't change room directory server (#2611)
  - Reply get's lost when moving app in background and back (#2581)
@@ -53,9 +28,6 @@ Bugfix:
 
 Translations:
  - Fix issue with indonesian translations. This language is now available.
-
-Build:
- -
 
 Changes in Riot 0.8.17 (2018-10-10)
 ===================================================
