@@ -57,6 +57,8 @@ import im.vector.contacts.ContactsManager
 import im.vector.extensions.getFingerprintHumanReadable
 import im.vector.preference.*
 import im.vector.settings.FontScale
+import im.vector.settings.VectorLocale
+import im.vector.ui.themes.ThemeUtils
 import im.vector.util.*
 import org.matrix.androidsdk.MXSession
 import org.matrix.androidsdk.crypto.data.MXDeviceInfo
@@ -558,6 +560,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
 
             if (!bNewValue) {
                 // Disable LazyLoading, just reload the sessions
+                PreferencesManager.setUserRefuseLazyLoading(appContext)
                 Matrix.getInstance(appContext).reloadSessions(appContext)
             } else {
                 // Try to enable LazyLoading
@@ -995,7 +998,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                     setDialogTitle(R.string.settings_add_email_address)
                     key = ADD_EMAIL_PREFERENCE_KEY
                     icon = ThemeUtils.tintDrawable(activity,
-                            ContextCompat.getDrawable(activity, R.drawable.ic_add_black)!!, R.attr.settings_icon_tint_color)
+                            ContextCompat.getDrawable(activity, R.drawable.ic_add_black)!!, R.attr.vctr_settings_icon_tint_color)
                     order = 100
                     editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
 
@@ -1012,7 +1015,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                     setTitle(R.string.settings_add_phone_number)
                     key = ADD_PHONE_NUMBER_PREFERENCE_KEY
                     icon = ThemeUtils.tintDrawable(activity,
-                            ContextCompat.getDrawable(activity, R.drawable.ic_add_black)!!, R.attr.settings_icon_tint_color)
+                            ContextCompat.getDrawable(activity, R.drawable.ic_add_black)!!, R.attr.vctr_settings_icon_tint_color)
                     order = 200
 
                     onPreferenceClickListener = Preference.OnPreferenceClickListener {
@@ -1435,7 +1438,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
      * @param preferenceSummary the displayed 3pid
      */
     private fun displayDelete3PIDConfirmationDialog(pid: ThirdPartyIdentifier, preferenceSummary: CharSequence) {
-        val mediumFriendlyName = ThreePid.getMediumFriendlyName(pid.medium, activity).toLowerCase(VectorApp.getApplicationLocale())
+        val mediumFriendlyName = ThreePid.getMediumFriendlyName(pid.medium, activity).toLowerCase(VectorLocale.applicationLocale)
         val dialogMessage = getString(R.string.settings_delete_threepid_confirmation, mediumFriendlyName, preferenceSummary)
 
         AlertDialog.Builder(activity)
@@ -1481,7 +1484,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
         val ignoredUsersList = mSession.dataHandler.ignoredUserIds
 
         ignoredUsersList.sortWith(Comparator { u1, u2 ->
-            u1.toLowerCase(VectorApp.getApplicationLocale()).compareTo(u2.toLowerCase(VectorApp.getApplicationLocale()))
+            u1.toLowerCase(VectorLocale.applicationLocale).compareTo(u2.toLowerCase(VectorLocale.applicationLocale))
         })
 
         val preferenceScreen = preferenceScreen
@@ -1925,7 +1928,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
 
     private fun setUserInterfacePreferences() {
         // Selected language
-        selectedLanguagePreference.summary = VectorApp.localeToLocalisedString(VectorApp.getApplicationLocale())
+        selectedLanguagePreference.summary = VectorLocale.localeToLocalisedString(VectorLocale.applicationLocale)
 
         selectedLanguagePreference.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             startActivityForResult(LanguagePickerActivity.getIntent(activity), REQUEST_LOCALE)
@@ -2308,7 +2311,7 @@ class VectorSettingsPreferencesFragment : PreferenceFragment(), SharedPreference
                 var lastSeenTime = LABEL_UNAVAILABLE_DATA
 
                 if (null != activity) {
-                    val dateFormatTime = SimpleDateFormat(getString(R.string.devices_details_time_format))
+                    val dateFormatTime = SimpleDateFormat("HH:mm:ss")
                     val time = dateFormatTime.format(Date(aDeviceInfo.last_seen_ts))
 
                     val dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault())

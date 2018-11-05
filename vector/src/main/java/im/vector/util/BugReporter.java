@@ -55,6 +55,7 @@ import im.vector.R;
 import im.vector.VectorApp;
 import im.vector.activity.BugReportActivity;
 import im.vector.extensions.BasicExtensionsKt;
+import im.vector.settings.VectorLocale;
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -223,8 +224,8 @@ public class BugReporter {
                             .addFormDataPart("os", Build.VERSION.RELEASE + " (API " + Build.VERSION.SDK_INT + ") "
                                     + Build.VERSION.INCREMENTAL + "-" + Build.VERSION.CODENAME)
                             .addFormDataPart("locale", Locale.getDefault().toString())
-                            .addFormDataPart("app_language", VectorApp.getApplicationLocale().toString())
-                            .addFormDataPart("default_app_language", VectorApp.getDeviceLocale().toString());
+                            .addFormDataPart("app_language", VectorLocale.INSTANCE.getApplicationLocale().toString())
+                            .addFormDataPart("default_app_language", SystemUtilsKt.getDeviceLocale(context).toString());
 
                     String buildNumber = context.getString(R.string.build_number);
                     if (!TextUtils.isEmpty(buildNumber) && !buildNumber.equals("0")) {
