@@ -266,9 +266,6 @@
     <string name="room_settings_tag_pref_entry_low_priority">低優先度</string>
     <string name="room_settings_tag_pref_entry_none">なし</string>
     <string name="room_settings_tag_pref_no_tag">属性指定なし</string>
-    <string name="room_settings_tag_pref_entry_value_favourite">お気に入り</string>
-    <string name="room_settings_tag_pref_entry_value_low_priority">低</string>
-    <string name="room_settings_tag_pref_entry_value_none">なし</string>
 
     <string name="room_settings_category_access_visibility_title">参加と可視範囲</string>
     <string name="room_settings_directory_visibility">部屋一覧へ公開する</string>
@@ -748,7 +745,7 @@ Riotアプリがあなたの電話帳へアクセスすることを許可しま�
 <string name="action_exit">退出</string>
     <string name="title_activity_group_details">コミュニティの詳細</string>
 
-    <string name="loading">読み込み中...</string>
+    <string name="loading">読み込み中…</string>
 
     <string name="bottom_action_groups">コミュニティ</string>
 
@@ -847,7 +844,7 @@ Riotアプリがあなたの電話帳へアクセスすることを許可しま�
     <string name="settings_notification_privacy_power_saving">省電力設定</string>
     <string name="settings_notification_privacy_low_detail">簡単な通知</string>
     <string name="settings_notification_privacy_need_permission">このアプリはバックグラウンド動作の権限が必要です</string>
-    <string name="settings_notification_privacy_gcm">•通知はGoogle Cloud Messaging経由で送られます</string>
+    <string name="settings_notification_privacy_fcm">•通知はGoogle Cloud Messaging経由で送られます</string>
     <string name="settings_notification_privacy_no_permission">このアプリにバックグラウンド動作の権限は<b>必要ありません</b></string>
     <string name="settings_notification_privacy_metadata">• 通知はメタデータのみを含みます</string>
     <string name="title_activity_choose_sticker">ステッカーを送る</string>
@@ -869,7 +866,7 @@ Riotアプリがあなたの電話帳へアクセスすることを許可しま�
 
 今いくつか追加しますか？</string>
 
-    <string name="go_on_with">...で続行</string>
+    <string name="go_on_with">…で続行</string>
     <string name="error_no_external_application_found">申し訳ありません、この操作を完了するための外部アプリが見つかりません。</string>
 
     <string name="e2e_re_request_encryption_key">他のデバイスから <u>暗号鍵を再度要求</u> します。</string>

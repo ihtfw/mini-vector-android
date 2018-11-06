@@ -591,7 +591,7 @@
 رجاءً اسمح بالوصول في المنبثقة التالية لتستكشف مستخدميك في دفتر العناوين من Riot.</string>
     <string name="media_slider_saved">حُفظت</string>
     <string name="preview">عايِن</string>
-    <string name="room_sync_in_progress">يُزامن...</string>
+    <string name="room_sync_in_progress">يُزامن…</string>
     <string name="room_preview_unlinked_email_warning">أُرسلت الدعوة إلى ⁨%s⁩ غير المرتبط بهذا الحساب.
 لربما عليك الولوج بحساب آخر، أو إضافة هذا البريد إلى حسابك هذا.</string>
     <string name="room_preview_try_join_an_unknown_room">تحاول الوصول إلى ⁨%s⁩. أتريد الانضمام للمشاركة في النقاش؟</string>
@@ -836,9 +836,6 @@
     <string name="settings_delete_threepid_confirmation">أمتأكّد من إزالة ⁨%1$s⁩ ⁨%2$s⁩؟</string>
 
     <string name="settings_phone_number_error">رقم الهاتف غير صالح حسب الدولة المنتقاة</string>
-    <string name="room_settings_tag_pref_entry_value_favourite">مفضلة</string>
-    <string name="room_settings_tag_pref_entry_value_low_priority">منخفضة</string>
-    <string name="room_settings_tag_pref_entry_value_none">بلا</string>
 
     <string name="room_settings_room_access_warning">يجب أن يكون للغرفة عنوان للربط بها.</string>
     <string name="room_settings_never_send_to_unverified_devices_summary">لا ترسل من هذا الجهاز الرسائل المعمّاة في هذه الغرفة إلى الأجهزة غير المؤكّدة.</string>
@@ -919,7 +916,7 @@
     <string name="settings_notification_privacy_reduced">خصوصية أقل</string>
     <string name="settings_notification_privacy_need_permission">يحتاج التطبيق تصريحًا ليعمل في الخلفية</string>
     <string name="settings_notification_privacy_no_permission"><b>لا</b> تحتاج التطبيقات تصريحًا لتعمل في الخلفية</string>
-    <string name="settings_notification_privacy_gcm">• تُرسل الإخطارات عبر «رسائل غوغل السحابية Google Cloud Messaging»</string>
+    <string name="settings_notification_privacy_fcm">• تُرسل الإخطارات عبر «رسائل غوغل السحابية Google Cloud Messaging»</string>
     <string name="settings_notification_privacy_metadata">• تحتوي الإخطارات بيانات وصفية فحسب</string>
     <string name="settings_notification_privacy_nosecure_message_content">• تحتوي الإخطارات <b>بيانات وصفية وبيانات الرسائل</b></string>
     <string name="settings_notification_privacy_message_content_not_shown">• سوف <b>لن تعرض الإخطارات محتوى الرسائل</b></string>

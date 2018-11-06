@@ -152,7 +152,7 @@ Kā arī epasta adrese ļaus Tev atiestatīt paroli.</string>
     <string name="title_activity_bug_report">Kļūdas atskaite</string>
     <string name="title_activity_group_details">Kopienas informācija</string>
 
-    <string name="loading">Ielādējas...</string>
+    <string name="loading">Ielādējas…</string>
 
     <string name="action_exit">Izslēgt</string>
     <string name="bottom_action_groups">Kopienas</string>
@@ -292,7 +292,7 @@ Lūdzu dod piekļuves atļauju nākamajā uznirstošajā logā, lai būtu iespē
 
 Vai dot Riotam piekļuvi kontaktiem?</string>
 
-    <string name="permissions_action_not_performed_missing_permissions">Atvaino... Darbība nav veikta dēļ nepietiekamām piekļuves atļaujām</string>
+    <string name="permissions_action_not_performed_missing_permissions">Atvaino… Darbība nav veikta dēļ nepietiekamām piekļuves atļaujām</string>
 
     <string name="media_slider_saved">Saglabāts</string>
     <string name="media_slider_saved_message">Saglabāt lejupielādēs</string>
@@ -431,7 +431,7 @@ Vai vēlies turpināt?</string>
     <string name="room_recents_join_room_prompt">Ievadiet istabas ID vai aliasi</string>
 
     <string name="directory_search_results_title">Skatīt katalogu</string>
-    <string name="directory_searching_title">Meklēju katalogā...</string>
+    <string name="directory_searching_title">Meklēju katalogā…</string>
 
     <string name="room_settings_all_messages_noisy">Visas ziņas (ar skaņu)</string>
     <string name="room_settings_all_messages">Visas ziņas</string>
@@ -589,9 +589,6 @@ Lai turpinātu, ievadi savu paroli.</string>
     <string name="room_settings_tag_pref_entry_low_priority">Zema prioritāte</string>
     <string name="room_settings_tag_pref_entry_none">Nav</string>
     <string name="room_settings_tag_pref_no_tag">bez birkām</string>
-    <string name="room_settings_tag_pref_entry_value_favourite">izlasē</string>
-    <string name="room_settings_tag_pref_entry_value_low_priority">zema</string>
-    <string name="room_settings_tag_pref_entry_value_none">nav</string>
 
     <string name="room_settings_category_access_visibility_title">Pieejamība un redzamība</string>
     <string name="room_settings_directory_visibility">Iekļaut šo istabu katalogā</string>
@@ -634,32 +631,32 @@ Lai turpinātu, ievadi savu paroli.</string>
     <string name="send_bug_report_rage_shake">Ņipri papurināt ierīci, lai paziņotu par kļūdu</string>
 
     <plurals name="membership_changes">
-	<item quantity="zero">1 biedru izmaiņa</item>
+	<item quantity="zero">%d biedru izmaiņa</item>
 	<item quantity="one">%d biedru izmaiņas</item>
 	<item quantity="other">%d biedru izmaiņas</item>
 </plurals>
 
     <string name="list_members">Biedru katalogs</string>
     <string name="open_chat_header">Atvērt galveni</string>
-    <string name="room_sync_in_progress">Notiek sinhronizācija...</string>
+    <string name="room_sync_in_progress">Notiek sinhronizācija…</string>
     <plurals name="room_header_active_members_count">
-	<item quantity="zero">1 aktīvs biedrs</item>
+	<item quantity="zero">%d aktīvs biedrs</item>
 	<item quantity="one">%d aktīvi biedri</item>
 	<item quantity="other">%d aktīvu biedru</item>
 </plurals>
     <plurals name="room_title_members">
-	<item quantity="zero">1 biedrs</item>
+	<item quantity="zero">%d biedrs</item>
 	<item quantity="one">%d biedri</item>
 	<item quantity="other">%d biedru</item>
 </plurals>
     <plurals name="room_new_messages_notification">
-	<item quantity="zero">1 jauna ziņa</item>
+	<item quantity="zero">%d jauna ziņa</item>
 	<item quantity="one">%d jaunas ziņas</item>
 	<item quantity="other">%d jaunu ziņu</item>
 </plurals>
 
     <plurals name="directory_search_rooms">
-	<item quantity="zero">1 istaba</item>
+	<item quantity="zero">%d istaba</item>
 	<item quantity="one">%d istabas</item>
 	<item quantity="other">%d istabu</item>
 </plurals>
@@ -771,17 +768,17 @@ Nepazīstamas ierīces:</string>
     <string name="directory_server_native_rooms">Visas vietējās %s istabas</string>
 
     <plurals name="notification_unread_notified_messages">
-	<item quantity="zero">1 nelasīta paziņota ziņa</item>
+	<item quantity="zero">%d nelasīta paziņota ziņa</item>
 	<item quantity="one">%d nelasītas paziņotas ziņas</item>
 	<item quantity="other">%d nelasītu paziņotu ziņu</item>
 </plurals>
     <plurals name="notification_unread_notified_messages_in_room_msgs">
-	<item quantity="zero">1 nelasīta paziņota ziņa</item>
+	<item quantity="zero">%d nelasīta paziņota ziņa</item>
 	<item quantity="one">%d nelasītas paziņotas ziņas</item>
 	<item quantity="other">%d nelasītu paziņotu ziņu</item>
 </plurals>
     <plurals name="notification_unread_notified_messages_in_room_rooms">
-	<item quantity="zero">1 istaba</item>
+	<item quantity="zero">%d istaba</item>
 	<item quantity="one">%d istabas</item>
 	<item quantity="other">%d istabu</item>
 </plurals>
@@ -805,7 +802,7 @@ Nepazīstamas ierīces:</string>
     <string name="settings_labs_create_conference_with_jitsi">Konferences zvaniem izmantot Jitsi</string>
     <string name="widget_delete_message_confirmation">Vai tiešām vēlies dzēst vidžetu?</string>
     <plurals name="active_widgets">
-	<item quantity="zero">1 aktīvs vidžets</item>
+	<item quantity="zero">%d aktīvs vidžets</item>
 	<item quantity="one">%d aktīvi vidžeti</item>
 	<item quantity="other">%d aktīvu vidžetu</item>
 </plurals>
