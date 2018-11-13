@@ -50,11 +50,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.zip.GZIPOutputStream;
 
+import im.vector.BuildConfig;
 import im.vector.Matrix;
 import im.vector.R;
 import im.vector.VectorApp;
 import im.vector.activity.BugReportActivity;
 import im.vector.extensions.BasicExtensionsKt;
+import im.vector.settings.VectorLocale;
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -223,8 +225,8 @@ public class BugReporter {
                             .addFormDataPart("os", Build.VERSION.RELEASE + " (API " + Build.VERSION.SDK_INT + ") "
                                     + Build.VERSION.INCREMENTAL + "-" + Build.VERSION.CODENAME)
                             .addFormDataPart("locale", Locale.getDefault().toString())
-                            .addFormDataPart("app_language", VectorApp.getApplicationLocale().toString())
-                            .addFormDataPart("default_app_language", VectorApp.getDeviceLocale().toString());
+                            .addFormDataPart("app_language", VectorLocale.INSTANCE.getApplicationLocale().toString())
+                            .addFormDataPart("default_app_language", SystemUtilsKt.getDeviceLocale(context).toString());
 
                     String buildNumber = context.getString(R.string.build_number);
                     if (!TextUtils.isEmpty(buildNumber) && !buildNumber.equals("0")) {
@@ -272,7 +274,7 @@ public class BugReporter {
                         Log.e(LOG_TAG, "## sendBugReport() : cannot retrieve the appname " + e.getMessage(), e);
                     }
 
-                    builder.addFormDataPart("label", context.getString(R.string.flavor_description));
+                    builder.addFormDataPart("label", BuildConfig.FLAVOR_DESCRIPTION);
                     builder.addFormDataPart("label", context.getString(R.string.git_branch_name));
 
                     if (getCrashFile(context).exists()) {
