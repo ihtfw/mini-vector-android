@@ -146,7 +146,7 @@
     <string name="send_bug_report_placeholder">Describe your problem here</string>
     <string name="send_bug_report_logs_description">In order to diagnose problems, logs from this client will be sent with this bug report. This bug report, including the logs and the screenshot, will not be publicly visible. If you would prefer to only send the text above, please untick:</string>
     <string name="send_bug_report_alert_message">You seem to be shaking the phone in frustration. Would you like to open the bug report screen?</string>
-    <string name="send_bug_report_app_crashed">The application has crashed last time. Would you like to submit a crash report?</string>
+    <string name="send_bug_report_app_crashed">The application has crashed last time. Would you like to open the crash report screen?</string>
     <string name="send_bug_report_rage_shake">Rage shake to report bug</string>
 
     <string name="send_bug_report_sent">The bug report has been successfully sent</string>
@@ -317,7 +317,8 @@
     <string name="incoming_call">Incoming Call</string>
     <string name="incoming_video_call">Incoming Video Call</string>
     <string name="incoming_voice_call">Incoming Voice Call</string>
-    <string name="call_in_progress">Call In Progress</string>
+    <string name="call_in_progress">Call In Progress…</string>
+    <string name="video_call_in_progress">Video Call In Progress…</string>
 
     <string name="call_error_user_not_responding">The remote side failed to pick up.</string>
     <string name="call_error_ice_failed">Media Connection Failed</string>
@@ -590,6 +591,11 @@
     <string name="settings_app_info_link_title">Application info</string>
     <string name="settings_app_info_link_summary">Show the application info in the system settings.</string>
 
+
+    <string name="settings_notification_advanced">Advanced Notification Settings</string>
+    <string name="settings_notification_advanced_summary">Set notification importance by event, Configure sound, led, vibration</string>
+    <string name="settings_notification_by_event">Notification importance by event</string>
+
     <string name="settings_notification_privacy">Notification privacy</string>
     <string name="settings_notification_troubleshoot">Troubleshoot Notifications</string>
     <string name="settings_troubleshoot_diagnostic">Troubleshooting diagnostics</string>
@@ -614,6 +620,12 @@
     <string name="settings_troubleshoot_test_device_settings_failed">Notifications are not allowed for this device.\nPlease check the Riot settings.</string>
     <string name="settings_troubleshoot_test_device_settings_quickfix">Enable</string>
 
+    <string name="settings_troubleshoot_test_bing_settings_title">Custom Settings.</string>
+    <string name="settings_troubleshoot_test_bing_settings_success_with_warn">Notice that some messages type are set to be silent (will produce a notification with no sound).</string>
+    <string name="settings_troubleshoot_test_bing_settings_failed">Some notifications are disabled in your custom settings.</string>
+    <string name="settings_troubleshoot_test_bing_settings_failed_to_load_rules">Failed to load custom rules, please retry.</string>
+    <string name="settings_troubleshoot_test_bing_settings_quickfix">Check Settings</string>
+
     <string name="settings_troubleshoot_test_play_services_title">Play Services Check</string>
     <string name="settings_troubleshoot_test_play_services_success">Google Play Services APK is available and up-to-date.</string>
     <string name="settings_troubleshoot_test_play_services_failed">Riot uses Google Play Services to deliver push messages but it doesn\'t seem to be configured correctly:\n%1$s</string>
@@ -622,6 +634,10 @@
     <string name="settings_troubleshoot_test_fcm_title">Firebase Token</string>
     <string name="settings_troubleshoot_test_fcm_success">FCM token successfully retrieved:\n%1$s</string>
     <string name="settings_troubleshoot_test_fcm_failed">Failed to retrieved FCM token:\n%1$s</string>
+    <string name="settings_troubleshoot_test_fcm_failed_too_many_registration">[%1$s]\nThis error is out of control of Riot and according to Google, this error indicates that the device has too many apps registered with FCM. The error only occurs in cases where there are extreme numbers of apps, so it should not affect the average user.</string>
+    <string name="settings_troubleshoot_test_fcm_failed_service_not_available">[%1$s]\nThis error is out of control of Riot. It can occur for several reasons. Maybe it will work if you retry later, you can also check that Google Play Service is not restricted in data usage in the system settings, or that your device clock is correct, or it can happen on custom ROM.</string>
+    <string name="settings_troubleshoot_test_fcm_failed_account_missing">[%1$s]\nThis error is out of control of Riot. There is no Google account on the phone. Please open the account manager and add a Google account.</string>
+    <string name="settings_troubleshoot_test_fcm_failed_account_missing_quick_fix">Add Account</string>
 
     <string name="settings_troubleshoot_test_token_registration_title">Token Registration</string>
     <string name="settings_troubleshoot_test_token_registration_success">FCM token successfully registered to HomeServer.</string>
@@ -668,6 +684,11 @@
     <string name="settings_enable_all_notif">Enable notifications for this account</string>
     <string name="settings_enable_this_device">Enable notifications for this device</string>
     <string name="settings_turn_screen_on">Turn the screen on for 3 seconds</string>
+    <string name="settings_noisy_notifications_preferences">Configure Noisy Notifications</string>
+    <string name="settings_call_notifications_preferences">Configure Call Notifications</string>
+    <string name="settings_silent_notifications_preferences">Configure Silent Notifications</string>
+    <string name="settings_system_preferences_summary">Choose LED color, vibration, sound…</string>
+
 
     <string name="settings_containing_my_display_name">Msgs containing my display name</string>
     <string name="settings_containing_my_user_name">Msgs containing my user name</string>
@@ -1000,7 +1021,7 @@
     <string name="event_formatter_widget_added">%1$s added by %2$s</string>
     <string name="event_formatter_widget_removed">%1$s removed by %2$s</string>
     <string name="settings_labs_create_conference_with_jitsi">Create conference calls with jitsi</string>
-    <string name="widget_delete_message_confirmation">Are you sure you want to delete the widget?</string>
+    <string name="widget_delete_message_confirmation">Are you sure you want to delete the widget from this room?</string>
     <plurals name="active_widgets">
         <item quantity="one">1 active widget</item>
         <item quantity="other">%d active widgets</item>
@@ -1058,7 +1079,7 @@
 
     <!-- notification statuses -->
     <string name="notification_off">Off</string>
-    <string name="notification_on">On</string>
+    <string name="notification_silent">Silent</string>
     <string name="notification_noisy">Noisy</string>
 
     <string name="encrypted_message">Encrypted message</string>
@@ -1165,6 +1186,9 @@
 
     <!-- String for Play Store -->
     <string name="store_title">Riot.im - open team collaboration</string>
+    <string name="store_whats_new">"We’re always making changes and improvements to Riot.im.
+The complete changelog can be found here: %1$s.
+To make sure you don’t miss a thing, just keep your updates turned on."</string>
     <string name="store_short_description">Welcome to Riot.im: a new world of open communication!</string>
     <string name="store_full_description">"Riot.im is a simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app.
 

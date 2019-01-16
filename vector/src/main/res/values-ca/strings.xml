@@ -160,7 +160,7 @@
 
     <!-- Authentication -->
     <string name="auth_login">Entra</string>
-    <string name="auth_register">Registra\'mr</string>
+    <string name="auth_register">Registra\'m</string>
     <string name="auth_submit">Tramet</string>
     <string name="auth_skip">Omet</string>
     <string name="auth_send_reset_email">Envia el correu de reinici</string>
@@ -778,7 +778,6 @@ En un futur aquest procés de verificació serà més sofisticat.</string>
 
     <!-- notification statuses -->
     <string name="notification_off">Apagat</string>
-    <string name="notification_on">Encès</string>
     <string name="notification_noisy">Sorrollós</string>
 
     <string name="encrypted_message">Missatge encriptat</string>

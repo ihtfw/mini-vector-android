@@ -44,24 +44,24 @@ Release mode:
 
 And it should build the project (you need to have the right android SDKs)
 
-Recompile the provided aar files until we have gradle 
+Recompile the provided aar files until we have gradle
 ======================================================
 
 generate olm-sdk.aar
 --------------------
 
 sh build_olm_lib.sh
-	
+
 generate matrix-sdk.aar
 ----------------------
 
 sh build_matrix_sdk_lib.sh
-   
+
 generate the other aar files
 ----------------------
 
 sh build_jitsi_libs.sh
-   
+
 compile the matrix SDK with the Riot-android project
 ----------------------
 
