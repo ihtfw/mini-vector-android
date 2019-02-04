@@ -668,6 +668,39 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
             }
         });
 
+        mNotificationsArea.setDelegate(new NotificationAreaView.Delegate() {
+            @NotNull
+            @Override
+            public IMessagesAdapterActionsListener providesMessagesActionListener() {
+                return mVectorMessageListFragment;
+            }
+
+            @Override
+            public void resendUnsentEvents() {
+                mVectorMessageListFragment.resendUnsentMessages();
+            }
+
+            @Override
+            public void deleteUnsentEvents() {
+                mVectorMessageListFragment.deleteUnsentEvents();
+            }
+
+            @Override
+            public void closeScreen() {
+                setResult(Activity.RESULT_OK);
+                finish();
+            }
+
+            @Override
+            public void jumpToBottom() {
+                if (mReadMarkerManager != null) {
+                    mReadMarkerManager.handleJumpToBottom();
+                } else {
+                    mVectorMessageListFragment.scrollToBottom(0);
+                }
+            }
+        });
+
         // use a toolbar instead of the actionbar
         // to be able to display an expandable header
         configureToolbar();
@@ -990,38 +1023,6 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
             }
         }
 
-        mNotificationsArea.setDelegate(new NotificationAreaView.Delegate() {
-            @NotNull
-            @Override
-            public IMessagesAdapterActionsListener providesMessagesActionListener() {
-                return mVectorMessageListFragment;
-            }
-
-            @Override
-            public void resendUnsentEvents() {
-                mVectorMessageListFragment.resendUnsentMessages();
-            }
-
-            @Override
-            public void deleteUnsentEvents() {
-                mVectorMessageListFragment.deleteUnsentEvents();
-            }
-
-            @Override
-            public void closeScreen() {
-                setResult(Activity.RESULT_OK);
-                finish();
-            }
-
-            @Override
-            public void jumpToBottom() {
-                if (mReadMarkerManager != null) {
-                    mReadMarkerManager.handleJumpToBottom();
-                } else {
-                    mVectorMessageListFragment.scrollToBottom(0);
-                }
-            }
-        });
         Log.d(LOG_TAG, "End of create");
     }
 
@@ -1421,6 +1422,10 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
     public void onScrollStateChanged(int scrollState) {
         if (mReadMarkerManager != null) {
             mReadMarkerManager.onScrollStateChanged(scrollState);
+        }
+
+        if (mNotificationsArea != null) {
+            mNotificationsArea.setScrollState(scrollState);
         }
     }
 
@@ -2343,8 +2348,8 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
     private void launchCamera() {
         enableActionBarHeader(HIDE_ACTION_BAR_HEADER);
 
-        Intent intent = new Intent(this, VectorMediasPickerActivity.class);
-        intent.putExtra(VectorMediasPickerActivity.EXTRA_VIDEO_RECORDING_MODE, true);
+        Intent intent = new Intent(this, VectorMediaPickerActivity.class);
+        intent.putExtra(VectorMediaPickerActivity.EXTRA_VIDEO_RECORDING_MODE, true);
         startActivityForResult(intent, TAKE_IMAGE_REQUEST_CODE);
     }
 
@@ -3138,7 +3143,7 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
                 // hide the action bar header view and reset the arrow image (arrow reset to down)
                 mActionBarCustomArrowImageView.setImageResource(R.drawable.ic_arrow_drop_down_white);
                 mRoomHeaderView.setVisibility(View.GONE);
-                toolbar.setBackgroundColor(ThemeUtils.INSTANCE.getColor(this, R.attr.vctr_primary_color));
+                toolbar.setBackgroundColor(ThemeUtils.INSTANCE.getColor(this, R.attr.colorPrimary));
             }
         }
     }
