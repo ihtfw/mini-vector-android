@@ -23,16 +23,12 @@ Translations:
 Build:
  -
 
-Changes in Riot 0.8.29 (2019-04-04)
+Changes in Riot 0.8.28a (2019-04-23)
 ===================================================
+ Backports: 
+ - Security Fix / Remove dangerous ContentProvider
+ - Fix / Illegal States exceptions when starting event stream service X
 
-MatrixSdk:
- - Upgrade MatrixSdk to version 0.9.20.
- - Changelog: https://github.com/matrix-org/matrix-android-sdk/releases/tag/v0.9.20
-
-Improvements:
- - Fix crash on Jitsi conference by upgrading the lib to version 1.21.0 (#2412)
- - Finally upgrade Jitsi lib to version 2.0.0 (https://github.com/jitsi/jitsi-meet/releases/tag/android-sdk-2.0.0)
 
 Changes in Riot 0.8.28 (2019-04-01)
 ===================================================
