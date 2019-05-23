@@ -150,7 +150,7 @@
         android:logo="@drawable/logo"
         android:resizeableActivity="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.Light"
+        android:theme="@style/AppTheme.Black"
         tools:replace="allowBackup,label">
 
         <!-- No limit for screen ratio: avoid black strips -->
@@ -194,14 +194,14 @@
             android:name=".activity.VectorHomeActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_home"
-            android:theme="@style/HomeActivityTheme.Light"
+            android:theme="@style/HomeActivityTheme.Black"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.HistoricalRoomsActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_historical"
             android:parentActivityName=".activity.VectorHomeActivity"
-            android:theme="@style/HomeActivityTheme.Light"
+            android:theme="@style/HomeActivityTheme.Black"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.VectorRoomActivity"
@@ -258,7 +258,7 @@
             android:excludeFromRecents="true"
             android:launchMode="singleTop"
             android:taskAffinity=""
-            android:theme="@style/Theme.Vector.Lock.Light" />
+            android:theme="@style/Theme.Vector.Lock.Black" />
         <activity
             android:name=".activity.JoinRoomActivity"
             android:clearTaskOnLaunch="true"
@@ -281,15 +281,15 @@
         <activity
             android:name=".activity.VectorCallViewActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/CallActivityTheme.Light" />
+            android:theme="@style/CallActivityTheme.Black" />
         <activity
             android:name=".activity.JitsiCallActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen.Light" />
+            android:theme="@style/AppTheme.NoActionBar.FullScreen.Black" />
         <activity
             android:name=".activity.WidgetActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen.Light" />
+            android:theme="@style/AppTheme.NoActionBar.FullScreen.Black" />
         <activity
             android:name=".activity.IntegrationManagerActivity"
             android:configChanges="orientation|screenSize" />
@@ -301,7 +301,7 @@
             android:label="@string/media_picker_both_capture_title"
             android:launchMode="singleTop"
             android:parentActivityName=".activity.VectorRoomActivity"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen.Light"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen.Black"
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -324,7 +324,7 @@
             android:label="Vector searches"
             android:launchMode="singleTop"
             android:parentActivityName=".activity.VectorHomeActivity"
-            android:theme="@style/SearchesAppTheme.Light"
+            android:theme="@style/SearchesAppTheme.Black"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -351,7 +351,7 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_group_details"
             android:launchMode="singleTop"
-            android:theme="@style/GroupAppTheme.Light"
+            android:theme="@style/GroupAppTheme.Black"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.VectorUniversalLinkActivity">
             <intent-filter>
@@ -408,12 +408,12 @@
             android:name=".activity.CountryPickerActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/settings_select_country"
-            android:theme="@style/CountryPickerTheme.Light" />
+            android:theme="@style/CountryPickerTheme.Black" />
         <activity
             android:name=".activity.LanguagePickerActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/settings_select_language"
-            android:theme="@style/CountryPickerTheme.Light" />
+            android:theme="@style/CountryPickerTheme.Black" />
         <activity
             android:name=".activity.RoomDirectoryPickerActivity"
             android:configChanges="orientation|screenSize"

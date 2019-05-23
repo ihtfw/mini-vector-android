@@ -19,10 +19,12 @@ package im.vector.adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,8 +35,12 @@ import org.matrix.androidsdk.rest.model.Event;
 import org.matrix.androidsdk.util.EventDisplay;
 import org.matrix.androidsdk.util.Log;
 
+import java.util.List;
+import java.util.regex.Pattern;
+
 import im.vector.R;
 import im.vector.ui.themes.ThemeUtils;
+import im.vector.util.CountryPhoneData;
 import im.vector.util.RiotEventDisplay;
 import im.vector.util.VectorUtils;
 

@@ -42,9 +42,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +84,7 @@ import im.vector.VectorApp;
 import im.vector.adapters.VectorRoomsSelectionAdapter;
 import im.vector.contacts.ContactsManager;
 import im.vector.contacts.PIDsRetriever;
+import im.vector.dialogs.VectorRoomSelectionDialog;
 import im.vector.extensions.MatrixSdkExtensionsKt;
 import im.vector.fragments.VectorUnknownDevicesFragment;
 import im.vector.listeners.YesNoListener;
@@ -815,37 +819,19 @@ public class CommonActivityUtils {
             }
         });
 
-        VectorRoomsSelectionAdapter adapter = new VectorRoomsSelectionAdapter(fromActivity, R.layout.adapter_item_vector_recent_room, session);
-        adapter.addAll(mergedSummaries);
+        VectorRoomSelectionDialog vectorRoomSelectionDialog = new VectorRoomSelectionDialog(fromActivity, session, mergedSummaries);
+        vectorRoomSelectionDialog.setOnRoomSummarySelectedListener(roomSummary -> {
+            vectorRoomSelectionDialog.dismiss();
 
-        final List<RoomSummary> fMergedSummaries = mergedSummaries;
+            Map<String, Object> params = new HashMap<>();
+            params.put(VectorRoomActivity.EXTRA_MATRIX_ID, session.getMyUserId());
+            params.put(VectorRoomActivity.EXTRA_ROOM_ID, roomSummary.getRoomId());
+            params.put(VectorRoomActivity.EXTRA_ROOM_INTENT, intent);
 
-        new AlertDialog.Builder(fromActivity)
-                .setTitle(R.string.send_files_in)
-                .setNegativeButton(R.string.cancel, null)
-                .setAdapter(adapter,
-                        new DialogInterface.OnClickListener() {
+            goToRoomPage(fromActivity, session, params);
+        });
 
-                            @Override
-                            public void onClick(DialogInterface dialog, final int which) {
-                                dialog.dismiss();
-
-                                fromActivity.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        RoomSummary summary = fMergedSummaries.get(which);
-
-                                        Map<String, Object> params = new HashMap<>();
-                                        params.put(VectorRoomActivity.EXTRA_MATRIX_ID, session.getMyUserId());
-                                        params.put(VectorRoomActivity.EXTRA_ROOM_ID, summary.getRoomId());
-                                        params.put(VectorRoomActivity.EXTRA_ROOM_INTENT, intent);
-
-                                        goToRoomPage(fromActivity, session, params);
-                                    }
-                                });
-                            }
-                        })
-                .show();
+        vectorRoomSelectionDialog.show();
     }
 
     //==============================================================================================================
