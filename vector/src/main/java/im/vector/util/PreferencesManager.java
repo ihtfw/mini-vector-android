@@ -638,7 +638,7 @@ public class PreferencesManager {
 
         if (preferences.contains("MARKDOWN_PREFERENCE_KEY")) {
             preferences.edit()
-                    .putBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, preferences.getBoolean("MARKDOWN_PREFERENCE_KEY", true))
+                    .putBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, preferences.getBoolean("MARKDOWN_PREFERENCE_KEY", false))
                     .remove("MARKDOWN_PREFERENCE_KEY")
                     .apply();
         }
@@ -687,7 +687,7 @@ public class PreferencesManager {
      * @return true if the markdown is enabled
      */
     public static boolean isMarkdownEnabled(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, true);
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, false);
     }
 
     /**
@@ -720,7 +720,7 @@ public class PreferencesManager {
      * @return true if the message timestamps must be always shown
      */
     public static boolean alwaysShowTimeStamps(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(SETTINGS_ALWAYS_SHOW_TIMESTAMPS_KEY, false);
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(SETTINGS_ALWAYS_SHOW_TIMESTAMPS_KEY, true);
     }
 
     /**
@@ -770,7 +770,7 @@ public class PreferencesManager {
      * @return true if a dialog has been displayed to ask to use the analytics tracking
      */
     public static boolean didAskToUseAnalytics(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DID_ASK_TO_USE_ANALYTICS_TRACKING_KEY, false);
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DID_ASK_TO_USE_ANALYTICS_TRACKING_KEY, true);
     }
 
     /**
