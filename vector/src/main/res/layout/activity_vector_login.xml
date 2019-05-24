@@ -63,6 +63,7 @@
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
@@ -71,6 +72,7 @@
                         android:textSize="16sp" />
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/login_phone_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -348,12 +350,15 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/homeserver_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
+
+                        android:visibility="gone"
                         android:id="@+id/display_server_url_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
