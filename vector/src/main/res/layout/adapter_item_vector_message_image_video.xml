@@ -142,6 +142,8 @@
                     </FrameLayout>
                 </LinearLayout>
 
+                <include layout="@layout/vector_message_info" />
+
                 <!-- the description of the sticker -->
                 <LinearLayout
                     android:id="@+id/message_adapter_sticker_layout"

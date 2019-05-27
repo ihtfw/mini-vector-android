@@ -55,6 +55,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.binaryfork.spanny.Spanny;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import org.matrix.androidsdk.MXPatterns;
 import org.matrix.androidsdk.MXSession;
@@ -71,10 +73,12 @@ import org.matrix.androidsdk.rest.model.PowerLevels;
 import org.matrix.androidsdk.rest.model.RoomCreateContent;
 import org.matrix.androidsdk.rest.model.RoomMember;
 import org.matrix.androidsdk.rest.model.crypto.EncryptedEventContent;
+import org.matrix.androidsdk.rest.model.message.AudioMessage;
 import org.matrix.androidsdk.rest.model.message.FileMessage;
 import org.matrix.androidsdk.rest.model.message.ImageMessage;
 import org.matrix.androidsdk.rest.model.message.Message;
 import org.matrix.androidsdk.rest.model.message.StickerMessage;
+import org.matrix.androidsdk.rest.model.message.VideoMessage;
 import org.matrix.androidsdk.util.EventDisplay;
 import org.matrix.androidsdk.util.JsonUtils;
 import org.matrix.androidsdk.util.Log;
@@ -140,6 +144,10 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
     // formatted time by event id
     // it avoids computing them several times
     private final Map<String, String> mEventFormattedTsMap = new HashMap<>();
+
+    // formatted info by event id
+    // it avoids computing them several times
+    private final Map<String, String> mEventFormattedInfoMap = new HashMap<>();
 
     // define the e2e icon to use for a dedicated eventId
     // can be a drawable or
@@ -1154,6 +1162,8 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
             tsTextView.setVisibility((((position + 1) == getCount()) || mIsSearchMode || mAlwaysShowTimeStamps) ? View.VISIBLE : View.GONE);
         }
 
+        TextView infoTextView = VectorMessagesAdapterHelper.setInfoValue(convertView, getFormattedInfo(event));
+
         // Sender avatar
         View avatarView = mHelper.setSenderAvatar(convertView, row, isMergedView);
 
@@ -1846,6 +1856,45 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
         mEventFormattedTsMap.put(event.eventId, res);
 
         return res;
+    }
+
+    /**
+     * Provides the formatted info to display.
+     * null means that the info text must be hidden.
+     *
+     * @param event the event.
+     * @return the formatted info to display.
+     */
+    private String getFormattedInfo(Event event) {
+        String type = event.getType();
+        if (!Event.EVENT_TYPE_MESSAGE.equals(type))
+            return null;
+
+        if (mEventFormattedInfoMap.containsKey(event.eventId)){
+            return mEventFormattedInfoMap.get(event.eventId);
+        }
+
+        JsonElement content = event.getContent();
+        if (content == null){
+            mEventFormattedInfoMap.put(event.eventId, null);
+            return null;
+        }
+
+        String info = null;
+        Message message = JsonUtils.toMessage(content);
+        if (Message.MSGTYPE_IMAGE.equals(message.msgtype)){
+            ImageMessage imageMessage = JsonUtils.toImageMessage(content);
+            info = imageMessage.getMimeType() + " " + imageMessage.info.w + "x" + imageMessage.info.h + "(" + AdapterUtils.sizeToString(imageMessage.info.size) + ")";
+        }else if (Message.MSGTYPE_VIDEO.equals(message.msgtype)){
+            VideoMessage videoMessage = JsonUtils.toVideoMessage(content);
+            info = videoMessage.getMimeType() + " " + videoMessage.info.w + "x" + videoMessage.info.h  + "(" + AdapterUtils.sizeToString(videoMessage.info.size) + ")";
+        }else if (Message.MSGTYPE_FILE.equals(message.msgtype)){
+            FileMessage fileMessage = JsonUtils.toFileMessage(content);
+            info = fileMessage.getMimeType() + " " + "(" + AdapterUtils.sizeToString(fileMessage.info.size) + ")";
+        }
+
+        mEventFormattedInfoMap.put(event.eventId, info);
+        return info;
     }
 
     /**

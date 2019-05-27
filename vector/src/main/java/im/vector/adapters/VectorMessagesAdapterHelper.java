@@ -416,6 +416,28 @@ class VectorMessagesAdapterHelper {
         return tsTextView;
     }
 
+    /**
+     * init the info value
+     *
+     * @param convertView the base view
+     * @param value       the new value
+     * @return the dedicated textView
+     */
+    static TextView setInfoValue(View convertView, String value) {
+        TextView tsTextView = convertView.findViewById(R.id.messagesAdapter_info);
+
+        if (null != tsTextView) {
+            if (TextUtils.isEmpty(value)) {
+                tsTextView.setVisibility(View.GONE);
+            } else {
+                tsTextView.setVisibility(View.VISIBLE);
+                tsTextView.setText(value);
+            }
+        }
+
+        return tsTextView;
+    }
+
     // JSON keys
     private static final String AVATAR_URL_KEY = "avatar_url";
     private static final String MEMBERSHIP_KEY = "membership";

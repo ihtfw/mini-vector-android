@@ -61,6 +61,31 @@ public class AdapterUtils {
     }
 
     /**
+     * Returns size in bytes, kb, mb or gb depending on size
+     * Exxample: 13.2 KB
+     * @param size
+     * @return
+     */
+    public static String sizeToString(long size){
+        if (size < 1024){
+            return size + "B";
+        }
+
+        float sizeF = size / 1024f;
+        if (sizeF < 1024f){
+            return String.format("%.1f", sizeF) + "KB";
+        }
+
+        sizeF = sizeF / 1024f;
+        if (sizeF < 1024f){
+            return String.format("%.1f", sizeF) + "MB";
+        }
+
+        sizeF = sizeF / 1024f;
+        return String.format("%.1f", sizeF) + "GB";
+    }
+
+    /**
      * Convert a time since epoch date to a string.
      *
      * @param context  the context.

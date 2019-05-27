@@ -162,6 +162,8 @@
 
     </LinearLayout>
 
+    <include layout="@layout/vector_message_info" />
+
     <include
         android:id="@+id/messagesAdapter_avatars_list"
         layout="@layout/vector_message_receipts_list" />
