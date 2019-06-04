@@ -115,6 +115,7 @@ import im.vector.util.EventGroup;
 import im.vector.util.MatrixLinkMovementMethod;
 import im.vector.util.MatrixURLSpan;
 import im.vector.util.PreferencesManager;
+import im.vector.util.QuoteSpannableStringBuilder;
 import im.vector.util.RiotEventDisplay;
 import im.vector.util.VectorImageGetter;
 import im.vector.util.VectorLinkifyKt;
@@ -1388,49 +1389,12 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
                         @Override
                         public void onSuccess(Event info) {
-                            String mSenderDisplayName = event.getSender();
-                            RoomState roomState = mRoom.getState();
-                            if (roomState != null) {
-                                mSenderDisplayName = roomState.getMemberName(event.getSender());
-                            }
+                            QuoteSpannableStringBuilder quoteSpannableStringBuilder = new QuoteSpannableStringBuilder();
+                            quoteSpannableStringBuilder.senderColor = senderColor;
 
-                            String quoteText = "";
-                           // String msgText = "";
+                            SpannableString spannableString = quoteSpannableStringBuilder.Build(getContext(), mRoom, info);
 
-                            Message quoteMessage = JsonUtils.toMessage(info.getContentAsJsonObject());
-                            if (quoteMessage.body != null){
-                                quoteText = quoteMessage.body;
-                            }
-                            /*
-                            if (itemViewType == ROW_TYPE_FILE){
-                                FileMessage quoteFileMessage = JsonUtils.toFileMessage(info.getContentAsJsonObject());
-                                if (quoteFileMessage.body != null){
-                                    quoteText = quoteFileMessage.body;
-                                }
-                            }else if (itemViewType == ROW_TYPE_IMAGE){
-                                ImageMessage quoteImageMessage = JsonUtils.toImageMessage(info.getContentAsJsonObject());
-                                if (quoteImageMessage.body != null){
-                                    quoteText = quoteImageMessage.body;
-                                }
-                                //TODO preview
-                            }*/
-/*
-                            if (message.formatted_body != null){
-                                int i = message.formatted_body.indexOf("</mx-reply>");
-                                if (i > 0){
-                                    msgText = message.formatted_body.substring(i + "</mx-reply>".length());
-                                }
-                            }
-*/
-                            if (quoteText.length() > 0){
-                                SpannableString spannableString = new SpannableString(mSenderDisplayName + "\n" + quoteText);
-                                spannableString.setSpan(new VectorQuoteSpan(getContext()), 0, spannableString.length(), 0);
-
-                                spannableString.setSpan(new ForegroundColorSpan(senderColor), 0, mSenderDisplayName.length(), 0);
-                                spannableString.setSpan(new AbsoluteSizeSpan(14, true), 0, mSenderDisplayName.length(), 0);
-
-                                quoteTextView.setText(spannableString);
-                            }
+                            quoteTextView.setText(spannableString);
                         }
                     });
                 }
@@ -2754,8 +2718,9 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
         if (!TextUtils.isEmpty(textMsg)) {
             menu.findItem(R.id.ic_action_vector_copy).setVisible(true);
-            menu.findItem(R.id.ic_action_vector_quote).setVisible(true);
+            //menu.findItem(R.id.ic_action_vector_quote).setVisible(true);
         }
+        menu.findItem(R.id.ic_action_vector_quote).setVisible(true);
 
         if (event.isUploadingMedia(mMediasCache)) {
             menu.findItem(R.id.ic_action_vector_cancel_upload).setVisible(true);

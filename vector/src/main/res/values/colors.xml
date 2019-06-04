@@ -105,6 +105,7 @@
     <color name="riot_secondary_text_color_dark">#FFA1B2D1</color>
     <color name="riot_tertiary_text_color_dark">@color/riot_primary_text_color_dark</color>
 
+    <color name="riot_text_quote_sender_color_default">#03b381</color>
     <color name="riot_text_quote_background_color_dark">#FF2B5278</color>
 
     <!-- Status/Text Primary-->

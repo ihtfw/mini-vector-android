@@ -259,8 +259,52 @@
             android:id="@+id/bottom_separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_above="@id/room_bottom_layout"
+            android:layout_above="@id/quote_layout"
             android:background="?attr/vctr_room_activity_divider_color" />
+
+        <LinearLayout
+            android:id="@+id/quote_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/room_bottom_layout"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="?attr/vctr_text_quote_background_color"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/quote_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_material_quote"
+                android:tint="?attr/vctr_message_text_color"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/quote_text"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                tools:text="some quote text"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/cancel_quote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_close"
+                android:src="@drawable/vector_leave_room_black"
+                android:tint="?attr/vctr_message_text_color"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/room_bottom_layout"

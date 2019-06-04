@@ -647,6 +647,7 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
             Activity attachedActivity = getActivity();
 
             if ((null != attachedActivity) && (attachedActivity instanceof VectorRoomActivity)) {
+                /*
                 // Quote all paragraphs instead
                 String[] messageParagraphs = textMsg.split("\n\n");
                 String quotedTextMsg = "";
@@ -660,6 +661,8 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
                     }
                 }
                 ((VectorRoomActivity) attachedActivity).insertQuoteInTextEditor(quotedTextMsg + "\n\n");
+                */
+                ((VectorRoomActivity) attachedActivity).setQuoteToEvent(event);
             }
         } else if ((action == R.id.ic_action_vector_share) || (action == R.id.ic_action_vector_forward) || (action == R.id.ic_action_vector_save)) {
             //

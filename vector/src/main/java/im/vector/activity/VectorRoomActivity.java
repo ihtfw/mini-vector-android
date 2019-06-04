@@ -36,6 +36,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -59,6 +60,7 @@ import android.widget.Toast;
 import com.google.gson.JsonParser;
 
 import org.jetbrains.annotations.NotNull;
+import org.matrix.androidsdk.HomeServerConnectionConfig;
 import org.matrix.androidsdk.MXSession;
 import org.matrix.androidsdk.call.IMXCall;
 import org.matrix.androidsdk.call.IMXCallListener;
@@ -120,6 +122,7 @@ import im.vector.util.ExternalApplicationsUtilKt;
 import im.vector.util.MatrixURLSpan;
 import im.vector.util.PermissionsToolsKt;
 import im.vector.util.PreferencesManager;
+import im.vector.util.QuoteSpannableStringBuilder;
 import im.vector.util.ReadMarkerManager;
 import im.vector.util.RoomUtils;
 import im.vector.util.SlashCommandsParser;
@@ -285,6 +288,16 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
     // notifications area
     @BindView(R.id.room_notifications_area)
     NotificationAreaView mNotificationsArea;
+
+    //quote area
+    @BindView(R.id.quote_layout)
+    ViewGroup mQuoteLayout;
+
+    @BindView(R.id.quote_text)
+    TextView mQuoteTextView;
+
+    @BindView(R.id.cancel_quote)
+    View mCancelQuoteView;
 
     private String mLatestTypingMessage;
     private Boolean mIsScrolledToTheBottom;
@@ -1936,6 +1949,21 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
                         mSendImageView.setEnabled(true);
                         mIsMarkDowning = false;
                         enableActionBarHeader(HIDE_ACTION_BAR_HEADER);
+                        /*
+                        String htmlTextWithQuote = htmlText;
+                        if (mQuoteEvent != null){
+                            String sender = mQuoteEvent.getSender();
+                            String eventId = mQuoteEvent.eventId;
+                            String roomId = mQuoteEvent.roomId;
+
+                            MXSession session = getSession(getIntent());
+                            HomeServerConnectionConfig homeServerConfig = session.getHomeServerConfig();
+                            Uri homeServer = homeServerConfig.getHomeserverUri();
+                            String host = homeServer.getHost();
+                            htmlTextWithQuote = "<mx-reply><blockquote>" +
+                                    "<a href=\"https://matrix.to/#/" + roomId + "/" + eventId + "?via=" + host + "\">In reply to</a> <a href=\"https://matrix.to/#/" + sender + "\">" + sender + "</a>" +
+                                    "</blockquote></mx-reply>" + htmlText;
+                        }*/
                         sendMessage(text, TextUtils.equals(text, htmlText) ? null : htmlText, Message.FORMAT_MATRIX_HTML, handleSlashCommand);
                         mEditText.setText("");
                     }
@@ -1956,11 +1984,14 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
         if (!TextUtils.isEmpty(body)) {
             if (!handleSlashCommand
                     || !SlashCommandsParser.manageSplashCommand(this, mSession, mRoom, body, formattedBody, format)) {
-                Event currentSelectedEvent = mVectorMessageListFragment.getCurrentSelectedEvent();
+                //Event currentSelectedEvent = mVectorMessageListFragment.getCurrentSelectedEvent();
 
                 cancelSelectionMode();
 
-                mVectorMessageListFragment.sendTextMessage(body, formattedBody, currentSelectedEvent, format);
+                mVectorMessageListFragment.sendTextMessage(body, formattedBody, mQuoteEvent, format);
+
+                mQuoteEvent = null;
+                mQuoteLayout.setVisibility(View.GONE);
             }
         }
     }
@@ -2544,6 +2575,30 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
                 mEditText.getText().insert(mEditText.getSelectionStart(), "\n" + quote);
             }
         }
+    }
+
+    private Event mQuoteEvent;
+    public void setQuoteToEvent(Event quoteEvent) {
+        mCancelQuoteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mQuoteEvent = null;
+                mQuoteLayout.setVisibility(View.GONE);
+            }
+        });
+
+        mQuoteEvent = quoteEvent;
+
+        QuoteSpannableStringBuilder quoteSpannableStringBuilder = new QuoteSpannableStringBuilder();
+        SpannableString spannableString = quoteSpannableStringBuilder.Build(this, mRoom, quoteEvent);
+
+        mQuoteTextView.setText(spannableString);
+
+        //quoteEvent.getSender()
+        //Message message = JsonUtils.toMessage(quoteEvent.getContentAsJsonObject());
+
+        //mQuoteTextView.setText(message.body);
+        mQuoteLayout.setVisibility(View.VISIBLE);
     }
 
     /* ==========================================================================================
