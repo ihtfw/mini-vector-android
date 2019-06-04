@@ -18,15 +18,30 @@
 package im.vector.util;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 import org.matrix.androidsdk.MXSession;
+import org.matrix.androidsdk.crypto.MXCryptoError;
 import org.matrix.androidsdk.data.RoomState;
 import org.matrix.androidsdk.interfaces.HtmlToolbox;
 import org.matrix.androidsdk.rest.model.Event;
 import org.matrix.androidsdk.rest.model.EventContent;
+import org.matrix.androidsdk.rest.model.message.Message;
+import org.matrix.androidsdk.rest.model.pid.RoomThirdPartyInvite;
 import org.matrix.androidsdk.util.EventDisplay;
 import org.matrix.androidsdk.util.JsonUtils;
 import org.matrix.androidsdk.util.Log;
@@ -102,7 +117,7 @@ public class RiotEventDisplay extends EventDisplay {
                     text = mContext.getString(R.string.event_formatter_widget_added, type, senderDisplayName);
                 }
             } else {
-                text = super.getTextualDisplay(displayNameColor, event, roomState);
+                text = getQuoteTextualDisplay(displayNameColor, event, roomState);
             }
             if (event.getCryptoError() != null) {
                 final MXSession session = Matrix.getInstance(mContext).getDefaultSession();
@@ -115,6 +130,92 @@ public class RiotEventDisplay extends EventDisplay {
             Log.e(LOG_TAG, "getTextualDisplay() " + e.getMessage(), e);
         }
 
+        return text;
+    }
+
+    /**
+     * Stringify the linked event.
+     *
+     * @param displayNameColor the display name highlighted color.
+     * @return The text or null if it isn't possible.
+     */
+    public CharSequence getQuoteTextualDisplay(Integer displayNameColor, Event event, RoomState roomState) {
+        if (!Event.EVENT_TYPE_MESSAGE.equals(event.getType())){
+            //can't be quote
+            return super.getTextualDisplay(displayNameColor, event, roomState);
+        }
+
+        try {
+            JsonObject jsonEventContent = event.getContentAsJsonObject();
+
+            // Special treatment for "In reply to" message
+            if (jsonEventContent.has("m.relates_to")) {
+                final JsonElement relatesTo = jsonEventContent.get("m.relates_to");
+                if (relatesTo.isJsonObject()) {
+                    if (relatesTo.getAsJsonObject().has("m.in_reply_to")) {
+                        return getQuoteFormattedMessage(mContext, jsonEventContent, mHtmlToolbox);
+                    }
+                }
+            }
+
+            //not a quote
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "getTextualDisplay() " + e.getMessage(), e);
+        }
+
+        return super.getTextualDisplay(displayNameColor, event, roomState);
+    }
+
+    /**
+     * @param context          the context
+     * @param jsonEventContent the current jsonEventContent
+     * @param htmlToolbox      an optional htmlToolbox to manage html images and tag
+     * @return the formatted message as CharSequence
+     */
+    private CharSequence getQuoteFormattedMessage(@NonNull final Context context,
+                                             @NonNull final JsonObject jsonEventContent,
+                                             @Nullable final HtmlToolbox htmlToolbox) {
+        final String format = jsonEventContent.getAsJsonPrimitive("format").getAsString();
+        CharSequence text = null;
+        if (Message.FORMAT_MATRIX_HTML.equals(format)) {
+            String htmlBody = jsonEventContent.getAsJsonPrimitive("formatted_body").getAsString();
+            //skip quote part
+            int i = htmlBody.indexOf("</mx-reply>");
+            if (i > 0){
+                htmlBody = htmlBody.substring(i + "</mx-reply>".length());
+            }
+
+            if (htmlToolbox != null) {
+                htmlBody = htmlToolbox.convert(htmlBody);
+            }
+
+            // some markers are not supported so fallback on an ascii display until to find the right way to manage them
+            // an issue has been created https://github.com/vector-im/vector-android/issues/38
+            // BMA re-enable <ol> and <li> support (https://github.com/vector-im/riot-android/issues/2184)
+            if (!TextUtils.isEmpty(htmlBody)) {
+                final Html.ImageGetter imageGetter;
+                final Html.TagHandler tagHandler;
+                if (htmlToolbox != null) {
+                    imageGetter = htmlToolbox.getImageGetter();
+                    tagHandler = htmlToolbox.getTagHandler(htmlBody);
+                } else {
+                    imageGetter = null;
+                    tagHandler = null;
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    text = Html.fromHtml(htmlBody,
+                            Html.FROM_HTML_SEPARATOR_LINE_BREAK_LIST_ITEM | Html.FROM_HTML_SEPARATOR_LINE_BREAK_LIST,
+                            imageGetter, tagHandler);
+                } else {
+                    text = Html.fromHtml(htmlBody, imageGetter, tagHandler);
+                }
+                // fromHtml formats quotes (> character) with two newlines at the end
+                // remove any newlines at the end of the CharSequence
+                while (text.length() > 0 && text.charAt(text.length() - 1) == '\n') {
+                    text = text.subSequence(0, text.length() - 1);
+                }
+            }
+        }
         return text;
     }
 }

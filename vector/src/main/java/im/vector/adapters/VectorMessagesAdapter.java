@@ -36,6 +36,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
+import android.text.style.AbsoluteSizeSpan;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
@@ -56,7 +57,6 @@ import android.widget.TextView;
 
 import com.binaryfork.spanny.Spanny;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 import org.matrix.androidsdk.MXPatterns;
 import org.matrix.androidsdk.MXSession;
@@ -65,15 +65,18 @@ import org.matrix.androidsdk.adapters.MessageRow;
 import org.matrix.androidsdk.crypto.MXCryptoError;
 import org.matrix.androidsdk.crypto.data.MXDeviceInfo;
 import org.matrix.androidsdk.data.Room;
+import org.matrix.androidsdk.data.RoomState;
 import org.matrix.androidsdk.db.MXMediaCache;
 import org.matrix.androidsdk.interfaces.HtmlToolbox;
+import org.matrix.androidsdk.rest.callback.ApiCallback;
 import org.matrix.androidsdk.rest.model.Event;
 import org.matrix.androidsdk.rest.model.EventContent;
+import org.matrix.androidsdk.rest.model.MatrixError;
 import org.matrix.androidsdk.rest.model.PowerLevels;
 import org.matrix.androidsdk.rest.model.RoomCreateContent;
 import org.matrix.androidsdk.rest.model.RoomMember;
 import org.matrix.androidsdk.rest.model.crypto.EncryptedEventContent;
-import org.matrix.androidsdk.rest.model.message.AudioMessage;
+import org.matrix.androidsdk.rest.model.crypto.EncryptedFileInfo;
 import org.matrix.androidsdk.rest.model.message.FileMessage;
 import org.matrix.androidsdk.rest.model.message.ImageMessage;
 import org.matrix.androidsdk.rest.model.message.Message;
@@ -175,7 +178,8 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
     static final int ROW_TYPE_CODE = 10;
     static final int ROW_TYPE_STICKER = 11;
     static final int ROW_TYPE_VERSIONED_ROOM = 12;
-    static final int NUM_ROW_TYPES = 13;
+    static final int ROW_TYPE_QUOTE = 13;
+    static final int NUM_ROW_TYPES = 14;
 
 
     final Context mContext;
@@ -234,6 +238,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
     private final Drawable mPadlockDrawable;
 
     private VectorImageGetter mImageGetter;
+    private Room mRoom;
 
     private HtmlToolbox mHtmlToolbox = new HtmlToolbox() {
         HtmlTagHandler mHtmlTagHandler;
@@ -292,6 +297,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                 R.layout.adapter_item_vector_message_image_video,
                 R.layout.adapter_item_vector_message_redact,
                 R.layout.adapter_item_vector_message_room_versioned,
+                R.layout.adapter_item_vector_message_quote,
                 mediasCache);
     }
 
@@ -330,6 +336,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                           int stickerResLayoutId,
                           int hiddenResLayoutId,
                           int roomVersionedResLayoutId,
+                          int quoteResLayoutId,
                           MXMediaCache mediasCache) {
         super(context, 0);
         mContext = context;
@@ -346,6 +353,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
         mRowTypeToLayoutId.put(ROW_TYPE_STICKER, stickerResLayoutId);
         mRowTypeToLayoutId.put(ROW_TYPE_HIDDEN, hiddenResLayoutId);
         mRowTypeToLayoutId.put(ROW_TYPE_VERSIONED_ROOM, roomVersionedResLayoutId);
+        mRowTypeToLayoutId.put(ROW_TYPE_QUOTE, quoteResLayoutId);
         mMediasCache = mediasCache;
         mLayoutInflater = LayoutInflater.from(mContext);
         // the refresh will be triggered only when it is required
@@ -765,6 +773,9 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
         }
 
         switch (viewType) {
+            case ROW_TYPE_QUOTE:
+                inflatedView = getQuoteView(viewType, position, convertView, parent);
+                break;
             case ROW_TYPE_EMOJI:
             case ROW_TYPE_CODE:
             case ROW_TYPE_TEXT:
@@ -813,6 +824,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
         return inflatedView;
     }
+
 
     @Override
     public void notifyDataSetChanged() {
@@ -906,6 +918,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                 mSelectedEvent = null;
             }
             notifyDataSetChanged();
+
 
             if (mVectorMessagesAdapterEventsListener != null) {
                 mVectorMessagesAdapterEventsListener.onSelectedEventChange(mSelectedEvent);
@@ -1037,7 +1050,10 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                     viewType = ROW_TYPE_EMOJI;
                 } else if (!TextUtils.isEmpty(message.formatted_body) && mHelper.containsFencedCodeBlocks(message)) {
                     viewType = ROW_TYPE_CODE;
-                } else {
+                } else  if (message.relatesTo != null && message.relatesTo.dict != null && message.relatesTo.dict.containsKey("event_id")){
+                    viewType = ROW_TYPE_QUOTE;
+                }
+                else {
                     viewType = ROW_TYPE_TEXT;
                 }
             } else if (Message.MSGTYPE_IMAGE.equals(msgType)) {
@@ -1251,6 +1267,173 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                 VectorLinkifyKt.vectorCustomLinkify(bodyTextView, true);
                 textViews = new ArrayList<>();
                 textViews.add(bodyTextView);
+            }
+
+            int textColor;
+
+            if (row.getEvent().isEncrypting()) {
+                textColor = mEncryptingMessageTextColor;
+            } else if (row.getEvent().isSending() || row.getEvent().isUnsent()) {
+                textColor = mSendingMessageTextColor;
+            } else if (row.getEvent().isUndelivered() || row.getEvent().isUnknownDevice()) {
+                textColor = mNotSentMessageTextColor;
+            } else {
+                textColor = shouldHighlighted ? mHighlightMessageTextColor : mDefaultMessageTextColor;
+            }
+
+            for (final TextView tv : textViews) {
+                tv.setTextColor(textColor);
+            }
+
+            View textLayout = convertView.findViewById(R.id.messagesAdapter_text_layout);
+            manageSubView(position, convertView, textLayout, viewType);
+
+            for (final TextView tv : textViews) {
+                addContentViewListeners(convertView, tv, position, viewType);
+            }
+
+            mHelper.manageURLPreviews(message, convertView, event.eventId);
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "## getTextView() failed : " + e.getMessage(), e);
+        }
+
+        return convertView;
+    }
+
+
+    /**
+     * Text message management
+     *
+     * @param viewType    the view type
+     * @param position    the message position
+     * @param convertView the text message view
+     * @param parent      the parent view
+     * @return the updated text view.
+     */
+    private View getQuoteView(final int viewType, final int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = mLayoutInflater.inflate(mRowTypeToLayoutId.get(viewType), parent, false);
+        }
+
+        try {
+            MessageRow row = getItem(position);
+            final Event event = row.getEvent();
+            final Message message = JsonUtils.toMessage(event.getContent());
+
+            boolean shouldHighlighted = (null != mVectorMessagesAdapterEventsListener) && mVectorMessagesAdapterEventsListener.shouldHighlightEvent(event);
+
+            final List<TextView> textViews;
+
+            if (ROW_TYPE_CODE == viewType) {
+                textViews = populateRowTypeCode(message, convertView, shouldHighlighted);
+            } else {
+                final TextView bodyTextView = convertView.findViewById(R.id.messagesAdapter_body);
+                final TextView quoteTextView = convertView.findViewById(R.id.messagesAdapter_quote_body);
+
+                quoteTextView.setClickable(true);
+                quoteTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (null != mVectorMessagesAdapterEventsListener) {
+                            mVectorMessagesAdapterEventsListener.onQuoteEventClick(event);
+                        }
+                    }
+                });
+
+                // cannot refresh it
+                if (null == bodyTextView) {
+                    Log.e(LOG_TAG, "getTextView : invalid layout");
+                    return convertView;
+                }
+
+                EventDisplay display = new RiotEventDisplay(mContext, mHtmlToolbox);
+
+                final Spannable body = row.getText(new VectorQuoteSpan(mContext), display);
+
+                CharSequence result = mHelper.highlightPattern(body,
+                        mPattern,
+                        mBackgroundColorSpan,
+                        shouldHighlighted);
+
+                bodyTextView.setText(result);
+
+                mHelper.applyLinkMovementMethod(bodyTextView);
+                VectorLinkifyKt.vectorCustomLinkify(bodyTextView, true);
+                textViews = new ArrayList<>();
+                textViews.add(bodyTextView);
+
+                TextView senderTextView = convertView.findViewById(R.id.messagesAdapter_sender);
+                final int senderColor = senderTextView.getCurrentTextColor();
+
+                //handle quote case
+                if (message.relatesTo != null && message.relatesTo.dict != null && message.relatesTo.dict.containsKey("event_id")){
+                    final LinearLayout messagesAdapterQuotesLayout = convertView.findViewById(R.id.messagesAdapter_quotes_layout);
+                    //it's quote message
+                    String quote_event_id = message.relatesTo.dict.get("event_id");
+                    mSession.getEventsApiClient().getEventFromEventId(quote_event_id, new ApiCallback<Event>() {
+                        @Override
+                        public void onNetworkError(Exception e) {
+
+                        }
+
+                        @Override
+                        public void onMatrixError(MatrixError e) {
+
+                        }
+
+                        @Override
+                        public void onUnexpectedError(Exception e) {
+
+                        }
+
+                        @Override
+                        public void onSuccess(Event info) {
+                            String mSenderDisplayName = event.getSender();
+                            RoomState roomState = mRoom.getState();
+                            if (roomState != null) {
+                                mSenderDisplayName = roomState.getMemberName(event.getSender());
+                            }
+
+                            String quoteText = "";
+                           // String msgText = "";
+
+                            Message quoteMessage = JsonUtils.toMessage(info.getContentAsJsonObject());
+                            if (quoteMessage.body != null){
+                                quoteText = quoteMessage.body;
+                            }
+                            /*
+                            if (itemViewType == ROW_TYPE_FILE){
+                                FileMessage quoteFileMessage = JsonUtils.toFileMessage(info.getContentAsJsonObject());
+                                if (quoteFileMessage.body != null){
+                                    quoteText = quoteFileMessage.body;
+                                }
+                            }else if (itemViewType == ROW_TYPE_IMAGE){
+                                ImageMessage quoteImageMessage = JsonUtils.toImageMessage(info.getContentAsJsonObject());
+                                if (quoteImageMessage.body != null){
+                                    quoteText = quoteImageMessage.body;
+                                }
+                                //TODO preview
+                            }*/
+/*
+                            if (message.formatted_body != null){
+                                int i = message.formatted_body.indexOf("</mx-reply>");
+                                if (i > 0){
+                                    msgText = message.formatted_body.substring(i + "</mx-reply>".length());
+                                }
+                            }
+*/
+                            if (quoteText.length() > 0){
+                                SpannableString spannableString = new SpannableString(mSenderDisplayName + "\n" + quoteText);
+                                spannableString.setSpan(new VectorQuoteSpan(getContext()), 0, spannableString.length(), 0);
+
+                                spannableString.setSpan(new ForegroundColorSpan(senderColor), 0, mSenderDisplayName.length(), 0);
+                                spannableString.setSpan(new AbsoluteSizeSpan(14, true), 0, mSenderDisplayName.length(), 0);
+
+                                quoteTextView.setText(spannableString);
+                            }
+                        }
+                    });
+                }
             }
 
             int textColor;
@@ -1610,6 +1793,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
         return convertView;
     }
+
 
     /**
      * Hidden message management.
@@ -2362,6 +2546,10 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
     public void setImageGetter(VectorImageGetter imageGetter) {
         mImageGetter = imageGetter;
         mHelper.setImageGetter(imageGetter);
+    }
+
+    public void setRoom(Room room) {
+        mRoom = room;
     }
 
     /**

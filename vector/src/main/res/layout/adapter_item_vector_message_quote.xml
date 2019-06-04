@@ -74,6 +74,13 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <LinearLayout
+                android:id="@+id/messagesAdapter_quotes_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+
             <FrameLayout
                 android:id="@+id/messagesAdapter_body_layout"
                 android:layout_width="match_parent"
@@ -96,6 +103,21 @@
                         android:src="@drawable/e2e_verified" />
 
                     <TextView
+                        android:id="@+id/messagesAdapter_quote_body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toEndOf="@id/message_adapter_e2e_icon"
+                        android:layout_toRightOf="@id/message_adapter_e2e_icon"
+                        android:textIsSelectable="false"
+                        android:textSize="14sp"
+                        android:background="?attr/vctr_text_quote_background_color"
+
+                        tools:text="Some quote of previous message" />
+
+                    <TextView
                         android:id="@+id/messagesAdapter_body"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -105,6 +127,7 @@
                         android:layout_toEndOf="@id/message_adapter_e2e_icon"
                         android:layout_toRightOf="@id/message_adapter_e2e_icon"
                         android:textIsSelectable="false"
+                        android:layout_below="@id/messagesAdapter_quote_body"
                         android:textSize="14sp"
                         tools:text="A body www.example.org" />
 

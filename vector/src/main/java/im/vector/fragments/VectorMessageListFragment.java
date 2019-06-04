@@ -203,6 +203,8 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
             mAdapter.mIsRoomEncrypted = mRoom.isEncrypted();
         }
 
+        mAdapter.setRoom(mRoom);
+
         if (null != mSession) {
             mVectorImageGetter = new VectorImageGetter(mSession);
             mAdapter.setImageGetter(mVectorImageGetter);
@@ -292,6 +294,7 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
 
     @Override
     public VectorMessagesAdapter createMessagesAdapter() {
+
         return new VectorMessagesAdapter(mSession, getActivity(), getMXMediaCache());
     }
 
@@ -767,6 +770,9 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
     @Override
     public void onSelectedEventChange(@Nullable Event currentSelectedEvent) {
         if (mListener != null && isAdded()) {
+            //if (handleQuoteEvent(currentSelectedEvent))
+            //    return;
+
             mListener.onSelectedEventChange(currentSelectedEvent);
         }
     }
@@ -1064,10 +1070,80 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
             MessageRow row = mAdapter.getItem(position);
             Event event = row.getEvent();
 
-            // toggle selection mode
+            /*
+            if (handleQuoteEvent(event)){
+                //it's quote
+            }else{
+                // toggle selection mode
+                mAdapter.onEventTap(event);
+            }*/
             mAdapter.onEventTap(event);
+            //for(x currentX : this.messages) {
+                // Do something with the value
+            //}
+            //mRoom.getStore().getEvent()
+
+            //mAdapter.
+            //getMessageListView().smoothScrollToPosition();
         } catch (Exception e) {
             Log.e(LOG_TAG, "## onRowClick() failed " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void onQuoteEventClick(Event event) {
+        handleQuoteEvent(event);
+    }
+
+    private boolean handleQuoteEvent(Event event) {
+        if (event == null)
+            return false;
+
+        Message message = JsonUtils.toMessage(event.getContentAsJsonObject());
+        if (message != null && message.relatesTo != null && message.relatesTo.dict.containsKey("event_id")){
+            //it's quote
+            cancelSelectionMode();
+            String event_id = message.relatesTo.dict.get("event_id");
+            scrollTo(event_id, 10);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void scrollTo(final String eventId, final int iterations) {
+        if (iterations < 0)
+            return;
+
+        final int count = mAdapter.getCount();
+        for (int i =0; i < count; i++){
+            int testPosition = count - i - 1;
+            MessageRow item = mAdapter.getItem(testPosition);
+            if (item.getEvent().eventId.equals(eventId)){
+                //getMessageListView().smoothScrollToPosition(testPosition);
+                getMessageListView().smoothScrollToPosition(testPosition);
+                //Select it
+                Event event = getEvent(testPosition);
+                mAdapter.onEventTap(event);
+                return;
+                //onRowClick(testPosition);
+            }
+            //.backPaginate(new SimpleApiCallback<Integer>() {
+            //})
+
+            //onRowClick(position);
+        }
+
+        if (getEventTimeLine().canBackPaginate()){
+           // getMessageListView().smoothScrollToPosition(0);
+            getEventTimeLine().backPaginate(new SimpleApiCallback<Integer>() {
+                @Override
+                public void onSuccess(Integer info) {
+                    if (info > 0){
+                        scrollTo(eventId, iterations - 1);
+                    }
+                }
+            });
         }
     }
 

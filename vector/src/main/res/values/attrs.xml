@@ -18,6 +18,7 @@
 
         <!-- default text colors -->
         <attr name="vctr_default_text_hint_color" format="color" />
+        <attr name="vctr_text_quote_background_color" format="color" />
 
         <!-- room message colors -->
         <attr name="vctr_unread_room_indent_color" format="color" />

@@ -219,5 +219,9 @@ abstract class MockMessageAdapterActionListener : IMessagesAdapterActionsListene
     override fun onSelectedEventChange(currentSelectedEvent: Event?) {
         TODO("not implemented")
     }
+
+    override fun onQuoteEventClick(event: Event?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
 

@@ -96,12 +96,16 @@
     <color name="riot_secondary_text_color_light">#FF9E9E9E</color>
     <color name="riot_tertiary_text_color_light">@color/riot_primary_text_color_light</color>
 
+    <color name="riot_text_quote_background_color_light">#FFEFFDDE</color>
+
     <!--Dark /Text Primary-->
     <color name="riot_primary_text_color_dark">#FFEDF3FF</color>
     <color name="riot_primary_text_color_disabled_dark">#FFA1B2D1</color>
     <!--Dark /Text Secondary-->
     <color name="riot_secondary_text_color_dark">#FFA1B2D1</color>
     <color name="riot_tertiary_text_color_dark">@color/riot_primary_text_color_dark</color>
+
+    <color name="riot_text_quote_background_color_dark">#FF2B5278</color>
 
     <!-- Status/Text Primary-->
     <color name="riot_primary_text_color_status">#FF70808D</color>

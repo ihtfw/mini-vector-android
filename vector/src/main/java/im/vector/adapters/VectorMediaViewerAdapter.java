@@ -34,6 +34,7 @@ import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.gson.JsonElement;
 
@@ -378,6 +379,8 @@ public class VectorMediaViewerAdapter extends PagerAdapter {
                                                         Uri mediaUri = Uri.parse(newHighResUri);
                                                         Glide.with(imageView)
                                                                 .load(mediaUri)
+                                                                .apply(new RequestOptions()
+                                                                        .override(Target.SIZE_ORIGINAL))
                                                                 .into(imageView);
                                                     }
                                                 });
@@ -424,6 +427,7 @@ public class VectorMediaViewerAdapter extends PagerAdapter {
             }
 
             final String mimeType = mediaInfo.mMimeType;
+
             int width = -1;
             int height = -1;
 
@@ -442,15 +446,10 @@ public class VectorMediaViewerAdapter extends PagerAdapter {
                     @Override
                     public void onSuccess(File mediaFile) {
                         if (null != mediaFile) {
-                            // Max zoom is PhotoViewAttacher.DEFAULT_MAX_SCALE (= 3)
-                            // I set the max zoom to 1 because it leads to too many crashed due to high memory usage.
-                            float maxZoom = 1; // imageView.getMaximumScale();
-
                             Glide.with(container)
                                     .load(mediaFile)
                                     .apply(new RequestOptions()
-                                            // Override image wanted size, to keep good quality when image is zoomed in
-                                            .override((int) (imageView.getWidth() * maxZoom), (int) (imageView.getHeight() * maxZoom)))
+                                            .override(Target.SIZE_ORIGINAL))
                                     .into(imageView);
                         }
                     }

@@ -186,4 +186,6 @@ public interface IMessagesAdapterActionsListener {
      * @param currentSelectedEvent the current selected event, or null if no event is selected
      */
     void onSelectedEventChange(@Nullable Event currentSelectedEvent);
+
+    void onQuoteEventClick(final Event event);
 }
