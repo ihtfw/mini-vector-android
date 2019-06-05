@@ -280,7 +280,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_material_quote"
                 android:tint="?attr/vctr_message_text_color"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:paddingHorizontal="5dp" />
 
             <TextView
                 android:id="@+id/quote_text"
@@ -301,7 +302,8 @@
                 android:contentDescription="@string/action_close"
                 android:src="@drawable/vector_leave_room_black"
                 android:tint="?attr/vctr_message_text_color"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:paddingHorizontal="5dp" />
 
 
         </LinearLayout>

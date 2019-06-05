@@ -16,10 +16,10 @@ import im.vector.R;
 import im.vector.ui.VectorQuoteSpan;
 
 public class QuoteSpannableStringBuilder {
-    public int senderColor = -1;
 
     public SpannableString Build(Context context, Room mRoom, Event mEvent){
-        String mSenderDisplayName = mEvent.getSender();
+        String senderId = mEvent.getSender();
+        String mSenderDisplayName = senderId;
         RoomState roomState = mRoom.getState();
         if (roomState != null) {
             mSenderDisplayName = roomState.getMemberName(mEvent.getSender());
@@ -36,11 +36,9 @@ public class QuoteSpannableStringBuilder {
             SpannableString spannableString = new SpannableString(mSenderDisplayName + "\n" + quoteText);
             spannableString.setSpan(new VectorQuoteSpan(context), 0, spannableString.length(), 0);
 
-            if (senderColor < 0){
-                senderColor = ContextCompat.getColor(context, R.color.riot_text_quote_sender_color_default);
-            }
+            int textColorIndex = EventHelpers.colorIndexForSender(senderId);
 
-            spannableString.setSpan(new ForegroundColorSpan(senderColor), 0, mSenderDisplayName.length(), 0);
+            spannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(textColorIndex)), 0, mSenderDisplayName.length(), 0);
             spannableString.setSpan(new AbsoluteSizeSpan(14, true), 0, mSenderDisplayName.length(), 0);
 
             return spannableString;

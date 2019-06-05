@@ -78,6 +78,7 @@ import im.vector.R;
 import im.vector.listeners.IMessagesAdapterActionsListener;
 import im.vector.settings.VectorLocale;
 import im.vector.ui.themes.ThemeUtils;
+import im.vector.util.EventHelpers;
 import im.vector.util.MatrixLinkMovementMethod;
 import im.vector.util.MatrixURLSpan;
 import im.vector.util.RiotEventDisplay;
@@ -188,7 +189,7 @@ class VectorMessagesAdapterHelper {
                     final String fDisplayName = (null == senderTextView.getText()) ? "" : senderTextView.getText().toString();
 
                     Context context = senderTextView.getContext();
-                    int textColor = colorIndexForSender(fSenderId);
+                    int textColor = EventHelpers.colorIndexForSender(fSenderId);
                     senderTextView.setTextColor(context.getResources().getColor(textColor));
 
                     senderTextView.setOnClickListener(new View.OnClickListener() {
@@ -1302,38 +1303,4 @@ class VectorMessagesAdapterHelper {
         }
     }
 
-    //Based on riot-web implementation
-    @ColorRes
-    private static int colorIndexForSender(String sender) {
-        int hash = 0;
-        int i;
-        char chr;
-        if (sender.length() == 0) {
-            return R.color.username_1;
-        }
-        for (i = 0; i < sender.length(); i++) {
-            chr = sender.charAt(i);
-            hash = ((hash << 5) - hash) + chr;
-            hash |= 0;
-        }
-        int cI = (Math.abs(hash) % 8) + 1;
-        switch (cI) {
-            case 1:
-                return R.color.username_1;
-            case 2:
-                return R.color.username_2;
-            case 3:
-                return R.color.username_3;
-            case 4:
-                return R.color.username_4;
-            case 5:
-                return R.color.username_5;
-            case 6:
-                return R.color.username_6;
-            case 7:
-                return R.color.username_7;
-            default:
-                return R.color.username_8;
-        }
-    }
 }

@@ -1363,9 +1363,6 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                 textViews = new ArrayList<>();
                 textViews.add(bodyTextView);
 
-                TextView senderTextView = convertView.findViewById(R.id.messagesAdapter_sender);
-                final int senderColor = senderTextView.getCurrentTextColor();
-
                 //handle quote case
                 if (message.relatesTo != null && message.relatesTo.dict != null && message.relatesTo.dict.containsKey("event_id")){
                     final LinearLayout messagesAdapterQuotesLayout = convertView.findViewById(R.id.messagesAdapter_quotes_layout);
@@ -1390,7 +1387,6 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                         @Override
                         public void onSuccess(Event info) {
                             QuoteSpannableStringBuilder quoteSpannableStringBuilder = new QuoteSpannableStringBuilder();
-                            quoteSpannableStringBuilder.senderColor = senderColor;
 
                             SpannableString spannableString = quoteSpannableStringBuilder.Build(getContext(), mRoom, info);
 
