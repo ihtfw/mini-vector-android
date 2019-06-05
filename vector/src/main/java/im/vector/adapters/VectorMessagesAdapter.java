@@ -69,6 +69,7 @@ import org.matrix.androidsdk.data.RoomState;
 import org.matrix.androidsdk.db.MXMediaCache;
 import org.matrix.androidsdk.interfaces.HtmlToolbox;
 import org.matrix.androidsdk.rest.callback.ApiCallback;
+import org.matrix.androidsdk.rest.callback.SuccessCallback;
 import org.matrix.androidsdk.rest.model.Event;
 import org.matrix.androidsdk.rest.model.EventContent;
 import org.matrix.androidsdk.rest.model.MatrixError;
@@ -110,6 +111,7 @@ import im.vector.listeners.IMessagesAdapterActionsListener;
 import im.vector.settings.VectorLocale;
 import im.vector.ui.VectorQuoteSpan;
 import im.vector.ui.themes.ThemeUtils;
+import im.vector.util.CacheEventLoader;
 import im.vector.util.EmojiKt;
 import im.vector.util.EventGroup;
 import im.vector.util.MatrixLinkMovementMethod;
@@ -240,6 +242,7 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
     private VectorImageGetter mImageGetter;
     private Room mRoom;
+    private CacheEventLoader cacheEventLoader;
 
     private HtmlToolbox mHtmlToolbox = new HtmlToolbox() {
         HtmlTagHandler mHtmlTagHandler;
@@ -397,6 +400,8 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
         mPadlockDrawable = ThemeUtils.INSTANCE.tintDrawable(mContext,
                 ContextCompat.getDrawable(mContext, R.drawable.e2e_unencrypted), R.attr.vctr_settings_icon_tint_color);
+
+        cacheEventLoader = new CacheEventLoader(session);
     }
 
     /*
@@ -1365,33 +1370,15 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
                 //handle quote case
                 if (message.relatesTo != null && message.relatesTo.dict != null && message.relatesTo.dict.containsKey("event_id")){
-                    final LinearLayout messagesAdapterQuotesLayout = convertView.findViewById(R.id.messagesAdapter_quotes_layout);
                     //it's quote message
                     String quote_event_id = message.relatesTo.dict.get("event_id");
-                    mSession.getEventsApiClient().getEventFromEventId(quote_event_id, new ApiCallback<Event>() {
-                        @Override
-                        public void onNetworkError(Exception e) {
+                    cacheEventLoader.getEvent(quote_event_id, info -> {
 
-                        }
+                        QuoteSpannableStringBuilder quoteSpannableStringBuilder = new QuoteSpannableStringBuilder();
 
-                        @Override
-                        public void onMatrixError(MatrixError e) {
+                        SpannableString spannableString = quoteSpannableStringBuilder.Build(getContext(), mRoom, info);
 
-                        }
-
-                        @Override
-                        public void onUnexpectedError(Exception e) {
-
-                        }
-
-                        @Override
-                        public void onSuccess(Event info) {
-                            QuoteSpannableStringBuilder quoteSpannableStringBuilder = new QuoteSpannableStringBuilder();
-
-                            SpannableString spannableString = quoteSpannableStringBuilder.Build(getContext(), mRoom, info);
-
-                            quoteTextView.setText(spannableString);
-                        }
+                        quoteTextView.setText(spannableString);
                     });
                 }
             }

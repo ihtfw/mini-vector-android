@@ -37,7 +37,7 @@ android {
 
     defaultConfig {
         applicationId "com.ilfumo.riot"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 28
         // use the version code
         versionCode rootProject.ext.versionCodeProp

@@ -18,6 +18,10 @@ import im.vector.ui.VectorQuoteSpan;
 public class QuoteSpannableStringBuilder {
 
     public SpannableString Build(Context context, Room mRoom, Event mEvent){
+        if (mEvent == null){
+            return new SpannableString("");
+        }
+
         String senderId = mEvent.getSender();
         String mSenderDisplayName = senderId;
         RoomState roomState = mRoom.getState();
