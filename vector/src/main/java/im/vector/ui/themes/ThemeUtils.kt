@@ -92,6 +92,7 @@ object ThemeUtils {
      */
     fun setActivityTheme(activity: Activity, otherThemes: ActivityOtherThemes) {
         when (getApplicationTheme(activity)) {
+            THEME_LIGHT_VALUE -> activity.setTheme(otherThemes.light)
             THEME_DARK_VALUE -> activity.setTheme(otherThemes.dark)
             THEME_BLACK_VALUE -> activity.setTheme(otherThemes.black)
             THEME_STATUS_VALUE -> activity.setTheme(otherThemes.status)
