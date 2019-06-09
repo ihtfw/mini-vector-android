@@ -53,7 +53,6 @@
             style="@style/VectorButtonStyle"
             android:layout_marginTop="@dimen/layout_vertical_margin_big"
             android:layout_marginEnd="@dimen/layout_vertical_margin"
-            android:layout_marginRight="@dimen/layout_vertical_margin"
             android:layout_marginBottom="@dimen/layout_vertical_margin"
             android:minWidth="160dp"
             android:text="@string/sas_got_it"

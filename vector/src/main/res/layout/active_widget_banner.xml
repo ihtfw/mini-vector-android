@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="40dp"
@@ -9,22 +10,27 @@
         android:id="@+id/widget_type_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
         android:fontFamily="sans-serif-bold"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_wrapHeight="50"
+        tools:layout_conversion_wrapWidth="219"
         tools:text="Widget name" />
 
     <ImageView
         android:id="@+id/close_widget_icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:padding="8dp"
         android:src="@drawable/ic_material_delete_white"
-        android:tint="@color/vector_fuchsia_color" />
+        android:tint="@color/vector_fuchsia_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_wrapHeight="105"
+        tools:layout_conversion_wrapWidth="105" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

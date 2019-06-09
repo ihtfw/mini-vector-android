@@ -18,7 +18,6 @@
         android:layout_height="14sp"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
         tools:src="@tools:sample/avatars" />
 
     <TextView

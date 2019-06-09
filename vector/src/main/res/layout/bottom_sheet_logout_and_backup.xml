@@ -62,7 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             tools:text="@string/keys_backup_info_keys_all_backup_up" />
 
     </LinearLayout>
@@ -85,7 +84,6 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:scaleType="fitCenter"
             android:src="@drawable/backup_keys"
             android:tint="?android:attr/textColorTertiary" />
@@ -119,7 +117,6 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:scaleType="fitCenter"
             android:src="@drawable/backup_keys"
             android:tint="?android:attr/textColorTertiary" />
@@ -152,7 +149,6 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_material_leave"
             android:tint="@color/vector_error_color" />
@@ -186,7 +182,6 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:src="@drawable/ic_material_exit_to_app"
             android:tint="@color/vector_error_color" />
 

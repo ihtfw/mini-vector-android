@@ -36,9 +36,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
                         android:layout_marginStart="3dp"
-                        android:layout_marginLeft="3dp"
                         android:clickable="false" />
 
                     <TextView
@@ -46,9 +44,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
                         android:layout_marginStart="40dp"
-                        android:layout_marginLeft="40dp"
                         android:layout_marginTop="2dp"
                         android:text="@string/settings_notification_privacy_normal"
                         android:textSize="20sp" />
@@ -59,7 +55,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_normal_notification_privacy"
                         android:layout_alignStart="@+id/tv_normal_notification_privacy"
-                        android:layout_alignLeft="@+id/tv_normal_notification_privacy"
                         android:layout_marginTop="10dp"
                         android:text="@string/settings_notification_privacy_fcm"
                         android:textColor="?android:attr/textColorSecondary"
@@ -71,7 +66,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_notifications_fcm"
                         android:layout_alignStart="@+id/tv_normal_notification_privacy"
-                        android:layout_alignLeft="@+id/tv_normal_notification_privacy"
                         android:text="@string/settings_notification_privacy_metadata"
                         android:textColor="?android:attr/textColorSecondary"
                         android:textSize="13sp" />
@@ -82,7 +76,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_notifications_metadata"
                         android:layout_alignStart="@+id/tv_normal_notification_privacy"
-                        android:layout_alignLeft="@+id/tv_normal_notification_privacy"
                         android:text="@string/settings_notification_privacy_secure_message_content"
                         android:textColor="?android:attr/textColorSecondary"
                         android:textSize="13sp" />
@@ -100,9 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
                         android:layout_marginStart="3dp"
-                        android:layout_marginLeft="3dp"
                         android:clickable="false" />
 
                     <TextView
@@ -110,9 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
                         android:layout_marginStart="40dp"
-                        android:layout_marginLeft="40dp"
                         android:layout_marginTop="2dp"
                         android:text="@string/settings_notification_privacy_reduced"
                         android:textSize="20sp" />
@@ -123,9 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_notification_reduce_privacy"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
                         android:layout_marginStart="40dp"
-                        android:layout_marginLeft="40dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/settings_notification_privacy_no_background_sync"
                         android:textColor="?android:attr/textColorSecondary"
@@ -138,7 +125,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_apps_no_permission"
                         android:layout_alignStart="@+id/tv_notification_reduce_privacy"
-                        android:layout_alignLeft="@+id/tv_notification_reduce_privacy"
                         android:layout_marginTop="6dp"
                         android:text="@string/settings_notification_privacy_fcm"
                         android:textColor="?android:attr/textColorSecondary"
@@ -150,7 +136,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_notifications_fcm_reduced"
                         android:layout_alignStart="@+id/tv_notification_reduce_privacy"
-                        android:layout_alignLeft="@+id/tv_notification_reduce_privacy"
                         android:text="@string/settings_notification_privacy_nosecure_message_content"
                         android:textColor="?android:attr/textColorSecondary"
                         android:textSize="13sp" />

@@ -11,7 +11,6 @@
         android:layout_width="8dp"
         android:layout_height="match_parent"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="@android:color/transparent" />
 
     <im.vector.view.VectorCircularImageView
@@ -21,7 +20,6 @@
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_toEndOf="@+id/left_margin"
-        android:layout_toRightOf="@+id/left_margin"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         tools:src="@tools:sample/avatars" />
@@ -34,15 +32,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_toEndOf="@+id/group_avatar"
-        android:layout_toRightOf="@+id/group_avatar">
+        android:layout_toEndOf="@+id/group_avatar">
 
         <TextView
             android:id="@+id/group_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/group_members_count"
-            android:layout_toLeftOf="@+id/group_members_count"
             android:ellipsize="end"
             android:fontFamily="sans-serif-regular"
             android:maxLines="1"
@@ -68,9 +64,7 @@
             android:layout_alignTop="@+id/group_name"
             android:layout_alignBottom="@+id/group_name"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/vector_actions_9b"
             android:visibility="visible" />
 
@@ -81,11 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/group_name"
             android:layout_marginStart="6dp"
-            android:layout_marginLeft="6dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
             android:layout_toStartOf="@+id/group_more_action_ic"
-            android:layout_toLeftOf="@+id/group_more_action_ic"
             android:gravity="center"
             android:minWidth="25dp"
             android:paddingStart="4dp"
@@ -103,15 +94,12 @@
         android:layout_width="1dp"
         android:layout_height="1dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginEnd="20dp"/>
 
     <View
         android:id="@+id/group_more_action_click_area"
         android:layout_width="40dp"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

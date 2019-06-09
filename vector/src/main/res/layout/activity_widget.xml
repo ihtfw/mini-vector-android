@@ -27,9 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_toStartOf="@+id/widget_close_icon"
-            android:layout_toLeftOf="@+id/widget_close_icon"
             android:layout_toEndOf="@+id/widget_back_icon"
-            android:layout_toRightOf="@+id/widget_back_icon"
             android:fontFamily="sans-serif-bold"
             android:gravity="center"
             android:textColor="@android:color/white"
@@ -42,7 +40,6 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:padding="8dp"
             android:src="@drawable/ic_material_delete_white" />

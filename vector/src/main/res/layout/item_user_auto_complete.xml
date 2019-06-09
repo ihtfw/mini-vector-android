@@ -9,8 +9,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp">
+        android:layout_marginStart="6dp">
 
         <im.vector.view.VectorCircularImageView
             android:id="@+id/item_user_auto_complete_avatar"
@@ -26,9 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
         android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
         android:maxLines="1"
         android:textSize="12sp"
         android:textStyle="bold"
