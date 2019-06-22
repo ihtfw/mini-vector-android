@@ -213,7 +213,7 @@ public class VectorUtils {
         textPaint.setTextAlign(Paint.Align.CENTER);
         // the text size is proportional to the avatar size.
         // by default, the avatar size is 42dp, the text size is 28 dp (not sp because it has to be fixed).
-        textPaint.setTextSize(pixelsSide * 2 / 3);
+        textPaint.setTextSize(pixelsSide * 2 / 4f);
 
         // get its size
         Rect textBounds = new Rect();
@@ -272,6 +272,49 @@ public class VectorUtils {
     }
 
     /**
+     * Return the chars to display for a name
+     *
+     * @param name the name
+     * @return teh first char
+     */
+    private static String getInitialLetters(String name) {
+        String firstChar = " ";
+
+        if (TextUtils.isEmpty(name)) {
+            return firstChar.toUpperCase(VectorLocale.INSTANCE.getApplicationLocale());
+        }
+
+        int idx = 0;
+        char initial = name.charAt(idx);
+
+        if ((initial == '@' || initial == '#' || initial == '+') && (name.length() > 1)) {
+            idx++;
+        }
+
+        // string.codePointAt(0) would do this, but that isn't supported by
+        // some browsers (notably PhantomJS).
+        int chars = 2;
+        char first = name.charAt(idx);
+
+        // LEFT-TO-RIGHT MARK
+        if ((name.length() >= 2) && (0x200e == first)) {
+            idx++;
+            first = name.charAt(idx);
+        }
+
+        // check if it’s the start of a surrogate pair
+        if (0xD800 <= first && first <= 0xDBFF && (name.length() > (idx + 1))) {
+            char second = name.charAt(idx + 1);
+            if (0xDC00 <= second && second <= 0xDFFF) {
+                chars++;
+            }
+        }
+
+        firstChar = name.substring(idx, idx + chars);
+
+        return firstChar.toUpperCase(VectorLocale.INSTANCE.getApplicationLocale());
+    }
+    /**
      * Returns an avatar from a text.
      *
      * @param context the context.
@@ -280,7 +323,7 @@ public class VectorUtils {
      * @return the avatar.
      */
     public static Bitmap getAvatar(Context context, int backgroundColor, String aText, boolean create) {
-        String firstChar = getInitialLetter(aText);
+        String firstChar = getInitialLetters(aText);
         String key = firstChar + "_" + backgroundColor;
 
         // check if the avatar is already defined
@@ -412,7 +455,7 @@ public class VectorUtils {
 
                 if (pixelsSide > 0) {
                     // get the avatar bitmap.
-                    bitmap = VectorUtils.createAvatar(VectorUtils.getAvatarColor(roomId), getInitialLetter(displayName), pixelsSide);
+                    bitmap = VectorUtils.createAvatar(VectorUtils.getAvatarColor(roomId), getInitialLetters(displayName), pixelsSide);
                 }
 
                 // until the dedicated avatar is loaded.
