@@ -972,7 +972,6 @@ Note que esta acção reiniciará a aplicação e poderá demorar algum tempo.</
     <string name="command_description_topic">Define o tópico da sala</string>
     <string name="command_description_kick_user">Expulsa o utilizador com o ID fornecido</string>
     <string name="command_description_nick">Altera o seu nome público</string>
-    <string name="command_description_markdown">Activa/Desactiva o Markdown</string>
     <string name="command_description_clear_scalar_token">Repara a gestão de aplicações Matrix</string>
 
     <string name="notification_off">Desactivado</string>

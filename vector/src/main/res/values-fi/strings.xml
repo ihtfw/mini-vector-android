@@ -838,9 +838,6 @@ Voit tehdä sen nyt tai myöhemmin sovelluksen asetuksissa.</string>
     <string name="rejoin">Liity uudelleen</string>
     <string name="forget_room">Unohda huone</string>
     <string name="room_settings_no_flair">Tämä huone ei näytä tyyliään millekään yhteisölle</string>
-    <string name="settings_send_markdown">Markdown-muotoilu</string>
-    <string name="markdown_has_been_enabled">Markdown on käytössä.</string>
-    <string name="markdown_has_been_disabled">Markdown on pois käytöstä.</string>
 
     <string name="settings_call_category">Puhelut</string>
     <string name="settings_call_ringtone_dialog_title">Valitse soittoääni puheluille:</string>
@@ -1101,7 +1098,6 @@ Haluatko lisätä paketteja?</string>
     <string name="settings_cryptography_manage_keys">Salausavainten hallinta</string>
     <string name="settings_inline_url_preview_summary">Esikatsele linkkejä keskustelussa (vaatii tuen kotipalvelimelta).</string>
     <string name="settings_send_typing_notifs_summary">Anna muiden tietää, kun olet kirjoittamassa viestiä.</string>
-    <string name="settings_send_markdown_summary">Muotoile viestit Markdownilla ennen niiden lähettämistä. Tämä sallii edistyneen muotoilun, kuten asteriskien käytön kursiivin tekstin aikaansaamiseksi.</string>
     <string name="settings_show_read_receipts_summary">Paina lukukuittauksesta nähdäksesi tarkemman listan.</string>
     <string name="settings_show_join_leave_messages_summary">Ei vaikuta kutsuihin, potkuihin ja estoihin.</string>
     <string name="settings_show_avatar_display_name_changes_messages_summary">Sisältää hahmokuvat ja näyttönimien vaihdot.</string>
@@ -1171,7 +1167,6 @@ Haluatko lisätä paketteja?</string>
     <string name="command_description_topic">Aseta huoneen otsikko</string>
     <string name="command_description_kick_user">Potkaisee käyttäjän pois</string>
     <string name="command_description_nick">Vaihtaa näytettävän nimimerkkisi</string>
-    <string name="command_description_markdown">Markdown päällä/pois</string>
     <string name="command_description_clear_scalar_token">Matrix-sovellusten hallinnan korjaamiseen</string>
 
     <string name="notification_silent">Hiljainen</string>

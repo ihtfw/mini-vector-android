@@ -1010,7 +1010,6 @@ Email также позволит вам при необходимости во�
     <string name="command_description_topic">Задать тему комнаты</string>
     <string name="command_description_kick_user">Выкинуть пользователя с заданным ID</string>
     <string name="command_description_nick">Изменить ваш псевдоним</string>
-    <string name="command_description_markdown">Вкл/выкл markdown</string>
     <string name="room_tombstone_versioned_description">Эта комната была заменена и больше не активна</string>
     <string name="room_tombstone_continuation_link">Этот разговор продолжается здесь</string>
     <string name="room_tombstone_continuation_description">Эта комната является продолжением другого разговора</string>
@@ -1126,7 +1125,6 @@ Email также позволит вам при необходимости во�
 
     <string name="settings_notification_troubleshoot">Поиск проблем с уведомлениями</string>
     <string name="settings_send_typing_notifs">Оправлять уведомления о наборе текста</string>
-    <string name="settings_send_markdown">Markdown форматирование</string>
     <string name="startup_notification_fdroid_battery_optim_title">Фоновое Соединение</string>
     <string name="startup_notification_fdroid_battery_optim_button_grant">Предоставить разрешение</string>
 
@@ -1138,8 +1136,6 @@ Email также позволит вам при необходимости во�
     <string name="settings_labs_enable_send_voice_summary">Эта опция требует стороннего приложения для записи сообщений.</string>
 
     <string name="command_problem_with_parameters">Команде \"%s\" нужно больше параметров, или некоторые параметры неверны.</string>
-    <string name="markdown_has_been_enabled">Markdown включен.</string>
-    <string name="markdown_has_been_disabled">Markdown выключен.</string>
 
     <string name="show_info_area_always">Всегда</string>
     <string name="show_info_area_messages_and_errors">Для сообщений и ошибок</string>
@@ -1222,7 +1218,6 @@ Email также позволит вам при необходимости во�
 
     <string name="settings_inline_url_preview_summary">Предпросмотр ссылок в чате, когда ваш домашний сервер поддерживает эту функцию.</string>
     <string name="settings_send_typing_notifs_summary">Позволя пользователи знают, что вы печатаете.</string>
-    <string name="settings_send_markdown_summary">Форматировать сообщения, используя markdown. Для расширенного форматирования, например, звездочки для курсивного текста.</string>
     <string name="settings_show_read_receipts">Показывать уведомления о прочтении</string>
     <string name="settings_show_read_receipts_summary">Нажмите на уведомление оп прочтении для получения подробного списка.</string>
     <string name="settings_show_join_leave_messages">Показывать события о вступлении/выходе</string>

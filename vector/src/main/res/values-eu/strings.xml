@@ -934,7 +934,6 @@ Kontuan izan ekintza honek aplikazioa berrabiaraziko duela eta denbora bat behar
     <string name="command_description_topic">Ezarri gelaren mintzagaia</string>
     <string name="command_description_kick_user">Id zehatz bat duen erabiltzailea kanporatzen du</string>
     <string name="command_description_nick">Zure pantaila-izena aldatzen du</string>
-    <string name="command_description_markdown">Markdown bai/ez</string>
     <string name="command_description_clear_scalar_token">Matrix aplikazioen kudeaketa konpontzeko</string>
 
     <string name="room_tombstone_versioned_description">Gela hau ordeztu da eta ez dago jada aktibo</string>
@@ -1040,8 +1039,6 @@ Kontuan izan ekintza honek aplikazioa berrabiaraziko duela eta denbora bat behar
     <string name="settings_inline_url_preview_summary">Erakutsi txateko esteken aurrebista hasiera-zerbitzariak onartzen badu.</string>
     <string name="settings_send_typing_notifs">Bidali idazte jakinarazpenak</string>
     <string name="settings_send_typing_notifs_summary">Eman beste erabiltzaileei ezagutzera idazten ari zarela.</string>
-    <string name="settings_send_markdown">Markdown formatua</string>
-    <string name="settings_send_markdown_summary">Eman formatua mezuei markdown sintaxia erabiliz hauek bidali aurretik. Honek formatu aurreratua ahalbidetzen du, adibidez letra etzana adierazteko asteriskoekin inguratzea.</string>
     <string name="settings_show_read_receipts">Erakutsi irakurragiriak</string>
     <string name="settings_show_read_receipts_summary">Egin klik irakurragirietan zerrenda xehetsu bat ikusteko.</string>
     <string name="settings_show_join_leave_messages">Erakutsi batu eta ateratze gertaerak</string>
@@ -1053,8 +1050,6 @@ Kontuan izan ekintza honek aplikazioa berrabiaraziko duela eta denbora bat behar
     <string name="settings_labs_enable_send_voice_summary">Aukera honek hirugarrengoen aplikazio bat behar du mezuak grabatzeko.</string>
 
     <string name="command_problem_with_parameters">\"%s\" komandoak parametro gehiago behar ditu, edo parametroren bat okerra da.</string>
-    <string name="markdown_has_been_enabled">Markdown aktibatu da.</string>
-    <string name="markdown_has_been_disabled">Markdown desaktibatu da.</string>
 
     <string name="accept">Onartu</string>
 

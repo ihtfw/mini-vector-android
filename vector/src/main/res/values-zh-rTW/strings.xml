@@ -904,7 +904,6 @@ Matrix 中的消息可見度類似于電子郵件。我們忘記您的郵件意�
     <string name="command_description_topic">設定聊天室主題</string>
     <string name="command_description_kick_user">踢除指定 id 的使用者</string>
     <string name="command_description_nick">變更您的顯示暱稱</string>
-    <string name="command_description_markdown">開啟／關閉 markdown</string>
     <string name="command_description_clear_scalar_token">為了修復 Matrix 應用程式管理</string>
 
     <string name="room_tombstone_versioned_description">這個聊天室已被取代，且不再活躍</string>
@@ -986,8 +985,6 @@ Matrix 中的消息可見度類似于電子郵件。我們忘記您的郵件意�
     <string name="settings_inline_url_preview_summary">當您的家伺服器支援此功能時在聊天中預覽連結。</string>
     <string name="settings_send_typing_notifs">傳送輸入通知</string>
     <string name="settings_send_typing_notifs_summary">讓其他使用者知道您正在輸入。</string>
-    <string name="settings_send_markdown">Markdown 格式</string>
-    <string name="settings_send_markdown_summary">在您傳送之前使用 Markdown 格式化訊息。這讓您可以使用進階的格式化，如使用星號來顯示斜體文字。</string>
     <string name="settings_show_read_receipts">顯示讀取回條</string>
     <string name="settings_show_read_receipts_summary">點選讀取回條以顯示詳細資料。</string>
     <string name="settings_show_join_leave_messages">顯示加入與離開的活動</string>
@@ -999,8 +996,6 @@ Matrix 中的消息可見度類似于電子郵件。我們忘記您的郵件意�
     <string name="settings_labs_enable_send_voice_summary">這個選項需要第三方應用程式來錄製訊息。</string>
 
     <string name="command_problem_with_parameters">指令「%s」需要更多參數，或是有一些參數不正確。</string>
-    <string name="markdown_has_been_enabled">Markdown 已啟用。</string>
-    <string name="markdown_has_been_disabled">Markdown 已停用。</string>
 
     <string name="settings_info_area_show">顯示資訊區域</string>
     <string name="show_info_area_always">總是</string>

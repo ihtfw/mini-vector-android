@@ -60,7 +60,6 @@ import android.widget.Toast;
 import com.google.gson.JsonParser;
 
 import org.jetbrains.annotations.NotNull;
-import org.matrix.androidsdk.HomeServerConnectionConfig;
 import org.matrix.androidsdk.MXSession;
 import org.matrix.androidsdk.call.IMXCall;
 import org.matrix.androidsdk.call.IMXCallListener;
@@ -126,7 +125,6 @@ import im.vector.util.QuoteSpannableStringBuilder;
 import im.vector.util.ReadMarkerManager;
 import im.vector.util.RoomUtils;
 import im.vector.util.SlashCommandsParser;
-import im.vector.util.VectorMarkdownParser;
 import im.vector.util.VectorRoomMediasSender;
 import im.vector.util.VectorUtils;
 import im.vector.view.ActiveWidgetsBanner;
@@ -1915,20 +1913,11 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
         mVectorMessageListFragment.cancelSelectionMode();
     }
 
-    private boolean mIsMarkDowning;
-
     /**
      * Send the editText text.
      */
     private void sendTextMessage() {
-        if (mIsMarkDowning) {
-            return;
-        }
-
-        // ensure that a message is not sent twice
-        // markdownToHtml seems being slow in some cases
         mSendImageView.setEnabled(false);
-        mIsMarkDowning = true;
 
         String textToSend = mEditText.getText().toString().trim();
 
@@ -1940,36 +1929,12 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
             handleSlashCommand = true;
         }
 
-        VectorApp.markdownToHtml(textToSend, new VectorMarkdownParser.IVectorMarkdownParserListener() {
-            @Override
-            public void onMarkdownParsed(final String text, final String htmlText) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mSendImageView.setEnabled(true);
-                        mIsMarkDowning = false;
-                        enableActionBarHeader(HIDE_ACTION_BAR_HEADER);
-                        /*
-                        String htmlTextWithQuote = htmlText;
-                        if (mQuoteEvent != null){
-                            String sender = mQuoteEvent.getSender();
-                            String eventId = mQuoteEvent.eventId;
-                            String roomId = mQuoteEvent.roomId;
+        mSendImageView.setEnabled(true);
+        enableActionBarHeader(HIDE_ACTION_BAR_HEADER);
 
-                            MXSession session = getSession(getIntent());
-                            HomeServerConnectionConfig homeServerConfig = session.getHomeServerConfig();
-                            Uri homeServer = homeServerConfig.getHomeserverUri();
-                            String host = homeServer.getHost();
-                            htmlTextWithQuote = "<mx-reply><blockquote>" +
-                                    "<a href=\"https://matrix.to/#/" + roomId + "/" + eventId + "?via=" + host + "\">In reply to</a> <a href=\"https://matrix.to/#/" + sender + "\">" + sender + "</a>" +
-                                    "</blockquote></mx-reply>" + htmlText;
-                        }*/
-                        sendMessage(text, TextUtils.equals(text, htmlText) ? null : htmlText, Message.FORMAT_MATRIX_HTML, handleSlashCommand);
-                        mEditText.setText("");
-                    }
-                });
-            }
-        });
+        sendMessage(textToSend, null, Message.MSGTYPE_TEXT, handleSlashCommand);
+
+        mEditText.setText("");
     }
 
     /**
@@ -1981,18 +1946,20 @@ public class VectorRoomActivity extends MXCActionBarActivity implements
      * @param handleSlashCommand true to try to handle a Slash command
      */
     public void sendMessage(String body, String formattedBody, String format, boolean handleSlashCommand) {
-        if (!TextUtils.isEmpty(body)) {
-            if (!handleSlashCommand
-                    || !SlashCommandsParser.manageSplashCommand(this, mSession, mRoom, body, formattedBody, format)) {
-                //Event currentSelectedEvent = mVectorMessageListFragment.getCurrentSelectedEvent();
+        if (TextUtils.isEmpty(body)) {
+            return;
+        }
 
-                cancelSelectionMode();
+        if (!handleSlashCommand
+                || !SlashCommandsParser.manageSplashCommand(this, mSession, mRoom, body, formattedBody, format)) {
+            //Event currentSelectedEvent = mVectorMessageListFragment.getCurrentSelectedEvent();
 
-                mVectorMessageListFragment.sendTextMessage(body, formattedBody, mQuoteEvent, format);
+            cancelSelectionMode();
 
-                mQuoteEvent = null;
-                mQuoteLayout.setVisibility(View.GONE);
-            }
+            mVectorMessageListFragment.sendTextMessage(body, formattedBody, mQuoteEvent, format);
+
+            mQuoteEvent = null;
+            mQuoteLayout.setVisibility(View.GONE);
         }
     }
 

@@ -215,7 +215,6 @@
 
     <string name="settings_devices_list">Συσκευές</string>
     <string name="settings_inline_url_preview">Προεπισκόπιση συνδέσμων</string>
-    <string name="settings_send_markdown">Μορφοποίηση Markdown</string>
     <string name="settings_deactivate_account_section">Απενεργοποίηση λογαριασμού</string>
     <string name="settings_deactivate_my_account">Απενεργοποίηση του λογαριασμού μου</string>
 

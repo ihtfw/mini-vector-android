@@ -921,7 +921,6 @@
     <string name="command_description_topic">Слага тема на стаята</string>
     <string name="command_description_kick_user">Изгонва потребител с даден идентификатор</string>
     <string name="command_description_nick">Променя името Ви</string>
-    <string name="command_description_markdown">Включва/изключва markdown</string>
     <string name="command_description_clear_scalar_token">Поправя управлението на Matrix приспособленията</string>
 
     <string name="room_tombstone_versioned_description">Тази стая е била заменена с нова и вече не е активна</string>
@@ -1033,8 +1032,6 @@
     <string name="settings_inline_url_preview_summary">Прегледи на връзки директно в самия чат, когато функцията се поддържа от сървъра.</string>
     <string name="settings_send_typing_notifs">Изпращане на информация, че пиша</string>
     <string name="settings_send_typing_notifs_summary">Показва на другите, че в момента пишете.</string>
-    <string name="settings_send_markdown">Markdown форматиране</string>
-    <string name="settings_send_markdown_summary">Форматиране на съобщенията с Markdown синтаксис преди изпращане. Позволява разширено форматиране. Например: използване на звездички за показване на наклонен текст.</string>
     <string name="settings_show_read_receipts">Показване на потвърждения за прочитане</string>
     <string name="settings_show_read_receipts_summary">Кликнете на потвържденията за детайлен списък.</string>
     <string name="settings_show_join_leave_messages">Показване на събития за присъединяване/напускане</string>
@@ -1048,8 +1045,6 @@
     <string name="settings_labs_enable_send_voice_summary">Тази опция изисква отделно приложение за записване на съобщенията.</string>
 
     <string name="command_problem_with_parameters">Командата \"%s\" изисква още параметри, или някои от параметрите са невалидни.</string>
-    <string name="markdown_has_been_enabled">Markdown е включен.</string>
-    <string name="markdown_has_been_disabled">Markdown е изключен.</string>
 
     <string name="settings_troubleshoot_diagnostic">Диагностика на проблеми</string>
     <string name="settings_troubleshoot_diagnostic_run_button_title">Изпълни тестовете</string>

@@ -1005,7 +1005,6 @@
     <string name="command_description_unban_user">يُلغي المنع عن المستخدم حسب المعرّف المعطى</string>
     <string name="command_description_op_user">يُحدّد مستوى قدرة المستخدم</string>
     <string name="command_description_invite_user">يدعو المستخدم حسب المعرّف المعطى إلى الغرفة الحالية</string>
-    <string name="command_description_markdown">شغّل/عطّل مارك‌داون</string>
     <plurals name="group_members">
         <item quantity="zero">لا أعضاء</item>
         <item quantity="one">عضو واحد</item>

@@ -939,7 +939,6 @@ Veuillez noter que cette action redémarrera l’application et pourra prendre u
     <string name="command_description_topic">Défini le sujet du salon</string>
     <string name="command_description_kick_user">Expulse l’utilisateur avec l’identifiant fourni</string>
     <string name="command_description_nick">Change le surnom affiché</string>
-    <string name="command_description_markdown">Markdown activé/désactivé</string>
     <string name="command_description_clear_scalar_token">Pour réparer la gestion des applications Matrix</string>
 
     <string name="room_tombstone_versioned_description">Ce salon a été remplacé et n’est plus actif</string>
@@ -1039,8 +1038,6 @@ Veuillez noter que cette action redémarrera l’application et pourra prendre u
     <string name="settings_inline_url_preview_summary">Afficher un aperçu des liens dans la discussion quand votre serveur d’accueil le permet.</string>
     <string name="settings_send_typing_notifs">Envoyer des notifications de saisie</string>
     <string name="settings_send_typing_notifs_summary">Les autres utilisateurs pourront voir que vous êtes en train d’écrire.</string>
-    <string name="settings_send_markdown">Format Markdown</string>
-    <string name="settings_send_markdown_summary">Rédiger les messages en utilisant la syntaxe Markdown. Cela permet d’utiliser des styles avancés comme les astérisques pour afficher du texte en italique.</string>
     <string name="settings_show_read_receipts">Afficher les accusés de réception</string>
     <string name="settings_show_read_receipts_summary">Cliquer sur les accusés de réception pour une liste détaillée.</string>
     <string name="settings_show_join_leave_messages">Afficher les notifications d’arrivée et de départ</string>
@@ -1052,8 +1049,6 @@ Veuillez noter que cette action redémarrera l’application et pourra prendre u
     <string name="settings_labs_enable_send_voice_summary">Cette option nécessite une autre application pour enregistrer les messages.</string>
 
     <string name="command_problem_with_parameters">La commande « %s » nécessite plus de paramètres, ou certains paramètres ne sont pas corrects.</string>
-    <string name="markdown_has_been_enabled">Le Markdown a été activé.</string>
-    <string name="markdown_has_been_disabled">Le Markdown a été désactivé.</string>
 
     <string name="settings_call_category">Appels</string>
     <string name="settings_call_ringtone_use_riot_ringtone">Utiliser la sonnerie par défaut de Riot pour les appels entrants</string>

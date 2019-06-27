@@ -436,7 +436,6 @@
     <string name="settings_devices_list">Pajisje</string>
     <string name="settings_inline_url_preview">Paraparje URL-je Brendazi</string>
     <string name="settings_send_typing_notifs">Dërgo njoftime shtypjesh</string>
-    <string name="settings_send_markdown">Formatim Markdown</string>
     <string name="settings_always_show_timestamps">Shfaq vula kohore për krejt mesazhet</string>
     <string name="settings_12_24_timestamps">Vulat kohore shfaqi në formatin 12-orësh</string>
     <string name="settings_show_read_receipts">Shfaq dëftesash leximi</string>
@@ -656,8 +655,6 @@
     <string name="command_description_topic">Caktoni temë dhome</string>
     <string name="command_description_kick_user">Përzë përdoruesin me ID-në e dhënë</string>
     <string name="command_description_nick">Ndryshon nofkën tuaj në ekran</string>
-    <string name="markdown_has_been_enabled">Markdown është i aktivizuar.</string>
-    <string name="markdown_has_been_disabled">Markdown është çaktivizuar.</string>
 
     <string name="notification_off">Off</string>
     <string name="notification_noisy">Të zhurmshëm</string>
@@ -975,7 +972,7 @@
     <string name="settings_start_on_boot">Nise gjatë nisjes së sistemit</string>
     <string name="settings_inline_url_preview_summary">Parashihini lidhjet brenda fjalosjes, kur shërbyesi juaj home e mbulon këtë veçori.</string>
     <string name="settings_send_typing_notifs_summary">Lejojuni përdoruesve të tjerë të dinë se po shtypni.</string>
-    <string name="settings_send_markdown_summary">Formatojini mesazhet duke përdorur sintaksën Markdown përpara se të dërgohen. Kjo lejon formatim të thelluar, f.v., përdorimi i yllthit për ta shfaqur tekstin me të pjerrëta.</string>
+
     <string name="settings_show_join_leave_messages_summary">Nuk prek ftesat, përzëniet dhe dëbimet.</string>
     <string name="startup_notification_privacy_message">Riot-i mund të xhirojë në prapaskenë që të administrojë njoftimet tuaja në rrugë të sigurt dhe privatisht. Kjo mund të ndikojë në harxhimin e baterisë.</string>
     <string name="settings_opt_in_of_analytics_summary">Riot-i grumbullon të dhëna analitike anonime që të na lejojë ta përmirësojmë aplikacionin.</string>
@@ -990,7 +987,6 @@
     <string name="settings_labs_enable_send_voice_summary">Kjo mundëso lyp një aplikacion nga palë e tretë për të regjistruar mesazhet.</string>
 
     <string name="command_description_emote">Shfaq veprimin</string>
-    <string name="command_description_markdown">On/Off sintakse Markdown</string>
     <string name="settings_lazy_loading_description">Përmirësoni punimin duke ngarkuar anëtarë dhome vetëm kur sillen para syve.</string>
     <plurals name="notification_unread_notified_messages">
         <item quantity="one">1 mesazh i njoftuar i palexuar</item>

@@ -857,7 +857,6 @@ Ukjende einingar:</string>
     <string name="command_description_topic">Set romemnet</string>
     <string name="command_description_kick_user">Sparkar brukarar med gjeven ID</string>
     <string name="command_description_nick">Forandrar visingsnamnet ditt</string>
-    <string name="command_description_markdown">På/Av markdown</string>
     <string name="command_description_clear_scalar_token">For å retta opp i Matrix-Æppadministrering</string>
 
     <string name="notification_off">Av</string>

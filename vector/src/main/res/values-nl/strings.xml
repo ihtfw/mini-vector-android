@@ -997,7 +997,6 @@
     <string name="command_description_topic">Onderwerp van het gesprek instellen</string>
     <string name="command_description_kick_user">Stuurt gebruiker met gegeven ID eruit</string>
     <string name="command_description_nick">Wijzigt uw weergavenaam</string>
-    <string name="command_description_markdown">Markdown aan/uit</string>
     <string name="room_tombstone_versioned_description">Dit gesprek is vervangen en is niet langer actief</string>
     <string name="room_tombstone_continuation_link">Het gesprek wordt hier voortgezet</string>
     <string name="room_tombstone_continuation_description">Dit gesprek is een voortzetting van een ander gesprek</string>
@@ -1084,8 +1083,6 @@
     <string name="settings_inline_url_preview_summary">Voorvertoning van koppelingen in het gesprek tonen (als uw thuisserver deze functie ondersteunt).</string>
     <string name="settings_send_typing_notifs">Typmeldingen versturen</string>
     <string name="settings_send_typing_notifs_summary">Laat andere gebruikers weten dat u aan het typen bent.</string>
-    <string name="settings_send_markdown">Markdown-opmaak</string>
-    <string name="settings_send_markdown_summary">Maak berichten op met Markdown-syntax voordat ze verstuurd worden. Hiermee kunt u uitgebreide opmaak gebruiken, zoals sterretjes voor schuingedrukte tekst.</string>
     <string name="settings_show_read_receipts">Leesbevestigingen weergeven</string>
     <string name="settings_show_read_receipts_summary">Tik op de leesbevestigingen voor een uitgebreide lijst.</string>
     <string name="settings_show_join_leave_messages">Toetredingen en verlatingen weergeven</string>
@@ -1269,8 +1266,6 @@
     <string name="settings_labs_enable_send_voice_summary">Deze optie vereist een externe app om de berichten mee op te nemen.</string>
 
     <string name="command_problem_with_parameters">De opdracht ‘%s’ heeft meer parameters nodig, of sommige parameters zijn onjuist.</string>
-    <string name="markdown_has_been_enabled">Markdown is ingeschakeld.</string>
-    <string name="markdown_has_been_disabled">Markdown is uitgeschakeld.</string>
 
     <string name="notification_silent">Stil</string>
     <string name="error_empty_field_enter_user_name">Voer een gebruikersnaam in.</string>

@@ -994,7 +994,6 @@
     <string name="command_description_topic">Встановити тему кімнати</string>
     <string name="command_description_kick_user">Копнути користувача із вказаним ID</string>
     <string name="command_description_nick">Змінити Ваш псевдонім</string>
-    <string name="command_description_markdown">Увімкнути/Вимкнути розмітку Markdown</string>
     <string name="command_description_clear_scalar_token">Для виправлення керування додатками Matrix</string>
 
     <string name="create">Створити</string>
@@ -1105,8 +1104,6 @@
     <string name="settings_inline_url_preview_summary">Попередній перегляд посилань у чаті, у разі якщо Ваш сервер підтримує таку можливість.</string>
     <string name="settings_send_typing_notifs">Надсилати сповіщення про набір повідомлення</string>
     <string name="settings_send_typing_notifs_summary">Дозволити іншим користувачам бачити коли Ви набираєте повідомлення.</string>
-    <string name="settings_send_markdown">Форматування Markdown</string>
-    <string name="settings_send_markdown_summary">Форматувати повідомлення з використанням синтаксису Markdown перед відправкою. Це дає можливість розгорнутого форматування, такого як використання зірочок для відображення курсивного тексту.</string>
     <string name="settings_show_read_receipts">Показувати підтвердження прочитання</string>
     <string name="settings_show_read_receipts_summary">Натискати на підтвердження прочитання для детального переліку.</string>
     <string name="settings_show_join_leave_messages">Показувати події приєднання та виходу</string>
@@ -1118,8 +1115,6 @@
     <string name="settings_labs_enable_send_voice_summary">Ця опція потребує стороннього додатку для запису повідомлення.</string>
 
     <string name="command_problem_with_parameters">Команда \"%s\" потребує більше параметрів, або один з них невірний.</string>
-    <string name="markdown_has_been_enabled">Markdown задіяно.</string>
-    <string name="markdown_has_been_disabled">Markdown вимкнено.</string>
 
     <string name="settings_call_category">Виклики</string>
     <string name="settings_call_ringtone_use_riot_ringtone">Використовувати стандартний рингтон Riot для вхідних викликів</string>

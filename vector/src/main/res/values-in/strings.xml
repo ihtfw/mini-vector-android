@@ -630,7 +630,6 @@ Perhatikan bahwa tindakan ini akan memulai ulang aplikasi dan mungkin cukup mema
     <string name="command_description_topic">Tentukan topik ruang</string>
     <string name="command_description_kick_user">Keluarkan pengguna dengan id berikut</string>
     <string name="command_description_nick">Ubah nama panggilan layar Anda</string>
-    <string name="command_description_markdown">Mati/Nyalakan markdown</string>
     <string name="command_description_clear_scalar_token">Untuk memperbaiki kepengurusan Apps Matrix</string>
 
     <string name="notification_off">Mati</string>
@@ -1099,8 +1098,6 @@ Aktivitas yang dilakukan aplikasi ini akan terhalang ketika beroperasi di balik 
     <string name="settings_inline_url_preview_summary">Pratinjau tautan dalam obrolan apabila homeserver mendukung fitur ini.</string>
     <string name="settings_send_typing_notifs">Kirim pemberitahuan mengetik</string>
     <string name="settings_send_typing_notifs_summary">Beritahu pengguna lain bahwa Anda sedang mengetik.</string>
-    <string name="settings_send_markdown">Format markdown</string>
-    <string name="settings_send_markdown_summary">Format pesan menggunakan sintaks markdown sebelum dikirim. Ini mengijinkan format lanjutan seperti menggunakan tanda bintang untuk menunjukkan teks miring.</string>
     <string name="settings_show_read_receipts">Tunjukkan tanda telah dibaca</string>
     <string name="settings_show_read_receipts_summary">Klik tanda telah dibaca untuk daftar yang lebih rinci.</string>
     <string name="settings_show_join_leave_messages">Tunjukkan kejadian bergabung dan meninggalkan</string>

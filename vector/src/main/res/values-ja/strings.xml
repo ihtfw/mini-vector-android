@@ -927,7 +927,6 @@ Riotアプリがあなたの電話帳へアクセスすることを許可しま�
     <string name="command_description_topic">部屋のテーマを設定</string>
     <string name="command_description_kick_user">指定したIDのユーザとの接続を切断</string>
     <string name="command_description_nick">表示するニックネームを変更</string>
-    <string name="command_description_markdown">Markdown書式の入/切</string>
     <string name="command_description_clear_scalar_token">Matrixアプリの管理を修正するには</string>
 
     <plurals name="group_members">

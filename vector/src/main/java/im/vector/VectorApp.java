@@ -31,8 +31,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
@@ -78,7 +76,6 @@ import im.vector.util.PermissionsToolsKt;
 import im.vector.util.PhoneNumberUtils;
 import im.vector.util.PreferencesManager;
 import im.vector.util.RageShake;
-import im.vector.util.VectorMarkdownParser;
 import im.vector.util.VectorUtils;
 
 /**
@@ -130,11 +127,6 @@ public class VectorApp extends MultiDexApplication {
      * Monitor the created activities to detect memory leaks.
      */
     private final List<String> mCreatedActivities = new ArrayList<>();
-
-    /**
-     * Markdown parser
-     */
-    private VectorMarkdownParser mMarkdownParser;
 
     private NotificationDrawerManager mNotificationDrawerManager;
 
@@ -334,14 +326,6 @@ public class VectorApp extends MultiDexApplication {
             }
         });
 
-        // create the markdown parser
-        try {
-            mMarkdownParser = new VectorMarkdownParser(this);
-        } catch (Exception e) {
-            // reported by GA
-            Log.e(LOG_TAG, "cannot create the mMarkdownParser " + e.getMessage(), e);
-        }
-
         // track external language updates
         // local update from the settings
         // or screen rotation !
@@ -362,26 +346,6 @@ public class VectorApp extends MultiDexApplication {
             updateApplicationSettings(VectorLocale.INSTANCE.getApplicationLocale(),
                     FontScale.INSTANCE.getFontScalePrefValue(),
                     ThemeUtils.INSTANCE.getApplicationTheme(this));
-        }
-    }
-
-    /**
-     * Parse a markdown text
-     *
-     * @param text     the text to parse
-     * @param listener the result listener
-     */
-    public static void markdownToHtml(final String text, final VectorMarkdownParser.IVectorMarkdownParserListener listener) {
-        if (null != getInstance().mMarkdownParser) {
-            getInstance().mMarkdownParser.markdownToHtml(text, listener);
-        } else {
-            (new Handler(Looper.getMainLooper())).post(new Runnable() {
-                @Override
-                public void run() {
-                    // GA issue
-                    listener.onMarkdownParsed(text, null);
-                }
-            });
         }
     }
 

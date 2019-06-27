@@ -938,7 +938,6 @@ Vedd figyelembe, hogy az alkalmazás újraindul ami sok időt vehet igénybe.</s
     <string name="command_description_topic">A szoba témájának beállítása</string>
     <string name="command_description_kick_user">Megadott azonosítójú felhasználó kirúgása</string>
     <string name="command_description_nick">Becenév megváltoztatása</string>
-    <string name="command_description_markdown">Markdown ki-,bekapcsolása</string>
     <string name="command_description_clear_scalar_token">Matrix-kisalkalmazás-token törlése</string>
 
     <string name="room_tombstone_versioned_description">Ez a szoba le lett cserélve és már nem aktív</string>
@@ -1038,8 +1037,6 @@ Vedd figyelembe, hogy az alkalmazás újraindul ami sok időt vehet igénybe.</s
     <string name="settings_inline_url_preview_summary">URL előnézet a csevegő ablakban, ha a Matrix szervered támogatja ezt a lehetőséget.</string>
     <string name="settings_send_typing_notifs">Gépelés visszajelzés küldése</string>
     <string name="settings_send_typing_notifs_summary">Hogy a többi felhasználó lássa, ha gépelsz.</string>
-    <string name="settings_send_markdown">Markdown formázás</string>
-    <string name="settings_send_markdown_summary">Szöveg formázása markdown szabályok szerint küldés előtt. Ezzel például olyan haladó szövegformázást tudsz megvalósítani, mint két csillag közötti szöveg dőltként való megjelenítése.</string>
     <string name="settings_show_read_receipts">Olvasás visszajelzés megjelenítése</string>
     <string name="settings_show_read_receipts_summary">További információér kattints az olvasás visszaigazolásokra.</string>
     <string name="settings_show_join_leave_messages">Be-, és kilépési események megjelenítése</string>
@@ -1051,8 +1048,6 @@ Vedd figyelembe, hogy az alkalmazás újraindul ami sok időt vehet igénybe.</s
     <string name="settings_labs_enable_send_voice_summary">Ehhez az opcióhoz egy harmadik féltől származó alkalmazásra van szükség, hogy felvedd az üzenetet.</string>
 
     <string name="command_problem_with_parameters">\"%s\" parancsnak több paraméterre van szüksége vagy valamelyik paraméter hibás.</string>
-    <string name="markdown_has_been_enabled">Markdown engedélyezve.</string>
-    <string name="markdown_has_been_disabled">Markdown tiltva.</string>
 
     <string name="settings_call_category">Hívások</string>
     <string name="settings_call_ringtone_use_riot_ringtone">Az alapértelmezett Riot csengőhang használata bejövő hívásokhoz</string>

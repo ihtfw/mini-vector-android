@@ -996,7 +996,6 @@ Pozor! Vykonaním tejto akcie reštartujete aplikáciu a opätovné načítanie 
     <string name="command_description_topic">Nastaví tému aktuálnej miestnosti</string>
     <string name="command_description_kick_user">Vykáže zadaného používateľa z miestnosti</string>
     <string name="command_description_nick">Mení vaše zobrazované meno / prezývku</string>
-    <string name="command_description_markdown">Zapína alebo vypína formátovanie textu pomocou markdown</string>
     <string name="command_description_clear_scalar_token">Užitočné na opravu spravovania aplikácií matrix</string>
 
     <plurals name="group_members">
@@ -1155,8 +1154,6 @@ Prosím skúste reštartovať aplikáciu.</string>
     <string name="settings_inline_url_preview_summary">Zobraziť náhľady odkazov v konverzáciách (ak sú podporované domovským serverom).</string>
     <string name="settings_send_typing_notifs">Odosielať oznámenie keď píšete</string>
     <string name="settings_send_typing_notifs_summary">Umožniť ostatným používateľom vidieť, kedy píšete.</string>
-    <string name="settings_send_markdown">Formátovanie pomocou Markdown</string>
-    <string name="settings_send_markdown_summary">Formátovať správy použitím jazyka markdown. Umožňuje pokročilé formátovanie ako napríklad kurzívu hviezdičkami.</string>
     <string name="settings_show_read_receipts">Zobrazovať potvrdenia o prečítaní</string>
     <string name="settings_show_read_receipts_summary">Klepnutím na potvrdenie o prečítaní zobrazíte podrobný zoznam.</string>
     <string name="settings_show_join_leave_messages">Zobrazovať vstup do a opustenie miestnosti</string>
@@ -1180,8 +1177,6 @@ Na ďalšej obrazovke vás systém požiada o povolenie vždy bežať na pozadí
     <string name="settings_labs_enable_send_voice_summary">Vyžaduje externú aplikáciu na nahrávanie zvuku.</string>
 
     <string name="command_problem_with_parameters">Príkaz \"%s\" vyžaduje viac argumentov, alebo nie sú všetky zadané správne.</string>
-    <string name="markdown_has_been_enabled">Markdown bol povolený.</string>
-    <string name="markdown_has_been_disabled">Markdown bol zakázaný.</string>
 
     <string name="no_valid_google_play_services_apk">Nenájdená aktívna aplikácia Služby Google Play. Je možné, že nebude správne fungovať doručovanie oznámení.</string>
 

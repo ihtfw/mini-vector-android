@@ -993,7 +993,6 @@ Ten en cuenta que esta acción reiniciará la aplicación y puede tardar algo de
     <string name="command_description_topic">Establecer el tema de la sala</string>
     <string name="command_description_kick_user">Expulsa al usuario con la ID dada</string>
     <string name="command_description_nick">Cambia tu apodo público</string>
-    <string name="command_description_markdown">Activar/Desactivar markdown</string>
     <string name="command_description_clear_scalar_token">Para reparar la gestión de las Aplicaciones de Matrix</string>
 
     <string name="settings_preview_media_before_sending">Vista previa de medios antes de enviar</string>

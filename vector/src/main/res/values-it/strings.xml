@@ -982,7 +982,6 @@ La visibilità dei messaggi in Matrix è simile alle email. \"Dimenticare i tuoi
     <string name="command_description_topic">Imposta argomento della stanza</string>
     <string name="command_description_kick_user">Butta fuori un utente con un dato id</string>
     <string name="command_description_nick">Cambia il tuo nome visualizzato</string>
-    <string name="command_description_markdown">Markdown attivo / spento</string>
     <string name="command_description_clear_scalar_token">Per correggere la gestione delle app Matrix</string>
 
     <string name="room_tombstone_versioned_description">Questa stanza è stata sostituita e non è più attiva</string>
@@ -1085,8 +1084,6 @@ Tieni presente che questa azione riavvierà l\'app e potrebbe richiedere del tem
     <string name="settings_inline_url_preview_summary">Visualizza anteprima dei link all\'interno della chat quando il tuo server home supporta questa funzione.</string>
     <string name="settings_send_typing_notifs">Invia notifiche di digitazione</string>
     <string name="settings_send_typing_notifs_summary">Fai sapere agli altri utenti che stai scrivendo.</string>
-    <string name="settings_send_markdown">Formattazione markdown</string>
-    <string name="settings_send_markdown_summary">Formatta i messaggi utilizzando la sintassi markdown prima dell\'invio. Ciò consente una formattazione avanzata come l\'uso degli asterischi per visualizzare il testo in corsivo.</string>
     <string name="settings_show_read_receipts">Mostra le conferme di lettura</string>
     <string name="settings_show_read_receipts_summary">Clicca sulle conferme di lettura per un elenco dettagliato.</string>
     <string name="settings_show_join_leave_messages">Mostra eventi di ingresso ed uscita partecipanti</string>
@@ -1098,8 +1095,6 @@ Tieni presente che questa azione riavvierà l\'app e potrebbe richiedere del tem
     <string name="settings_labs_enable_send_voice_summary">Questa opzione richiede un\'applicazione di terze parti per registrare i messaggi.</string>
 
     <string name="command_problem_with_parameters">Il comando \"%s\" necessita di più parametri, o alcuni parametri non sono validi.</string>
-    <string name="markdown_has_been_enabled">Markdown è stato abilitato.</string>
-    <string name="markdown_has_been_disabled">Markdown è stato disabilitato.</string>
 
     <string name="settings_call_category">Chiamate</string>
     <string name="settings_call_ringtone_use_riot_ringtone">Usa suoneria predefinita di Riot per le chiamate in arrivo</string>

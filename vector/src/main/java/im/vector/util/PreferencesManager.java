@@ -100,7 +100,6 @@ public class PreferencesManager {
     public static final String SETTINGS_INTERFACE_TEXT_SIZE_KEY = "SETTINGS_INTERFACE_TEXT_SIZE_KEY";
     public static final String SETTINGS_SHOW_URL_PREVIEW_KEY = "SETTINGS_SHOW_URL_PREVIEW_KEY";
     private static final String SETTINGS_SEND_TYPING_NOTIF_KEY = "SETTINGS_SEND_TYPING_NOTIF_KEY";
-    private static final String SETTINGS_ENABLE_MARKDOWN_KEY = "SETTINGS_ENABLE_MARKDOWN_KEY";
     private static final String SETTINGS_ALWAYS_SHOW_TIMESTAMPS_KEY = "SETTINGS_ALWAYS_SHOW_TIMESTAMPS_KEY";
     private static final String SETTINGS_12_24_TIMESTAMPS_KEY = "SETTINGS_12_24_TIMESTAMPS_KEY";
     private static final String SETTINGS_SHOW_READ_RECEIPTS_KEY = "SETTINGS_SHOW_READ_RECEIPTS_KEY";
@@ -636,24 +635,10 @@ public class PreferencesManager {
                     .apply();
         }
 
-        if (preferences.contains("MARKDOWN_PREFERENCE_KEY")) {
-            preferences.edit()
-                    .putBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, preferences.getBoolean("MARKDOWN_PREFERENCE_KEY", false))
-                    .remove("MARKDOWN_PREFERENCE_KEY")
-                    .apply();
-        }
-
         if (preferences.contains("SETTINGS_DONT_SEND_TYPING_NOTIF_KEY")) {
             preferences.edit()
                     .putBoolean(SETTINGS_SEND_TYPING_NOTIF_KEY, !preferences.getBoolean("SETTINGS_DONT_SEND_TYPING_NOTIF_KEY", true))
                     .remove("SETTINGS_DONT_SEND_TYPING_NOTIF_KEY")
-                    .apply();
-        }
-
-        if (preferences.contains("SETTINGS_DISABLE_MARKDOWN_KEY")) {
-            preferences.edit()
-                    .putBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, !preferences.getBoolean("SETTINGS_DISABLE_MARKDOWN_KEY", true))
-                    .remove("SETTINGS_DISABLE_MARKDOWN_KEY")
                     .apply();
         }
 
@@ -678,29 +663,6 @@ public class PreferencesManager {
                     .remove("SETTINGS_HIDE_AVATAR_DISPLAY_NAME_CHANGES")
                     .apply();
         }
-    }
-
-    /**
-     * Tells if the markdown is enabled
-     *
-     * @param context the context
-     * @return true if the markdown is enabled
-     */
-    public static boolean isMarkdownEnabled(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, false);
-    }
-
-    /**
-     * Update the markdown enable status.
-     *
-     * @param context   the context
-     * @param isEnabled true to enable the markdown
-     */
-    public static void setMarkdownEnabled(Context context, boolean isEnabled) {
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putBoolean(SETTINGS_ENABLE_MARKDOWN_KEY, isEnabled)
-                .apply();
     }
 
     /**

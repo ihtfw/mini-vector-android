@@ -757,8 +757,6 @@
     <string name="settings_inline_url_preview_summary">Preview links within the chat when your homeserver supports this feature.</string>
     <string name="settings_send_typing_notifs">Send typing notifications</string>
     <string name="settings_send_typing_notifs_summary">Let other users know that you are typing.</string>
-    <string name="settings_send_markdown">Markdown formatting</string>
-    <string name="settings_send_markdown_summary">Format messages using markdown syntax before they are sent. This allows for advanced formatting such as using asterisks to display italic text.</string>
     <string name="settings_always_show_timestamps">Show timestamps for all messages</string>
     <string name="settings_12_24_timestamps">Show timestamps in 12-hour format</string>
     <string name="settings_show_read_receipts">Show read receipts</string>
@@ -1134,11 +1132,7 @@
     <string name="command_description_topic">Set the room topic</string>
     <string name="command_description_kick_user">Kicks user with given id</string>
     <string name="command_description_nick">Changes your display nickname</string>
-    <string name="command_description_markdown">On/Off markdown</string>
     <string name="command_description_clear_scalar_token">To fix Matrix Apps management</string>
-
-    <string name="markdown_has_been_enabled">Markdown has been enabled.</string>
-    <string name="markdown_has_been_disabled">Markdown has been disabled.</string>
 
     <!-- notification statuses -->
     <string name="notification_off">Off</string>

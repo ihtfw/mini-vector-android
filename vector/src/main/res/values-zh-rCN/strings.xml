@@ -925,7 +925,6 @@ Matrix 中的消息可见性类似于电子邮件。我们忘记您的消息意�
     <string name="command_description_topic">设置聊天室主题</string>
     <string name="command_description_kick_user">依照 ID 踢出用户</string>
     <string name="command_description_nick">更改您显示的昵称</string>
-    <string name="command_description_markdown">打开/关闭 markdown</string>
     <string name="command_description_clear_scalar_token">修复 Matrix Apps 管理</string>
 
     <string name="room_tombstone_versioned_description">这个聊天室已经被替换并且不再活跃</string>
@@ -1069,8 +1068,6 @@ Matrix 中的消息可见性类似于电子邮件。我们忘记您的消息意�
     <string name="settings_inline_url_preview_summary">若主服务器支持本功能，在聊天时预览链接内容。</string>
     <string name="settings_send_typing_notifs">发送正在输入通知</string>
     <string name="settings_send_typing_notifs_summary">让聊天室中的其他用户知道您正在输入。</string>
-    <string name="settings_send_markdown">Markdown 格式化</string>
-    <string name="settings_send_markdown_summary">在消息发出之前使用 Markdown 语法格式化消息。这允许您使用高级的文字格式，例如使用星号显示斜体文字。</string>
     <string name="settings_show_read_receipts">显示已阅回执</string>
     <string name="settings_show_read_receipts_summary">点击已阅回执以显示所有已经阅读过某条消息的用户。</string>
     <string name="settings_show_join_leave_messages">显示加入与离开事件</string>
@@ -1108,9 +1105,6 @@ Matrix 中的消息可见性类似于电子邮件。我们忘记您的消息意�
 
     <string name="settings_lazy_loading_description">通过仅载入最近聊天中出现的聊天室成员来提升性能。</string>
     <string name="settings_lazy_loading_title">延迟加载聊天室成员</string>
-    <string name="markdown_has_been_disabled">已停用 Markdown。</string>
-
-    <string name="markdown_has_been_enabled">已启用 Markdown。</string>
     <string name="video_call_in_progress">视频通话中…</string>
 
     <string name="settings_troubleshoot_test_service_restart_title">自动重启通知服务</string>

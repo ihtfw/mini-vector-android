@@ -754,8 +754,6 @@ Ayrıca e-posta adresi, şifrenizi sıfırlamanıza da olanak tanır.</string>
     <string name="settings_inline_url_preview_summary">Bağlantıları anamakine destekliyorsa sohbette önizle.</string>
     <string name="settings_send_typing_notifs">Yazıyor bildirimleri gönder</string>
     <string name="settings_send_typing_notifs_summary">Diğer kullanıcıların senin ne yazdığını bilmelerine izin ver.</string>
-    <string name="settings_send_markdown">Markdown biçimlendirmesi</string>
-    <string name="settings_send_markdown_summary">Mesajları gönderilmeden önce markdown ile biçimlendir. Bu gelişmiş biçimlendirmeye izin verir örneğin asteriks ile italik yazı yazmak gibi.</string>
     <string name="settings_always_show_timestamps">Tüm mesajların zaman damgasını göster</string>
     <string name="settings_12_24_timestamps">Zaman damgasını 12-saat biçiminde göster</string>
     <string name="settings_show_read_receipts">Makbuz okumayı göster</string>
@@ -1075,11 +1073,7 @@ Ayrıca e-posta adresi, şifrenizi sıfırlamanıza da olanak tanır.</string>
     <string name="command_description_topic">Odanın konusunu belirle</string>
     <string name="command_description_kick_user">Verilen id ile kullanıcıları atar</string>
     <string name="command_description_nick">Görünür ismini değiştirir</string>
-    <string name="command_description_markdown">Markdown Aç/Kapat</string>
     <string name="command_description_clear_scalar_token">Matrix uygulamaları yönetmeyi düzeltmek için</string>
-
-    <string name="markdown_has_been_enabled">Markdown etkinleştirilmiş.</string>
-    <string name="markdown_has_been_disabled">Markdown etkin değil.</string>
 
     <string name="notification_off">Kapalı</string>
     <string name="notification_silent">Sessiz</string>

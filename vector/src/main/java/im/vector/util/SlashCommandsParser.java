@@ -61,7 +61,6 @@ public class SlashCommandsParser {
         TOPIC("/topic", "<topic>", R.string.command_description_topic),
         KICK_USER("/kick", "<user-id> [reason]", R.string.command_description_kick_user),
         CHANGE_DISPLAY_NAME("/nick", "<display-name>", R.string.command_description_nick),
-        MARKDOWN("/markdown", "<on|off>", R.string.command_description_markdown),
         CLEAR_SCALAR_TOKEN("/clear_scalar_token", "", R.string.command_description_clear_scalar_token);
 
         private final String command;
@@ -321,20 +320,6 @@ public class SlashCommandsParser {
                 if (messageParts.length >= 2) {
                     isIRCCmdValid = true;
                     room.updateUserPowerLevels(messageParts[1], 0, callback);
-                }
-            } else if (TextUtils.equals(firstPart, SlashCommand.MARKDOWN.getCommand())) {
-                isIRCCmd = true;
-
-                if (messageParts.length >= 2) {
-                    if (TextUtils.equals(messageParts[1], "on")) {
-                        isIRCCmdValid = true;
-                        PreferencesManager.setMarkdownEnabled(VectorApp.getInstance(), true);
-                        Toast.makeText(activity, R.string.markdown_has_been_enabled, Toast.LENGTH_SHORT).show();
-                    } else if (TextUtils.equals(messageParts[1], "off")) {
-                        isIRCCmdValid = true;
-                        PreferencesManager.setMarkdownEnabled(VectorApp.getInstance(), false);
-                        Toast.makeText(activity, R.string.markdown_has_been_disabled, Toast.LENGTH_SHORT).show();
-                    }
                 }
             } else if (TextUtils.equals(firstPart, SlashCommand.CLEAR_SCALAR_TOKEN.getCommand())) {
                 isIRCCmd = true;

@@ -991,7 +991,6 @@ Note que esta ação vai reiniciar o aplicativo e isso pode tomar um certo tempo
     <string name="command_description_topic">Define o tópico da sala</string>
     <string name="command_description_kick_user">Expulsa a(o) usuária(o) com o ID fornecido</string>
     <string name="command_description_nick">Altera o seu nome público de usuária(o)</string>
-    <string name="command_description_markdown">Ativar/Desativar o Markdown</string>
     <string name="command_description_clear_scalar_token">Reparar a gestão de aplicativos Matrix</string>
 
     <plurals name="group_members">
@@ -1141,8 +1140,6 @@ Na próxima tela, você será solicitado a permitir que o Riot funcione sempre e
     <string name="settings_troubleshoot_test_bg_restricted_failed">Restrições em segundo plano estão habilitadas para o Riot.
 Trabalhos que o aplicativo tentar fazer serão restringidos agressivamente enquanto isto estiver em segundo plano, isto poderá afetar as notificações.
 %1$s</string>
-    <string name="settings_send_markdown">Formatação Markdown</string>
-    <string name="settings_send_markdown_summary">Fomatar mensagens usando a sintaxe markdown antes delas serem enviadas. Isto permite uma formatação avançada como usar asteriscos para mostrar texto em itálico.</string>
     <string name="startup_notification_fdroid_battery_optim_button_grant">Conceder permissão</string>
 
     <string name="account_email_error">Ocorreu um erro ao verificar seu endereço de e-mail.</string>
@@ -1157,8 +1154,6 @@ Trabalhos que o aplicativo tentar fazer serão restringidos agressivamente enqua
     <string name="settings_labs_enable_send_voice_summary">Esta opção requer um aplicativo de terceiros para gravar as mensagens.</string>
 
     <string name="command_problem_with_parameters">O comando \"%s\" precisa de mais parâmetros ou alguns parâmetros estão incorretos.</string>
-    <string name="markdown_has_been_enabled">Markdown foi habilitado.</string>
-    <string name="markdown_has_been_disabled">Markdown foi desabilitado.</string>
 
     <string name="settings_lazy_loading_description">Aumente o desempenho apenas carregando os membros da sala na primeira exibição.</string>
     <string name="error_lazy_loading_not_supported_by_home_server">Seu homeserver não suporta o carregamento Lazy de membros da sala ainda. Tente depois.</string>
