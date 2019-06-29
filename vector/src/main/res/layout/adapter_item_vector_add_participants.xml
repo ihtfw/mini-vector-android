@@ -10,6 +10,7 @@
         android:layout_width="55dp"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:background="@color/vector_fuchsia_color"
         android:orientation="vertical">
 
@@ -34,8 +35,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp">
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp">
 
             <CheckBox
                 android:id="@+id/filtered_list_checkbox"
@@ -65,6 +68,7 @@
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             tools:src="@tools:sample/avatars" />
 
         <ImageView
@@ -73,8 +77,10 @@
             android:layout_height="20dp"
             android:layout_alignTop="@+id/filtered_list_avatar"
             android:layout_alignEnd="@+id/filtered_list_avatar"
+            android:layout_alignRight="@+id/filtered_list_avatar"
             android:layout_marginTop="-7dp"
             android:layout_marginEnd="-7dp"
+            android:layout_marginRight="-7dp"
             android:visibility="gone"
             tools:src="@tools:sample/avatars"
             tools:visibility="visible" />
@@ -85,8 +91,10 @@
             android:layout_height="20dp"
             android:layout_alignTop="@id/filtered_list_avatar"
             android:layout_alignEnd="@id/filtered_list_avatar"
+            android:layout_alignRight="@id/filtered_list_avatar"
             android:layout_marginTop="-7dp"
             android:layout_marginEnd="-7dp"
+            android:layout_marginRight="-7dp"
             android:src="@drawable/admin_icon"
             android:visibility="gone" />
 
@@ -101,7 +109,9 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_toStartOf="@id/filtered_list_actions_list"
+            android:layout_toLeftOf="@id/filtered_list_actions_list"
             android:layout_toEndOf="@id/filtered_list_avatar"
+            android:layout_toRightOf="@id/filtered_list_avatar"
             android:singleLine="true"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -112,9 +122,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/filtered_list_name"
+            android:layout_alignLeft="@id/filtered_list_name"
             android:layout_alignBottom="@id/filtered_list_avatar"
             android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:layout_toStartOf="@id/filtered_list_actions_list"
+            android:layout_toLeftOf="@id/filtered_list_actions_list"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="?android:attr/textColorSecondary"
@@ -125,6 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:background="?attr/vctr_list_divider_color" />
 

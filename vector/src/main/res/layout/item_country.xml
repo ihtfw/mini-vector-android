@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toStartOf="@+id/country_calling_code"
+        android:layout_toLeftOf="@+id/country_calling_code"
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="16sp"
@@ -26,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="+33" />

@@ -36,6 +36,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_material_call_white" />
         </RelativeLayout>
@@ -49,7 +50,9 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:paddingStart="16dp"
+            android:paddingLeft="16dp"
             android:paddingEnd="4dp"
+            android:paddingRight="4dp"
             android:paddingBottom="5dp">
 
             <TextView
@@ -95,6 +98,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
                 android:rotationY="@integer/rtl_mirror_flip"
                 android:src="@drawable/ic_material_arrow_back_white"

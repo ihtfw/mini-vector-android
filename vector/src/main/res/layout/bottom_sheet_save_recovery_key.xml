@@ -45,6 +45,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:src="@drawable/ic_material_share"
             android:tint="?colorAccent" />
 
@@ -75,6 +76,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:src="@drawable/ic_material_save"
             android:tint="?colorAccent" />
 
