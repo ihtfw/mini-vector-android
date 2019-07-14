@@ -91,6 +91,7 @@ import im.vector.receiver.VectorUniversalLinkReceiver;
 import im.vector.ui.themes.ThemeUtils;
 import im.vector.util.EventGroup;
 import im.vector.util.ExternalApplicationsUtilKt;
+import im.vector.util.LinkUtilsKt;
 import im.vector.util.PermissionsToolsKt;
 import im.vector.util.PreferencesManager;
 import im.vector.util.SlidableMediaInfo;
@@ -713,7 +714,12 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
                 }
             }
         } else if (action == R.id.ic_action_vector_permalink) {
-            SystemUtilsKt.copyToClipboard(getActivity(), PermalinkUtils.createPermalink(event));
+            String link = LinkUtilsKt.createLink(event);
+            if (link != null){
+                SystemUtilsKt.copyToClipboard(getActivity(), link);
+            }else{
+                SystemUtilsKt.copyToClipboard(getActivity(), PermalinkUtils.createPermalink(event));
+            }
         } else if (action == R.id.ic_action_vector_report) {
             onMessageReport(event);
         } else if ((action == R.id.ic_action_view_source) || (action == R.id.ic_action_view_decrypted_source)) {

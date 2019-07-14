@@ -114,6 +114,7 @@ import im.vector.ui.themes.ThemeUtils;
 import im.vector.util.CacheEventLoader;
 import im.vector.util.EmojiKt;
 import im.vector.util.EventGroup;
+import im.vector.util.LinkUtilsKt;
 import im.vector.util.MatrixLinkMovementMethod;
 import im.vector.util.MatrixURLSpan;
 import im.vector.util.PreferencesManager;
@@ -2697,7 +2698,10 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
 
         menu.findItem(R.id.ic_action_view_source).setVisible(true);
         menu.findItem(R.id.ic_action_view_decrypted_source).setVisible(event.isEncrypted() && (null != event.getClearEvent()));
-        menu.findItem(R.id.ic_action_vector_permalink).setVisible(true);
+        if (LinkUtilsKt.createLink(event) != null)
+        {
+            menu.findItem(R.id.ic_action_vector_permalink).setVisible(true);
+        }
 
         if (!TextUtils.isEmpty(textMsg)) {
             menu.findItem(R.id.ic_action_vector_copy).setVisible(true);

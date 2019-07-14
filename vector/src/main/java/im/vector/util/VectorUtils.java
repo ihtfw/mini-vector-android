@@ -310,7 +310,11 @@ public class VectorUtils {
             }
         }
 
-        firstChar = name.substring(idx, idx + chars);
+        int endIndex = idx + chars;
+        if (name.length() < endIndex){
+            endIndex = name.length();
+        }
+        firstChar = name.substring(idx, endIndex);
 
         return firstChar.toUpperCase(VectorLocale.INSTANCE.getApplicationLocale());
     }
