@@ -33,8 +33,8 @@ import android.widget.FrameLayout;
 // import org.jitsi.meet.sdk.JitsiMeetView;
 // import org.jitsi.meet.sdk.JitsiMeetViewListener;
 import org.matrix.androidsdk.MXSession;
+import org.matrix.androidsdk.core.Log;
 import org.matrix.androidsdk.data.Room;
-import org.matrix.androidsdk.util.Log;
 
 import java.util.Map;
 
