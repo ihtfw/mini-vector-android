@@ -583,6 +583,7 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
             }
         });
 
+        mUseCustomHomeServersCheckbox.setChecked(true);
         mUseCustomHomeServersCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
