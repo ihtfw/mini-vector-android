@@ -42,13 +42,3 @@ before_script:
 script:
  - ./gradlew assembleAppDebug
  
-deploy:
-  provider: releases
-  file: "vector/build/outputs/apk/app/debug/vector-app-debug.apk"
-  skip_cleanup: true
-  draft: true
-  on:
-    branch: patch-1
-  api_key:
-    secure: "qh/v61K0ZP/C29FG57JC3sPeVlJw3D2VXA+M5sym+GMR5mOQd3RkofB4kdSwma0zj6AiEVaTBZ+VWnadLBAOW9avz7BqS2MUn8EbU8dAunwuHiyoMwfq4hPofolt7ftpOO5PaBb3pBYcJdld/94ai+yix11IpxShvM/li5AS+XnAYYne4NQ82GedftPl4pdMsbtla0CBD3lmg1GZzJNALZUvvoxE9lXwkRfPT7bq6pGM+yHkCrCYpIjIyuSCGi5bV6d5uAz8XPXL6C20Gd/kaI47OrkyMvVMZJwCQMSlycwOtiPIv6hWX4v8yb1NQ7NtlHOREM/JwMaDhyeCLwLP+uGDfshA96xD+9z4glySYbxn50orc/DRD6QkfBJW219KTcMRHtueR7VZZl0K1vMjmEzioP6mabyrsZE96fxxJAMBfwgsrozb/gHtHRimoHcs3R4rNu8CLgjolKTesdkhSvbSjasUotKqP9OXE+8kSqojToRQurmnRqcYTpORlOi1/8DTaEoXZu4fDKgOwod2N3fvxK5sxp66yF9yWC+76yR0UMU8sL/ZXVUoO5q3Duteqqk5GytQkUREsQO46cPaUEJY3/tBS9YCeTcPiaM4veOaWZGEkds4jPbromUpa/GFhj8/vEmC4QYZ/U/u9tU8a7IgDwqd5GaWDCuGED5YvfY="
- 
