@@ -59,8 +59,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import im.vector.activity.CommonActivityUtils;
-// import im.vector.activity.JitsiCallActivity;
-import im.vector.activity.VectorCallViewActivity;
+// import im.vector.activity.VectorCallViewActivity;
 import im.vector.activity.VectorMediaPickerActivity;
 import im.vector.activity.WidgetActivity;
 import im.vector.analytics.Analytics;
@@ -626,8 +625,7 @@ public class VectorApp extends MultiDexApplication {
         // avoid restarting activities when it is not required
         // some of them has no text
         if (!(activity instanceof VectorMediaPickerActivity)
-                && !(activity instanceof VectorCallViewActivity)
-                // && !(activity instanceof JitsiCallActivity)
+                // && !(activity instanceof VectorCallViewActivity)
                 && !(activity instanceof WidgetActivity)) {
             activity.startActivity(activity.getIntent());
             activity.finish();
