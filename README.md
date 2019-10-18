@@ -10,10 +10,6 @@ miniVector
    * Application Icon badger
    * Analytics
 
- It also sets the default identity server to `localhost` which effectively disables it. The identity server is an
- optional service that is used by matrix clients to identify contacts via external identities such as emails and
- phone numbers. Since this compromises privacy and is entirely optional, the default here is to disable the feature.
-
 ### Links
 
 * [PlayStore](https://play.google.com/store/apps/details?id=com.lavadip.miniVector)
