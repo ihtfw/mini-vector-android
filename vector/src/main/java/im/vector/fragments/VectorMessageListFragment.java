@@ -1169,9 +1169,17 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
             }
 
             Message message = JsonUtils.toMessage(event.getContent());
+            //worlaround for wrong mimetype
+            boolean isValidImage = false;
+            if (Message.MSGTYPE_IMAGE.equals(message.msgtype)){
+                ImageMessage imageMessage = JsonUtils.toImageMessage(event.getContent());
+                if (imageMessage.info.w != null){
+                    isValidImage = true;
+                }
+            }
 
             // video and images are displayed inside a medias slider.
-            if (Message.MSGTYPE_IMAGE.equals(message.msgtype) || (Message.MSGTYPE_VIDEO.equals(message.msgtype))) {
+            if (isValidImage || (Message.MSGTYPE_VIDEO.equals(message.msgtype))) {
                 List<SlidableMediaInfo> mediaMessagesList = listSlidableMessages();
                 int listPosition = getMediaMessagePosition(mediaMessagesList, message);
 
@@ -1186,7 +1194,7 @@ public class VectorMessageListFragment extends MatrixMessageListFragment<VectorM
 
                     getActivity().startActivity(viewImageIntent);
                 }
-            } else if (Message.MSGTYPE_FILE.equals(message.msgtype) || Message.MSGTYPE_AUDIO.equals(message.msgtype)) {
+            } else if (Message.MSGTYPE_FILE.equals(message.msgtype) || Message.MSGTYPE_AUDIO.equals(message.msgtype) || Message.MSGTYPE_IMAGE.equals(message.msgtype)) {
                 FileMessage fileMessage = JsonUtils.toFileMessage(event.getContent());
 
                 if (null != fileMessage.getUrl()) {

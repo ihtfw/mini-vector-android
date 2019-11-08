@@ -1064,7 +1064,13 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
                     viewType = ROW_TYPE_TEXT;
                 }
             } else if (Message.MSGTYPE_IMAGE.equals(msgType)) {
-                viewType = ROW_TYPE_IMAGE;
+                //workaround for files with mime type image but it's not like  "mimetype": "image/x-coreldraw",
+                ImageMessage imageMessage = JsonUtils.toImageMessage(event.getContent());
+                if (imageMessage.info.w == null){
+                    viewType = ROW_TYPE_FILE;
+                }else{
+                    viewType = ROW_TYPE_IMAGE;
+                }
             } else if (Message.MSGTYPE_EMOTE.equals(msgType)) {
                 viewType = ROW_TYPE_EMOTE;
             } else if (Message.MSGTYPE_NOTICE.equals(msgType)) {
@@ -2016,7 +2022,11 @@ public class VectorMessagesAdapter extends AbstractMessagesAdapter {
         Message message = JsonUtils.toMessage(content);
         if (Message.MSGTYPE_IMAGE.equals(message.msgtype)){
             ImageMessage imageMessage = JsonUtils.toImageMessage(content);
-            info = imageMessage.getMimeType() + " " + imageMessage.info.w + "x" + imageMessage.info.h + "(" + AdapterUtils.sizeToString(imageMessage.info.size) + ")";
+            if (imageMessage.info.w == null){
+                info = imageMessage.getMimeType() + " " + "(" + AdapterUtils.sizeToString(imageMessage.info.size) + ")";
+            }else{
+                info = imageMessage.getMimeType() + " " + imageMessage.info.w + "x" + imageMessage.info.h + "(" + AdapterUtils.sizeToString(imageMessage.info.size) + ")";
+            }
         }else if (Message.MSGTYPE_VIDEO.equals(message.msgtype)){
             VideoMessage videoMessage = JsonUtils.toVideoMessage(content);
             info = videoMessage.getMimeType() + " " + videoMessage.info.w + "x" + videoMessage.info.h  + "(" + AdapterUtils.sizeToString(videoMessage.info.size) + ")";
