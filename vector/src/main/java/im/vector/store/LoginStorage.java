@@ -54,11 +54,17 @@ public class LoginStorage {
         SharedPreferences prefs = mContext.getSharedPreferences(PREFS_LOGIN, Context.MODE_PRIVATE);
 
         String connectionConfigsString = prefs.getString(PREFS_KEY_CONNECTION_CONFIGS, null);
-
         Log.d(LOG_TAG, "Got connection json: ");
 
         if (connectionConfigsString == null) {
             return new ArrayList<>();
+        }
+
+        //single time change identity server
+        if (connectionConfigsString.contains("\"https:\\/\\/ilfumo.ru\"")){
+            connectionConfigsString = connectionConfigsString.replace("\"https:\\/\\/ilfumo.ru\"", "\"https:\\/\\/matrix.ilfumo.ru\"");
+            connectionConfigsString = connectionConfigsString.replace("\"ilfumo.ru\"", "\"matrix.ilfumo.ru\"");
+            prefs.edit().putString(PREFS_KEY_CONNECTION_CONFIGS, connectionConfigsString).commit();
         }
 
         try {

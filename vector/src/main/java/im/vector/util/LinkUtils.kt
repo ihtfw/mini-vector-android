@@ -26,5 +26,5 @@ fun createLink(event:Event?): String?{
     // mxc://ilfumo.ru/WdMXbkBqUiQhljuQUAALYYeh
     val id = str.split("/").last()
 
-    return "https://ilfumo.ru/_matrix/media/v1/download/ilfumo.ru/$id"
+    return "https://matrix.ilfumo.ru/_matrix/media/v1/download/ilfumo.ru/$id"
 }
